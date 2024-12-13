@@ -1,0 +1,35 @@
+package br.com.hellodev.hellojob.presenter.ui.theme.scheme
+
+import androidx.compose.ui.graphics.Color
+
+data class MyColorScheme(
+    val text: TextColorScheme,
+    val screen: ScreenColorScheme,
+    val icon: IconColorScheme,
+    val button: ButtonColorScheme,
+    val border: BorderColorScheme,
+    val divider: DividerColorScheme,
+    val socialButton: SocialButtonColorScheme,
+    val textField: TextFieldColorScheme,
+    val switch: SwitchColorScheme,
+    val topAppBar: TopAppBarColorScheme,
+    val defaultColor: Color,
+    val disabledDefaultColor: Color,
+    val successColor: Color,
+    val infoColor: Color,
+    val warningColor: Color,
+    val alertColor: Color,
+    val disabledColor: Color,
+    val greyscale900Color: Color,
+    val greyscale800Color: Color,
+    val greyscale700Color: Color,
+    val greyscale600Color: Color,
+    val greyscale500Color: Color,
+    val greyscale400Color: Color,
+    val greyscale300Color: Color,
+    val greyscale200Color: Color,
+    val greyscale100Color: Color,
+    val greyscale50Color: Color,
+    val spotColor: Color,
+    val ambientColor: Color,
+)

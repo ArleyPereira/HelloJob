@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hello Job</string>
+
+    <!--    WelcomeScreen-->
+    <string name="label_continue_button_welcome_screen">Continuar</string>
+
+</resources>
