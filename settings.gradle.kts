@@ -21,3 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "HelloJob"
 include(":app")
+include(":design")
+include(":onboarding")
+include(":authentication")
+include(":di")

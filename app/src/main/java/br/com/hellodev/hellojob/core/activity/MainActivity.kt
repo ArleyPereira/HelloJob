@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import br.com.hellodev.hellojob.presenter.features.onboarding.screen.WelcomeScreen
-import br.com.hellodev.hellojob.presenter.ui.theme.HelloTheme
+import br.com.hellodev.design.presenter.theme.HelloTheme
+import br.com.hellodev.onboarding.presenter.features.onboarding.screen.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
