@@ -30,36 +30,46 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.core.mask.MaskVisualTransformation
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 
 @Composable
-fun TextFieldUI(
+fun TextFieldPasswordUI(
     modifier: Modifier = Modifier,
     value: String = "",
     placeholder: String = "",
     enabled: Boolean = true,
     isError: Boolean = false,
-    singleLine: Boolean = false,
     maxLength: Int = Int.MAX_VALUE,
-    leadingIcon: @Composable (() -> Unit)? = null,
-    trailingIcon: @Composable (() -> Unit)? = null,
     requireKeyboardFocus: Boolean = false,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(
+        keyboardType = KeyboardType.Password,
+        imeAction = ImeAction.Done
+    ),
     onValueChange: (String) -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
+
     val customTextSelectionColors = TextSelectionColors(
         handleColor = HelloTheme.colorScheme.defaultColor,
         backgroundColor = HelloTheme.colorScheme.alphaDefaultColor
     )
+
+    var showPassword by remember { mutableStateOf(false) }
+
+    val visualTransformation = if (showPassword) {
+        VisualTransformation.None
+    } else {
+        PasswordVisualTransformation()
+    }
 
     Column(
         modifier = modifier
@@ -68,15 +78,9 @@ fun TextFieldUI(
         CompositionLocalProvider(LocalTextSelectionColors provides customTextSelectionColors) {
             TextField(
                 value = value,
-                onValueChange = { value ->
-                    val filteredValue = when (visualTransformation) {
-                        is MaskVisualTransformation -> value.filter { it.isDigit() }
-
-                        else -> value
-                    }
-
-                    if (filteredValue.length <= maxLength) {
-                        onValueChange(filteredValue)
+                onValueChange = {
+                    if (it.length <= maxLength) {
+                        onValueChange(it)
                     }
                 },
                 modifier = Modifier
@@ -103,12 +107,29 @@ fun TextFieldUI(
                         )
                     )
                 },
-                leadingIcon = leadingIcon,
-                trailingIcon = trailingIcon,
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_lock_password),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                },
+                trailingIcon = {
+                    IconButton(
+                        onClick = { showPassword = !showPassword },
+                        content = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_hide),
+                                contentDescription = null,
+                                tint = Color.Unspecified
+                            )
+                        }
+                    )
+                },
                 isError = isError,
                 visualTransformation = visualTransformation,
                 keyboardOptions = keyboardOptions,
-                singleLine = singleLine,
+                singleLine = true,
                 shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = HelloTheme.colorScheme.textField.background,
@@ -135,7 +156,7 @@ fun TextFieldUI(
 
 @PreviewLightDark
 @Composable
-private fun TextFieldUIPreview() {
+private fun TextFieldPasswordUIPreview() {
     var textValue by remember {
         mutableStateOf("testando")
     }
@@ -148,30 +169,11 @@ private fun TextFieldUIPreview() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TextFieldUI(
+            TextFieldPasswordUI(
                 modifier = Modifier
                     .padding(32.dp),
                 value = textValue,
                 placeholder = "Ex: Arley Santana",
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_lock_password),
-                        contentDescription = null,
-                        tint = Color.Unspecified
-                    )
-                },
-                trailingIcon = {
-                    IconButton(
-                        onClick = {},
-                        content = {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_hide),
-                                contentDescription = null,
-                                tint = Color.Unspecified
-                            )
-                        }
-                    )
-                },
                 onValueChange = {
                     textValue = it
                 }

@@ -9,8 +9,6 @@ sealed class LoginAction {
         val type: InputType
     ) : LoginAction()
 
-    data object OnPasswordVisibilityChange : LoginAction()
-
     data object OnSignIn : LoginAction()
 
     data object ResetError : LoginAction()

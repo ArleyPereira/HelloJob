@@ -5,14 +5,13 @@ import androidx.lifecycle.viewModelScope
 import br.com.hellodev.authentication.presenter.features.login.action.LoginAction
 import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.authentication.presenter.features.login.state.LoginState
+import br.com.hellodev.core.functions.isValidEmail
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class LoginViewModel(
-    //private val loginUseCase: LoginUseCase
-) : ViewModel() {
+class LoginViewModel: ViewModel() {
 
     private val _state = MutableStateFlow(LoginState())
     val state = _state.asStateFlow()
@@ -21,10 +20,6 @@ class LoginViewModel(
         when (action) {
             is LoginAction.OnValueChange -> {
                 onValueChange(action.value, action.type)
-            }
-
-            is LoginAction.OnPasswordVisibilityChange -> {
-                onPasswordVisibilityChange()
             }
 
             is LoginAction.OnSignIn -> {
@@ -39,43 +34,17 @@ class LoginViewModel(
 
     private fun onSignIn() {
         viewModelScope.launch {
-//            try {
-//                _state.update { currentState ->
-//                    currentState.copy(isLoading = true)
-//                }
-//
-//                loginUseCase(
-//                    email = _state.value.email,
-//                    password = _state.value.password
-//                )
-//
-//                _state.update { currentState ->
-//                    currentState.copy(isLoading = false, isAuthenticated = true)
-//                }
-//            } catch (exception: Exception) {
-//                exception.printStackTrace()
-//
-//                _state.update { currentState ->
-//                    currentState.copy(
-//                        hasFeedback = true,
-//                        isLoading = false,
-//                        feedbackUI = Pair(
-//                            FeedbackType.ERROR,
-//                            FirebaseHelper.validError(exception.message)
-//                        )
-//                    )
-//                }
-//            }
+
         }
     }
 
-    private fun onValueChange(value: String, type: br.com.hellodev.core.enums.input.InputType) {
+    private fun onValueChange(value: String, type: InputType) {
         when (type) {
-            br.com.hellodev.core.enums.input.InputType.EMAIL -> {
+            InputType.EMAIL -> {
                 onEmailChange(value)
             }
 
-            br.com.hellodev.core.enums.input.InputType.PASSWORD -> {
+            InputType.PASSWORD -> {
                 onPasswordChange(value)
             }
         }
@@ -95,19 +64,13 @@ class LoginViewModel(
         }
     }
 
-    private fun onPasswordVisibilityChange() {
-        _state.update { currentState ->
-            currentState.copy(passwordVisibility = !currentState.passwordVisibility)
-        }
-    }
-
     private fun enabledSignInButton() {
-//        val emailValid = isValidEmail(_state.value.email)
-//        val passwordValid = _state.value.password.isNotBlank()
-//
-//        _state.update { currentState ->
-//            currentState.copy(enabledSignInButton = emailValid && passwordValid)
-//        }
+        val emailValid = isValidEmail(_state.value.email)
+        val passwordValid = _state.value.password.isNotBlank()
+
+        _state.update { currentState ->
+            currentState.copy(enabledSignInButton = emailValid && passwordValid)
+        }
     }
 
     private fun resetError() {

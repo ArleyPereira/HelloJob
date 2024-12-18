@@ -18,7 +18,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -40,25 +39,24 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.authentication.R
-import br.com.hellodev.design.presenter.components.snackbar.FeedbackUI
 import br.com.hellodev.authentication.presenter.features.signup.action.SignupAction
+import br.com.hellodev.authentication.presenter.features.signup.viewmodel.SignupViewModel
 import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerWithText
+import br.com.hellodev.design.presenter.components.snackbar.FeedbackUI
+import br.com.hellodev.design.presenter.components.textfield.TextFieldPasswordUI
 import br.com.hellodev.design.presenter.components.textfield.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.moviestreaming.presenter.features.authentication.signup.state.SignupState
-import br.com.hellodev.authentication.presenter.features.signup.viewmodel.SignupViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -179,7 +177,7 @@ private fun SignupContent(
                         action(
                             SignupAction.OnValueChange(
                                 value = it,
-                                type = br.com.hellodev.core.enums.input.InputType.EMAIL
+                                type = InputType.EMAIL
                             )
                         )
                     }
@@ -187,51 +185,15 @@ private fun SignupContent(
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                TextFieldUI(
+                TextFieldPasswordUI(
                     modifier = Modifier,
                     value = state.password,
                     placeholder = stringResource(id = R.string.label_input_password_signup_screen),
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_lock_password),
-                            contentDescription = null,
-                            tint = Color.Unspecified
-                        )
-                    },
-                    trailingIcon = {
-                        if (state.password.isNotEmpty()) {
-                            IconButton(
-                                onClick = {
-                                    action(SignupAction.OnPasswordVisibilityChange)
-                                },
-                                content = {
-                                    Icon(
-                                        painter = if (state.passwordVisibility) {
-                                            painterResource(id = R.drawable.ic_hide)
-                                        } else {
-                                            painterResource(id = R.drawable.ic_show)
-                                        },
-                                        contentDescription = null,
-                                        tint = Color.Unspecified
-                                    )
-                                }
-                            )
-                        }
-                    },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Password,
-                        imeAction = ImeAction.Done
-                    ),
-                    visualTransformation = if (state.passwordVisibility) {
-                        VisualTransformation.None
-                    } else {
-                        PasswordVisualTransformation()
-                    },
                     onValueChange = {
                         action(
                             SignupAction.OnValueChange(
                                 value = it,
-                                type = br.com.hellodev.core.enums.input.InputType.PASSWORD
+                                type = InputType.PASSWORD
                             )
                         )
                     }
