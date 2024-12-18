@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import br.com.hellodev.onboarding.core.navigation.hosts.onboardingNavHost
-import br.com.hellodev.onboarding.core.navigation.routes.OnboardingRoutes
+import br.com.hellodev.onboarding.presenter.navigation.host.onboardingNavHost
+import br.com.hellodev.onboarding.presenter.navigation.routes.OnboardingRoutes
 
 @Composable
 fun AppNavHost(

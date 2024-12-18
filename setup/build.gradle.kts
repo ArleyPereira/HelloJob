@@ -1,10 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "br.com.hellodev.di"
+    namespace = "br.com.hellodev.setup"
     compileSdk = 35
 
     defaultConfig {
@@ -34,11 +36,19 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":authentication"))
-    implementation(project(":onboarding"))
-    implementation(project(":setup"))
+    implementation(project(":design"))
+
+    // Compose
+    implementation(platform(libs.compose.bom))
+    implementation(libs.bundles.compose)
+    implementation(libs.navigation.compose)
 
     // Koin
     implementation(libs.koin.compose)
 
+    // Serialization
+    implementation(libs.serialization.json)
+
+    // Debug
+    debugImplementation(libs.compose.ui.tooling)
 }

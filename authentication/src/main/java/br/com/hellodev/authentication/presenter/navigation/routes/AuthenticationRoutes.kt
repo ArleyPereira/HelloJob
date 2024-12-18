@@ -1,4 +1,4 @@
-package br.com.hellodev.authentication.core.navigation.routes
+package br.com.hellodev.authentication.presenter.navigation.routes
 
 import kotlinx.serialization.Serializable
 

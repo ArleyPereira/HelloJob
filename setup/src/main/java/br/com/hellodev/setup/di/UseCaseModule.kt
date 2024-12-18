@@ -1,4 +1,4 @@
-package br.com.hellodev.onboarding.di
+package br.com.hellodev.setup.di
 
 import org.koin.dsl.module
 

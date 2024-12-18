@@ -1,10 +1,10 @@
-package br.com.hellodev.authentication.core.navigation.hosts
+package br.com.hellodev.authentication.presenter.navigation.host
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import br.com.hellodev.authentication.core.navigation.routes.AuthenticationRoutes
+import br.com.hellodev.authentication.presenter.navigation.routes.AuthenticationRoutes
 import br.com.hellodev.authentication.presenter.features.home.HomeAuthenticationScreen
 import br.com.hellodev.authentication.presenter.features.login.screen.LoginScreen
 import br.com.hellodev.authentication.presenter.features.signup.screen.SignupScreen
