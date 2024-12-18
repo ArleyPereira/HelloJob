@@ -38,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":design"))
 
     // Compose

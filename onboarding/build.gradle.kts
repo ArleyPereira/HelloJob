@@ -38,7 +38,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":design"))
+    implementation(project(":authentication"))
 
     // Compose
     implementation(libs.activity.compose)

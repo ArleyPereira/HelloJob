@@ -20,8 +20,7 @@ val IconColorLight = Color(0xFF212121)
 val IconColorDark = Color(0xFFFFFFFF)
 
 // Button -> Background - Primary
-val PrimaryButtonColorLight = Color(0xFF246BFD)
-val PrimaryButtonColorDark = Color(0xFFE9F0FF)
+val PrimaryButtonColor = Color(0xFF246BFD)
 
 // Button -> Background - Secondary
 val SecondaryButtonColorLight = Color(0xFFE9F0FF)
@@ -43,22 +42,25 @@ val UnselectedBorderColor = Color(0xFF35383F)
 val DividerColorLight = Color(0xFFEEEEEE)
 val DividerColorDark = Color(0xFF35383F)
 
-// Button -> Text
+// Social Button
 val BackgroundSocialButtonColorLight = Color.Transparent
 val BackgroundSocialButtonColorDark = Color(0xFF1F222A)
+val TextSocialButtonColorLight = Color(0xFF212121)
+val TextSocialButtonColorDark = Color(0xFFFFFFFF)
+val BorderSocialButtonColorLight = Color(0xFFEEEEEE)
+val BorderSocialButtonColorDark = Color(0xFF35383F)
 
 // TopAppBar
 val TopAppBarColorLight = Color(0xFFFFFFFF)
 val TopAppBarColorDark = Color(0xFF181A20)
-val TopAppBarContentColorLight = Color(0xFFFFFFFF)
-val TopAppBarContentColorDark = Color(0xFF212121)
-
+val TopAppBarContentColorLight = Color(0xFF212121)
+val TopAppBarContentColorDark = Color(0xFFFFFFFF)
 
 // TextField
 val TextFieldBackgroundColorLight = Color(0xFFFAFAFA)
 val TextFieldBackgroundColorDark = Color(0xFF1F222A)
-val TextFieldTextColorLight = Color(0xFFFFFFFF)
-val TextFieldTextColorDark = Color(0xFF212121)
+val TextFieldTextColorLight = Color(0xFF212121)
+val TextFieldTextColorDark = Color(0xFFFFFFFF)
 
 // Switch
 val SwitchSelectedBackgroundColor = Color(0xFF246BFD)

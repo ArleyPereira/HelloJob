@@ -35,6 +35,7 @@ android {
 dependencies {
     implementation(project(":authentication"))
     implementation(project(":onboarding"))
+    implementation(project(":core"))
 
     // Koin
     implementation(libs.koin.compose)

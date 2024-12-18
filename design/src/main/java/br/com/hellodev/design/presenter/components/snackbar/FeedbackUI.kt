@@ -23,8 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.design.R
-import br.com.hellodev.design.core.enums.feedback.FeedbackType
-import br.com.hellodev.design.core.enums.feedback.FeedbackType.*
+import br.com.hellodev.core.enums.feedback.FeedbackType
+import br.com.hellodev.core.enums.feedback.FeedbackType.*
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 

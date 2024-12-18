@@ -1,6 +1,6 @@
 package br.com.hellodev.authentication.presenter.features.login.action
 
-import br.com.hellodev.design.core.enums.input.InputType
+import br.com.hellodev.core.enums.input.InputType
 
 sealed class LoginAction {
 

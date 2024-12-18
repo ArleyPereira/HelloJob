@@ -48,7 +48,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.authentication.R
 import br.com.hellodev.authentication.presenter.features.login.action.LoginAction
-import br.com.hellodev.design.core.enums.input.InputType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
@@ -57,8 +56,9 @@ import br.com.hellodev.design.presenter.components.snackbar.FeedbackUI
 import br.com.hellodev.design.presenter.components.textfield.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
-import br.com.hellodev.moviestreaming.presenter.features.authentication.login.state.LoginState
+import br.com.hellodev.authentication.presenter.features.login.state.LoginState
 import br.com.hellodev.authentication.presenter.features.login.viewmodel.LoginViewModel
+import br.com.hellodev.core.enums.input.InputType
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 

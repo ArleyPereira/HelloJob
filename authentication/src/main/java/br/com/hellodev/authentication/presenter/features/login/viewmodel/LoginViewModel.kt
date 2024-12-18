@@ -2,10 +2,9 @@ package br.com.hellodev.authentication.presenter.features.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.design.core.enums.feedback.FeedbackType
 import br.com.hellodev.authentication.presenter.features.login.action.LoginAction
-import br.com.hellodev.design.core.enums.input.InputType
-import br.com.hellodev.moviestreaming.presenter.features.authentication.login.state.LoginState
+import br.com.hellodev.core.enums.input.InputType
+import br.com.hellodev.authentication.presenter.features.login.state.LoginState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -70,13 +69,13 @@ class LoginViewModel(
         }
     }
 
-    private fun onValueChange(value: String, type: InputType) {
+    private fun onValueChange(value: String, type: br.com.hellodev.core.enums.input.InputType) {
         when (type) {
-            InputType.EMAIL -> {
+            br.com.hellodev.core.enums.input.InputType.EMAIL -> {
                 onEmailChange(value)
             }
 
-            InputType.PASSWORD -> {
+            br.com.hellodev.core.enums.input.InputType.PASSWORD -> {
                 onPasswordChange(value)
             }
         }

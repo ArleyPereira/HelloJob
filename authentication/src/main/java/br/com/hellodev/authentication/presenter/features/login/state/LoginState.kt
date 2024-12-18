@@ -1,6 +1,6 @@
-package br.com.hellodev.moviestreaming.presenter.features.authentication.login.state
+package br.com.hellodev.authentication.presenter.features.login.state
 
-import br.com.hellodev.design.core.enums.feedback.FeedbackType
+import br.com.hellodev.core.enums.feedback.FeedbackType
 
 data class LoginState(
     val isLoading: Boolean = false,

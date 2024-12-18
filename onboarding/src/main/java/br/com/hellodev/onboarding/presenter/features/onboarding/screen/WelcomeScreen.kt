@@ -19,9 +19,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.hellodev.design.model.slider.SliderItem
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
+import br.com.hellodev.design.presenter.components.loading.CircularLoadingScreen
 import br.com.hellodev.design.presenter.components.slide.WelcomeSlideUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.onboarding.R
+import br.com.hellodev.onboarding.presenter.features.onboarding.action.WelcomeAction
 import br.com.hellodev.onboarding.presenter.features.onboarding.state.WelcomeUiState
 import br.com.hellodev.onboarding.presenter.features.onboarding.viewmodel.WelcomeViewModel
 import kotlinx.coroutines.launch
@@ -29,15 +31,16 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun WelcomeScreen(
-    modifier: Modifier = Modifier
+    navigateToAuthentication: () -> Unit
 ) {
     val viewModel = koinViewModel<WelcomeViewModel>()
     val uiState by viewModel.state.collectAsState()
     val activity = LocalActivity.current
 
     WelcomeContent(
-        modifier = modifier,
         uiState = uiState,
+        action = viewModel::dispatchAction,
+        navigateToAuthentication = navigateToAuthentication,
         onBackPressed = {
             activity?.finish()
         }
@@ -46,8 +49,9 @@ fun WelcomeScreen(
 
 @Composable
 private fun WelcomeContent(
-    modifier: Modifier = Modifier,
     uiState: WelcomeUiState,
+    action: (WelcomeAction) -> Unit,
+    navigateToAuthentication: () -> Unit,
     onBackPressed: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
@@ -63,39 +67,53 @@ private fun WelcomeContent(
         }
     }
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(HelloTheme.colorScheme.screen.background),
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        WelcomeSlideUI(
-            modifier = Modifier
-                .weight(1f),
-            slideItems = uiState.slideItems,
-            pagerState = pagerState
-        )
+    when {
+        uiState.isLoading -> {
+            CircularLoadingScreen()
+        }
 
-        PrimaryButton(
-            text = if (pagerState.currentPage != uiState.slideItems.size - 1) {
-                stringResource(R.string.label_skip_button_welcome_screen)
-            } else stringResource(R.string.label_next_button_welcome_screen),
-            modifier = Modifier
-                .padding(
-                    bottom = 32.dp,
-                    start = 24.dp,
-                    end = 24.dp
-                ),
-            onClick = {
-                scope.launch {
-                    val nextPage = pagerState.currentPage + 1
-                    if (nextPage < uiState.slideItems.size) {
-                        pagerState.animateScrollToPage(nextPage)
+        uiState.viewed -> {
+            navigateToAuthentication()
+        }
+
+        else -> {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(HelloTheme.colorScheme.screen.background),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                WelcomeSlideUI(
+                    modifier = Modifier
+                        .weight(1f),
+                    slideItems = uiState.slideItems,
+                    pagerState = pagerState
+                )
+
+                PrimaryButton(
+                    text = if (pagerState.currentPage != uiState.slideItems.size - 1) {
+                        stringResource(R.string.label_skip_button_welcome_screen)
+                    } else stringResource(R.string.label_next_button_welcome_screen),
+                    modifier = Modifier
+                        .padding(
+                            bottom = 32.dp,
+                            start = 24.dp,
+                            end = 24.dp
+                        ),
+                    onClick = {
+                        scope.launch {
+                            val nextPage = pagerState.currentPage + 1
+                            if (nextPage < uiState.slideItems.size) {
+                                pagerState.animateScrollToPage(nextPage)
+                            } else {
+                                action(WelcomeAction.OnboardingViewed)
+                            }
+                        }
                     }
-                }
+                )
             }
-        )
+        }
     }
 }
 
@@ -107,6 +125,8 @@ private fun WelcomePreview() {
             uiState = WelcomeUiState(
                 slideItems = SliderItem.getSlideItems
             ),
+            action = {},
+            navigateToAuthentication = {},
             onBackPressed = {}
         )
     }

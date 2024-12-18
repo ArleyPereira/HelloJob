@@ -32,7 +32,7 @@ private val LightColorScheme = MyColorScheme(
         color = IconColorLight
     ),
     button = ButtonColorScheme(
-        primaryBackground = PrimaryButtonColorLight,
+        primaryBackground = PrimaryButtonColor,
         secondaryBackground = SecondaryButtonColorLight,
         primaryText = PrimaryButtonTextColorLight,
         secondaryText = SecondaryButtonTextColorLight
@@ -45,7 +45,9 @@ private val LightColorScheme = MyColorScheme(
         color = DividerColorLight
     ),
     socialButton = SocialButtonColorScheme(
-        background = BackgroundSocialButtonColorLight
+        background = BackgroundSocialButtonColorLight,
+        border = BorderSocialButtonColorLight,
+        text = TextSocialButtonColorLight
     ),
     textField = TextFieldColorScheme(
         background = TextFieldBackgroundColorLight,
@@ -92,7 +94,7 @@ private val DarkColorScheme = MyColorScheme(
         color = IconColorDark
     ),
     button = ButtonColorScheme(
-        primaryBackground = PrimaryButtonColorDark,
+        primaryBackground = PrimaryButtonColor,
         secondaryBackground = SecondaryButtonColorDark,
         primaryText = PrimaryButtonTextColorDark,
         secondaryText = SecondaryButtonTextColorDark
@@ -105,7 +107,9 @@ private val DarkColorScheme = MyColorScheme(
         color = DividerColorDark
     ),
     socialButton = SocialButtonColorScheme(
-        background = BackgroundSocialButtonColorDark
+        background = BackgroundSocialButtonColorDark,
+        border = BorderSocialButtonColorDark,
+        text = TextSocialButtonColorDark
     ),
     textField = TextFieldColorScheme(
         background = TextFieldBackgroundColorDark,

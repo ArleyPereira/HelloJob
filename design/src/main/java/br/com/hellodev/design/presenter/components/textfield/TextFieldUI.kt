@@ -34,6 +34,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.hellodev.core.functions.MaskVisualTransformation
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
@@ -69,9 +70,9 @@ fun TextFieldUI(
                 value = value,
                 onValueChange = { value ->
                     val filteredValue = when (visualTransformation) {
-                        VisualTransformation.None -> value
+                        is MaskVisualTransformation -> value.filter { it.isDigit() }
 
-                        else -> value.filter { it.isDigit() }
+                        else -> value
                     }
 
                     if (filteredValue.length <= maxLength) {
@@ -136,7 +137,7 @@ fun TextFieldUI(
 @Composable
 private fun TextFieldUIPreview() {
     var textValue by remember {
-        mutableStateOf("")
+        mutableStateOf("testando")
     }
 
     HelloTheme {

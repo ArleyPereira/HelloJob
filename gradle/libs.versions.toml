@@ -14,6 +14,9 @@ navigation-compose = "2.8.5"
 serialization-json = "1.7.3"
 appcompat = "1.7.0"
 material = "1.12.0"
+multiplatform-settings = "1.2.0"
+appcompatVersion = "1.7.0"
+materialVersion = "1.12.0"
 
 [libraries]
 # Compose
@@ -43,11 +46,14 @@ koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = 
 # Lottie
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie-compose" }
 
+# Multiplatform Settings
+multiplatform-settings = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatform-settings" }
+
 # Others
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

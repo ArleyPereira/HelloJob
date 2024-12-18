@@ -1,6 +1,6 @@
 package br.com.hellodev.moviestreaming.presenter.features.authentication.signup.state
 
-import br.com.hellodev.design.core.enums.feedback.FeedbackType
+import br.com.hellodev.core.enums.feedback.FeedbackType
 
 data class SignupState(
     val isLoading: Boolean = false,
@@ -9,6 +9,6 @@ data class SignupState(
     val passwordVisibility: Boolean = false,
     val enabledSignupButton: Boolean = false,
     val hasError: Boolean = false,
-    val feedbackUI: Pair<FeedbackType, Int>? = null,
+    val feedbackUI: Pair<br.com.hellodev.core.enums.feedback.FeedbackType, Int>? = null,
     val isAuthenticated: Boolean = false
 )

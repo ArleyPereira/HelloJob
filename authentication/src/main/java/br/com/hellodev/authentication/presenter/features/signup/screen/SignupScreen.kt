@@ -49,7 +49,7 @@ import androidx.compose.ui.unit.sp
 import br.com.hellodev.authentication.R
 import br.com.hellodev.design.presenter.components.snackbar.FeedbackUI
 import br.com.hellodev.authentication.presenter.features.signup.action.SignupAction
-import br.com.hellodev.design.core.enums.input.InputType
+import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
@@ -112,9 +112,7 @@ private fun SignupContent(
 
     Scaffold(
         topBar = {
-            TopAppBarUI(
-                onClick = onBackPressed
-            )
+            TopAppBarUI(onClick = onBackPressed)
         },
         snackbarHost = {
             SnackbarHost(
@@ -181,7 +179,7 @@ private fun SignupContent(
                         action(
                             SignupAction.OnValueChange(
                                 value = it,
-                                type = InputType.EMAIL
+                                type = br.com.hellodev.core.enums.input.InputType.EMAIL
                             )
                         )
                     }
@@ -233,7 +231,7 @@ private fun SignupContent(
                         action(
                             SignupAction.OnValueChange(
                                 value = it,
-                                type = InputType.PASSWORD
+                                type = br.com.hellodev.core.enums.input.InputType.PASSWORD
                             )
                         )
                     }
@@ -331,7 +329,10 @@ private fun SignupContent(
 private fun SignupPreview() {
     HelloTheme {
         SignupContent(
-            state = SignupState(),
+            state = SignupState(
+                email = "arley.santana@hellodev.com.br",
+                password = "123456"
+            ),
             action = {},
             onBackPressed = {}
         )
