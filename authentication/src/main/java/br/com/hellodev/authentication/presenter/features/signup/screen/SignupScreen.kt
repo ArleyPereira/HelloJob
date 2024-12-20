@@ -70,6 +70,7 @@ fun SignupScreen(
 
     LaunchedEffect(state.isAuthenticated) {
         if (state.isAuthenticated) {
+            //navigateToAppScreen()
             navigateToAppScreen()
         }
     }

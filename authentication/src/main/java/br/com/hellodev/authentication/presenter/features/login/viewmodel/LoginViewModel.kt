@@ -34,7 +34,9 @@ class LoginViewModel: ViewModel() {
 
     private fun onSignIn() {
         viewModelScope.launch {
-
+            _state.update { currentState ->
+                currentState.copy(isAuthenticated = true)
+            }
         }
     }
 

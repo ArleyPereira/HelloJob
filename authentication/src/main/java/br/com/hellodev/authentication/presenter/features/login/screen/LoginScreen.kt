@@ -71,6 +71,7 @@ fun LoginScreen(
     LaunchedEffect(state.isAuthenticated) {
         if (state.isAuthenticated) {
             navigateToAppScreen()
+            //navigateToAppScreen()
         }
     }
 

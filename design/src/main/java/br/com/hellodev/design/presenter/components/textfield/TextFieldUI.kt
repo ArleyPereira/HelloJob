@@ -88,7 +88,7 @@ fun TextFieldUI(
                         } else {
                             Color.Transparent
                         },
-                        shape = RoundedCornerShape(12.dp)
+                        shape = RoundedCornerShape(16.dp)
                     )
                     .focusRequester(focusRequester),
                 enabled = enabled,
@@ -109,7 +109,7 @@ fun TextFieldUI(
                 visualTransformation = visualTransformation,
                 keyboardOptions = keyboardOptions,
                 singleLine = singleLine,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = HelloTheme.colorScheme.textField.background,
                     focusedContainerColor = HelloTheme.colorScheme.textField.background,
@@ -145,7 +145,6 @@ private fun TextFieldUIPreview() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(HelloTheme.colorScheme.screen.background),
-            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextFieldUI(

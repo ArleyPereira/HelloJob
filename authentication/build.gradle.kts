@@ -40,6 +40,7 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":design"))
+    implementation(project(":setup"))
 
     // Compose
     implementation(platform(libs.compose.bom))

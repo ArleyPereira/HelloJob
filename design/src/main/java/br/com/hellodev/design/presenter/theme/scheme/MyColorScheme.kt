@@ -13,6 +13,8 @@ data class MyColorScheme(
     val textField: TextFieldColorScheme,
     val switch: SwitchColorScheme,
     val topAppBar: TopAppBarColorScheme,
+    val radio: RadioColorScheme,
+    val check: CheckColorScheme,
     val defaultColor: Color,
     val alphaDefaultColor: Color,
     val disabledDefaultColor: Color,

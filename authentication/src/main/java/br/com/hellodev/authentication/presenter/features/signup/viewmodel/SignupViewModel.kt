@@ -4,16 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.authentication.presenter.features.signup.action.SignupAction
 import br.com.hellodev.core.enums.input.InputType
+import br.com.hellodev.core.functions.isValidEmail
 import br.com.hellodev.moviestreaming.presenter.features.authentication.signup.state.SignupState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class SignupViewModel(
-    //private val registerUseCase: RegisterUseCase,
-    //private val saveUserUseCase: SaveUserUseCase
-) : ViewModel() {
+class SignupViewModel : ViewModel() {
 
     private val _state = MutableStateFlow(SignupState())
     val state = _state.asStateFlow()
@@ -40,40 +38,19 @@ class SignupViewModel(
 
     private fun onSignup() {
         viewModelScope.launch {
-//            try {
-//                registerUseCase(
-//                    email = _state.value.email,
-//                    password = _state.value.password
-//                )
-//
-//                saveUserUseCase(user = User(email = _state.value.email))
-//
-//                _state.update { currentState ->
-//                    currentState.copy(isAuthenticated = true)
-//                }
-//            } catch (exception: Exception) {
-//                exception.printStackTrace()
-//
-//                _state.update { currentState ->
-//                    currentState.copy(
-//                        hasError = true,
-//                        feedbackUI = Pair(
-//                            FeedbackType.ERROR,
-//                            FirebaseHelper.validError(exception.message)
-//                        )
-//                    )
-//                }
-//            }
+            _state.update { currentState ->
+                currentState.copy(isAuthenticated = true)
+            }
         }
     }
 
-    private fun onValueChange(value: String, type: br.com.hellodev.core.enums.input.InputType) {
+    private fun onValueChange(value: String, type: InputType) {
         when (type) {
-            br.com.hellodev.core.enums.input.InputType.EMAIL -> {
+            InputType.EMAIL -> {
                 onEmailChange(value)
             }
 
-            br.com.hellodev.core.enums.input.InputType.PASSWORD -> {
+            InputType.PASSWORD -> {
                 onPasswordChange(value)
             }
         }
@@ -100,12 +77,12 @@ class SignupViewModel(
     }
 
     private fun enabledSignupButton() {
-//        val emailValid = isValidEmail(_state.value.email)
-//        val passwordValid = _state.value.password.isNotBlank()
-//
-//        _state.update { currentState ->
-//            currentState.copy(enabledSignupButton = emailValid && passwordValid)
-//        }
+        val emailValid = isValidEmail(_state.value.email)
+        val passwordValid = _state.value.password.isNotBlank()
+
+        _state.update { currentState ->
+            currentState.copy(enabledSignupButton = emailValid && passwordValid)
+        }
     }
 
     private fun resetError() {

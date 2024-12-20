@@ -1,0 +1,189 @@
+package br.com.hellodev.setup.presenter.features.expertise.screen
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
+import br.com.hellodev.design.presenter.components.button.PrimaryButton
+import br.com.hellodev.design.presenter.components.check.CheckBoxUi
+import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
+import br.com.hellodev.design.presenter.components.radio.RadioButtonUi
+import br.com.hellodev.design.presenter.components.textfield.TextFieldUI
+import br.com.hellodev.design.presenter.theme.HelloTheme
+import br.com.hellodev.design.presenter.theme.UrbanistFamily
+import br.com.hellodev.setup.R
+import br.com.hellodev.setup.domain.model.expertise.Expertise
+import br.com.hellodev.setup.presenter.features.country.action.CountryAction
+import br.com.hellodev.setup.presenter.features.expertise.action.ExpertiseAction
+import br.com.hellodev.setup.presenter.features.expertise.state.ExpertiseState
+import br.com.hellodev.setup.presenter.features.expertise.viewmodel.ExpertiseViewModel
+import org.koin.androidx.compose.koinViewModel
+
+@Composable
+fun ExpertiseScreen(
+    onBackPressed: () -> Unit
+) {
+    val viewModel = koinViewModel<ExpertiseViewModel>()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    ExpertiseContent(
+        state = state,
+        action = viewModel::dispatchAction,
+        onBackPressed = onBackPressed
+    )
+}
+
+@Composable
+private fun ExpertiseContent(
+    state: ExpertiseState,
+    action: (ExpertiseAction) -> Unit,
+    onBackPressed: () -> Unit
+) {
+    Scaffold(
+        topBar = {
+            TopAppBarUI(
+                onClick = onBackPressed
+            )
+        },
+        containerColor = HelloTheme.colorScheme.screen.background,
+        bottomBar = {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .windowInsetsPadding(WindowInsets.navigationBars)
+            ) {
+                HorizontalDividerUI()
+
+                PrimaryButton(
+                    modifier = Modifier
+                        .padding(
+                            start = 24.dp,
+                            end = 24.dp,
+                            top = 24.dp,
+                            bottom = 32.dp
+                        ),
+                    text = stringResource(R.string.text_button_next_country_screen),
+                    enabled = true,
+                    onClick = {}
+                )
+            }
+        },
+        content = { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(
+                        horizontal = 24.dp
+                    )
+            ) {
+                Text(
+                    text = "Qual é a sua especialidade?",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        lineHeight = 38.4.sp,
+                        fontFamily = UrbanistFamily,
+                        fontWeight = FontWeight(700),
+                        color = HelloTheme.colorScheme.text.color,
+                        textAlign = TextAlign.Center
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Selecione sua área de especialização (até 5)",
+                    style = TextStyle(
+                        lineHeight = 25.2.sp,
+                        fontFamily = UrbanistFamily,
+                        color = HelloTheme.colorScheme.text.color,
+                        textAlign = TextAlign.Center,
+                        letterSpacing = 0.2.sp
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                HorizontalDividerUI()
+
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(
+                        vertical = 24.dp
+                    )
+                ) {
+                    items(state.expertises) { expertise ->
+                        val checked = state.selectedExpertises.contains(expertise)
+                        val isSelectedMaxSize = state.selectedExpertises.size < 5
+
+                        CheckBoxUi(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            checked = checked,
+                            enabled = checked || isSelectedMaxSize,
+                            text = expertise.name ?: "",
+                            borderStroke = BorderStroke(
+                                width = 1.dp,
+                                color = if (checked) {
+                                    HelloTheme.colorScheme.border.selected
+                                } else {
+                                    HelloTheme.colorScheme.border.unselected
+                                }
+                            ),
+                            onClick = {
+                                action(ExpertiseAction.OnSelect(expertise))
+                            }
+                        )
+                    }
+                }
+
+            }
+        }
+    )
+}
+
+@PreviewLightDark
+@Composable
+private fun ExpertisePreview() {
+    HelloTheme {
+        ExpertiseContent(
+            state = ExpertiseState(
+                expertises = Expertise.getExpertises(),
+                selectedExpertises = Expertise.getExpertises().take(5)
+            ),
+            action = {},
+            onBackPressed = {}
+        )
+    }
+}

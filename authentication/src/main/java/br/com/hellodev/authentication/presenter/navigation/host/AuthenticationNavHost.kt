@@ -8,6 +8,8 @@ import br.com.hellodev.authentication.presenter.navigation.routes.Authentication
 import br.com.hellodev.authentication.presenter.features.home.HomeAuthenticationScreen
 import br.com.hellodev.authentication.presenter.features.login.screen.LoginScreen
 import br.com.hellodev.authentication.presenter.features.signup.screen.SignupScreen
+import br.com.hellodev.setup.presenter.navigation.host.setupNavHost
+import br.com.hellodev.setup.presenter.navigation.routes.SetupRoutes
 
 fun NavGraphBuilder.authenticationNavHost(navHostController: NavHostController) {
     navigation<AuthenticationRoutes.Graph>(
@@ -27,7 +29,11 @@ fun NavGraphBuilder.authenticationNavHost(navHostController: NavHostController) 
         composable<AuthenticationRoutes.Login> {
             LoginScreen(
                 navigateToAppScreen = {
-
+                    navHostController.navigate(SetupRoutes.Graph) {
+                        popUpTo(AuthenticationRoutes.Graph) {
+                            inclusive = true
+                        }
+                    }
                 },
                 onBackPressed = {
                     navHostController.popBackStack()
@@ -38,12 +44,18 @@ fun NavGraphBuilder.authenticationNavHost(navHostController: NavHostController) 
         composable<AuthenticationRoutes.Signup> {
             SignupScreen(
                 navigateToAppScreen = {
-
+                    navHostController.navigate(SetupRoutes.Graph) {
+                        popUpTo(AuthenticationRoutes.Graph) {
+                            inclusive = true
+                        }
+                    }
                 },
                 onBackPressed = {
                     navHostController.popBackStack()
                 }
             )
         }
+
+        setupNavHost(navHostController = navHostController)
     }
 }

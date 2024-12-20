@@ -18,7 +18,11 @@ fun NavGraphBuilder.onboardingNavHost(
         composable<OnboardingRoutes.Welcome> {
             WelcomeScreen(
                 navigateToAuthentication = {
-                    navHostController.navigate(AuthenticationRoutes.Graph)
+                    navHostController.navigate(AuthenticationRoutes.Graph) {
+                        popUpTo(OnboardingRoutes.Graph) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }

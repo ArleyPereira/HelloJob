@@ -12,8 +12,10 @@ import androidx.compose.runtime.remember
 import br.com.hellodev.design.presenter.theme.scheme.BorderColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.MyColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.ButtonColorScheme
+import br.com.hellodev.design.presenter.theme.scheme.CheckColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.DividerColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.IconColorScheme
+import br.com.hellodev.design.presenter.theme.scheme.RadioColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.ScreenColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.SocialButtonColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.SwitchColorScheme
@@ -23,7 +25,8 @@ import br.com.hellodev.design.presenter.theme.scheme.TopAppBarColorScheme
 
 private val LightColorScheme = MyColorScheme(
     text = TextColorScheme(
-        color = TextColorLight
+        color = TextColorLight,
+        disabled = DisabledTextColorLight
     ),
     screen = ScreenColorScheme(
         background = BackgroundColorLight
@@ -39,7 +42,7 @@ private val LightColorScheme = MyColorScheme(
     ),
     border = BorderColorScheme(
         selected = SelectedBorderColor,
-        unselected = UnselectedBorderColor
+        unselected = UnselectedBorderColorLight
     ),
     divider = DividerColorScheme(
         color = DividerColorLight
@@ -60,6 +63,14 @@ private val LightColorScheme = MyColorScheme(
     topAppBar = TopAppBarColorScheme(
         background = TopAppBarColorLight,
         content = TopAppBarContentColorLight
+    ),
+    radio = RadioColorScheme(
+        selectedColor = RadioSelectedColor,
+        unselectedColor = RadioUnselectedColor
+    ),
+    check = CheckColorScheme(
+        checked = CheckedColor,
+        unchecked = UncheckedColor,
     ),
     defaultColor = DefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
@@ -85,7 +96,8 @@ private val LightColorScheme = MyColorScheme(
 
 private val DarkColorScheme = MyColorScheme(
     text = TextColorScheme(
-        color = TextColorDark
+        color = TextColorDark,
+        disabled = DisabledTextColorDark
     ),
     screen = ScreenColorScheme(
         background = BackgroundColorDark
@@ -101,7 +113,7 @@ private val DarkColorScheme = MyColorScheme(
     ),
     border = BorderColorScheme(
         selected = SelectedBorderColor,
-        unselected = UnselectedBorderColor
+        unselected = UnselectedBorderColorDark
     ),
     divider = DividerColorScheme(
         color = DividerColorDark
@@ -122,6 +134,14 @@ private val DarkColorScheme = MyColorScheme(
     topAppBar = TopAppBarColorScheme(
         background = TopAppBarColorDark,
         content = TopAppBarContentColorDark
+    ),
+    radio = RadioColorScheme(
+        selectedColor = RadioSelectedColor,
+        unselectedColor = RadioUnselectedColor
+    ),
+    check = CheckColorScheme(
+        checked = CheckedColor,
+        unchecked = UncheckedColor,
     ),
     defaultColor = DefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
