@@ -22,7 +22,7 @@ data class MyColorScheme(
     val disabledColor: Color,
     val infoColor: Color,
     val warningColor: Color,
-    val alertColor: Color,
+    val errorColor: Color,
     val greyscale900Color: Color,
     val greyscale800Color: Color,
     val greyscale700Color: Color,

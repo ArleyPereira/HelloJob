@@ -32,7 +32,8 @@ private val LightColorScheme = MyColorScheme(
         background = BackgroundColorLight
     ),
     icon = IconColorScheme(
-        color = IconColorLight
+        color = IconColorLight,
+        default = IconDefaultColor
     ),
     button = ButtonColorScheme(
         primaryBackground = PrimaryButtonColor,
@@ -54,7 +55,10 @@ private val LightColorScheme = MyColorScheme(
     ),
     textField = TextFieldColorScheme(
         background = TextFieldBackgroundColorLight,
-        text = TextFieldTextColorLight
+        errorBackground = TextFieldBackgroundErrorColor,
+        text = TextFieldTextColorLight,
+        placeholder = TextFieldPlaceholderColor,
+        disabledText = DisabledTextFieldTextColorLight
     ),
     switch = SwitchColorScheme(
         selectedBackground = SwitchSelectedBackgroundColor,
@@ -76,7 +80,7 @@ private val LightColorScheme = MyColorScheme(
     disabledDefaultColor = DisabledDefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     successColor = SuccessColor,
-    alertColor = AlertColor,
+    errorColor = ErrorColor,
     warningColor = WarningColor,
     infoColor = InfoColor,
     disabledColor = DisabledColor,
@@ -103,7 +107,8 @@ private val DarkColorScheme = MyColorScheme(
         background = BackgroundColorDark
     ),
     icon = IconColorScheme(
-        color = IconColorDark
+        color = IconColorDark,
+        default = IconDefaultColor
     ),
     button = ButtonColorScheme(
         primaryBackground = PrimaryButtonColor,
@@ -125,7 +130,10 @@ private val DarkColorScheme = MyColorScheme(
     ),
     textField = TextFieldColorScheme(
         background = TextFieldBackgroundColorDark,
-        text = TextFieldTextColorDark
+        errorBackground = TextFieldBackgroundErrorColor,
+        text = TextFieldTextColorDark,
+        placeholder = TextFieldPlaceholderColor,
+        disabledText = DisabledTextFieldTextColorDark
     ),
     switch = SwitchColorScheme(
         selectedBackground = SwitchSelectedBackgroundColor,
@@ -147,7 +155,7 @@ private val DarkColorScheme = MyColorScheme(
     disabledDefaultColor = DisabledDefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     successColor = SuccessColor,
-    alertColor = AlertColor,
+    errorColor = ErrorColor,
     warningColor = WarningColor,
     infoColor = InfoColor,
     disabledColor = DisabledColor,

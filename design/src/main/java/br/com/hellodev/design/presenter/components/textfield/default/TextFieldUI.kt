@@ -1,8 +1,7 @@
-package br.com.hellodev.design.presenter.components.textfield
+package br.com.hellodev.design.presenter.components.textfield.default
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,7 +44,9 @@ fun TextFieldUI(
     value: String = "",
     placeholder: String = "",
     enabled: Boolean = true,
+    readOnly: Boolean = false,
     isError: Boolean = false,
+    error: String = "",
     singleLine: Boolean = false,
     maxLength: Int = Int.MAX_VALUE,
     leadingIcon: @Composable (() -> Unit)? = null,
@@ -84,7 +85,7 @@ fun TextFieldUI(
                     .border(
                         width = 1.dp,
                         color = if (isError) {
-                            HelloTheme.colorScheme.defaultColor
+                            HelloTheme.colorScheme.errorColor
                         } else {
                             Color.Transparent
                         },
@@ -92,13 +93,14 @@ fun TextFieldUI(
                     )
                     .focusRequester(focusRequester),
                 enabled = enabled,
+                readOnly = readOnly,
                 placeholder = {
                     Text(
                         text = placeholder,
                         style = TextStyle(
                             lineHeight = 19.6.sp,
                             fontFamily = UrbanistFamily,
-                            color = HelloTheme.colorScheme.greyscale500Color,
+                            color = HelloTheme.colorScheme.textField.placeholder,
                             letterSpacing = 0.2.sp
                         )
                     )
@@ -113,14 +115,32 @@ fun TextFieldUI(
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = HelloTheme.colorScheme.textField.background,
                     focusedContainerColor = HelloTheme.colorScheme.textField.background,
+                    disabledContainerColor = HelloTheme.colorScheme.textField.background,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    errorContainerColor = HelloTheme.colorScheme.alphaDefaultColor,
+                    disabledIndicatorColor = Color.Transparent,
+                    errorContainerColor = HelloTheme.colorScheme.textField.errorBackground,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedTextColor = HelloTheme.colorScheme.textField.text,
                     focusedTextColor = HelloTheme.colorScheme.textField.text,
                     errorTextColor = HelloTheme.colorScheme.textField.text,
+                    disabledTextColor = HelloTheme.colorScheme.textField.disabledText,
                     cursorColor = HelloTheme.colorScheme.defaultColor
+                )
+            )
+        }
+
+        if (isError) {
+            Text(
+                text = error,
+                modifier = Modifier
+                    .padding(start = 16.dp, top = 4.dp),
+                style = TextStyle(
+                    fontSize = 12.sp,
+                    lineHeight = 19.6.sp,
+                    fontFamily = UrbanistFamily,
+                    color = HelloTheme.colorScheme.errorColor,
+                    letterSpacing = 0.2.sp
                 )
             )
         }
@@ -147,6 +167,37 @@ private fun TextFieldUIPreview() {
                 .background(HelloTheme.colorScheme.screen.background),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            TextFieldUI(
+                modifier = Modifier
+                    .padding(32.dp),
+                value = textValue,
+                isError = true,
+                error = "Nome inválido",
+                placeholder = "Ex: Arley Santana",
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_lock_password),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                },
+                trailingIcon = {
+                    IconButton(
+                        onClick = {},
+                        content = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_hide),
+                                contentDescription = null,
+                                tint = Color.Unspecified
+                            )
+                        }
+                    )
+                },
+                onValueChange = {
+                    textValue = it
+                }
+            )
+
             TextFieldUI(
                 modifier = Modifier
                     .padding(32.dp),

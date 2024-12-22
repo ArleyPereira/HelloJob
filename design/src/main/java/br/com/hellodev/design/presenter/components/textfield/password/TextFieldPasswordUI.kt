@@ -1,4 +1,4 @@
-package br.com.hellodev.design.presenter.components.textfield
+package br.com.hellodev.design.presenter.components.textfield.password
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -102,7 +102,7 @@ fun TextFieldPasswordUI(
                         style = TextStyle(
                             lineHeight = 19.6.sp,
                             fontFamily = UrbanistFamily,
-                            color = HelloTheme.colorScheme.greyscale500Color,
+                            color = HelloTheme.colorScheme.textField.placeholder,
                             letterSpacing = 0.2.sp
                         )
                     )

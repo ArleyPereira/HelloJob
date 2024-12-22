@@ -18,6 +18,7 @@ val DisabledTextColorLight = TextColorLight.copy(alpha = 0.5f)
 val DisabledTextColorDark = TextColorDark.copy(alpha = 0.5f)
 
 // Icon
+val IconDefaultColor = Color(0xFF9E9E9E)
 val IconColorLight = Color(0xFF212121)
 val IconColorDark = Color(0xFFFFFFFF)
 
@@ -72,6 +73,10 @@ val TextFieldBackgroundColorLight = Color(0xFFF5F5F5)
 val TextFieldBackgroundColorDark = Color(0xFF1F222A)
 val TextFieldTextColorLight = Color(0xFF212121)
 val TextFieldTextColorDark = Color(0xFFFFFFFF)
+val TextFieldPlaceholderColor = Color(0xFF9E9E9E)
+val DisabledTextFieldTextColorLight = TextFieldTextColorLight.copy(alpha = 0.5f)
+val DisabledTextFieldTextColorDark = TextFieldTextColorDark.copy(alpha = 0.5f)
+val TextFieldBackgroundErrorColor = Color(0x14F75555)
 
 // Switch
 val SwitchSelectedBackgroundColor = Color(0xFF246BFD)
@@ -81,7 +86,7 @@ val SwitchUnselectedBackgroundColor = Color(0xFF246BFD)
 val SuccessColor = Color(0xFF07BD74)
 val InfoColor = Color(0xFF246BFD)
 val WarningColor = Color(0xFFFACC15)
-val AlertColor = Color(0xFFF75555)
+val ErrorColor = Color(0xFFE21221)
 val DisabledColor = Color(0xFFD8D8D8)
 
 // Greyscale

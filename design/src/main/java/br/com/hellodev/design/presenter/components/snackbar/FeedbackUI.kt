@@ -38,7 +38,7 @@ fun FeedbackUI(
         SUCCESS -> HelloTheme.colorScheme.successColor
         INFO -> HelloTheme.colorScheme.infoColor
         WARNING -> HelloTheme.colorScheme.warningColor
-        ERROR -> HelloTheme.colorScheme.alertColor
+        ERROR -> HelloTheme.colorScheme.errorColor
     }
 
     Card(

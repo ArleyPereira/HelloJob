@@ -1,7 +1,5 @@
 package br.com.hellodev.setup.presenter.features.expertise.screen
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,19 +13,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,13 +30,11 @@ import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.check.CheckBoxUi
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
-import br.com.hellodev.design.presenter.components.radio.RadioButtonUi
-import br.com.hellodev.design.presenter.components.textfield.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
+import br.com.hellodev.design.presenter.theme.borderStrokeDefault
 import br.com.hellodev.setup.R
 import br.com.hellodev.setup.domain.model.expertise.Expertise
-import br.com.hellodev.setup.presenter.features.country.action.CountryAction
 import br.com.hellodev.setup.presenter.features.expertise.action.ExpertiseAction
 import br.com.hellodev.setup.presenter.features.expertise.state.ExpertiseState
 import br.com.hellodev.setup.presenter.features.expertise.viewmodel.ExpertiseViewModel
@@ -50,6 +42,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ExpertiseScreen(
+    navigateToProfileScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
     val viewModel = koinViewModel<ExpertiseViewModel>()
@@ -58,6 +51,7 @@ fun ExpertiseScreen(
     ExpertiseContent(
         state = state,
         action = viewModel::dispatchAction,
+        navigateToProfileScreen = navigateToProfileScreen,
         onBackPressed = onBackPressed
     )
 }
@@ -66,6 +60,7 @@ fun ExpertiseScreen(
 private fun ExpertiseContent(
     state: ExpertiseState,
     action: (ExpertiseAction) -> Unit,
+    navigateToProfileScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
     Scaffold(
@@ -74,7 +69,6 @@ private fun ExpertiseContent(
                 onClick = onBackPressed
             )
         },
-        containerColor = HelloTheme.colorScheme.screen.background,
         bottomBar = {
             Column(
                 modifier = Modifier
@@ -92,11 +86,12 @@ private fun ExpertiseContent(
                             bottom = 32.dp
                         ),
                     text = stringResource(R.string.text_button_next_country_screen),
-                    enabled = true,
-                    onClick = {}
+                    enabled = state.selectedExpertises.isNotEmpty(),
+                    onClick = navigateToProfileScreen
                 )
             }
         },
+        containerColor = HelloTheme.colorScheme.screen.background,
         content = { paddingValues ->
             Column(
                 modifier = Modifier
@@ -153,14 +148,7 @@ private fun ExpertiseContent(
                             checked = checked,
                             enabled = checked || isSelectedMaxSize,
                             text = expertise.name ?: "",
-                            borderStroke = BorderStroke(
-                                width = 1.dp,
-                                color = if (checked) {
-                                    HelloTheme.colorScheme.border.selected
-                                } else {
-                                    HelloTheme.colorScheme.border.unselected
-                                }
-                            ),
+                            borderStroke = borderStrokeDefault(checked),
                             onClick = {
                                 action(ExpertiseAction.OnSelect(expertise))
                             }
@@ -183,6 +171,7 @@ private fun ExpertisePreview() {
                 selectedExpertises = Expertise.getExpertises().take(5)
             ),
             action = {},
+            navigateToProfileScreen = {},
             onBackPressed = {}
         )
     }

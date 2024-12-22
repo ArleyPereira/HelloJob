@@ -53,6 +53,8 @@ class SignupViewModel : ViewModel() {
             InputType.PASSWORD -> {
                 onPasswordChange(value)
             }
+
+            else -> {}
         }
 
         enabledSignupButton()

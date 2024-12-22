@@ -17,6 +17,7 @@ material = "1.12.0"
 multiplatform-settings = "1.2.0"
 appcompatVersion = "1.7.0"
 materialVersion = "1.12.0"
+landscapist-coil = "2.4.0"
 
 [libraries]
 # Compose
@@ -30,13 +31,6 @@ activity-compose = { group = "androidx.activity", name = "activity-compose", ver
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 
-# Test
-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-
 # Serialization
 serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json" }
 
@@ -48,6 +42,16 @@ lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "
 
 # Multiplatform Settings
 multiplatform-settings = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatform-settings" }
+
+# Landscapist
+landscapist-coil = { module = "com.github.skydoves:landscapist-coil", version.ref = "landscapist-coil" }
+
+# Test
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 
 # Others
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

@@ -50,6 +50,9 @@ class MaskVisualTransformation(private val mask: String) : VisualTransformation 
         const val PHONE_MASK = "(##) #####-####"
         const val PHONE_MASK_SIZE = 11
 
+        const val BIRTH_DATE_MASK = "##/##/####"
+        const val BIRTH_DATE_MASK_SIZE = 8
+
         const val CPF_MASK = "###.###.###-##"
         const val CPF_MASK_SIZE = 11
 

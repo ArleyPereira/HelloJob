@@ -53,8 +53,8 @@ import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerWithText
 import br.com.hellodev.design.presenter.components.snackbar.FeedbackUI
-import br.com.hellodev.design.presenter.components.textfield.TextFieldPasswordUI
-import br.com.hellodev.design.presenter.components.textfield.TextFieldUI
+import br.com.hellodev.design.presenter.components.textfield.password.TextFieldPasswordUI
+import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import kotlinx.coroutines.launch

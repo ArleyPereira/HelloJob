@@ -1,6 +1,5 @@
 package br.com.hellodev.setup.presenter.features.country.screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -30,7 +28,7 @@ import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.radio.RadioButtonUi
-import br.com.hellodev.design.presenter.components.textfield.TextFieldUI
+import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.setup.R
 import br.com.hellodev.setup.domain.model.country.Country
@@ -41,7 +39,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CountryScreen(
-    navigateToExpertiseScreen: () -> Unit,
+    onBackPressed: () -> Unit
 ) {
     val viewModel = koinViewModel<CountryViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -49,7 +47,7 @@ fun CountryScreen(
     CountryContent(
         state = state,
         action = viewModel::dispatchAction,
-        navigateToExpertiseScreen = navigateToExpertiseScreen,
+        onBackPressed = onBackPressed,
     )
 }
 
@@ -57,17 +55,15 @@ fun CountryScreen(
 private fun CountryContent(
     state: CountryState,
     action: (CountryAction) -> Unit,
-    navigateToExpertiseScreen: () -> Unit
+    onBackPressed: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBarUI(
                 title = stringResource(R.string.text_title_country_screen),
-                showNavigationIcon = false,
-                onClick = {}
+                onClick = onBackPressed
             )
         },
-        containerColor = HelloTheme.colorScheme.screen.background,
         bottomBar = {
             Column(
                 modifier = Modifier
@@ -86,10 +82,11 @@ private fun CountryContent(
                         ),
                     text = stringResource(R.string.text_button_next_country_screen),
                     enabled = state.selectedCountry != null,
-                    onClick = navigateToExpertiseScreen
+                    onClick = onBackPressed
                 )
             }
         },
+        containerColor = HelloTheme.colorScheme.screen.background,
         content = { paddingValues ->
             Column(
                 modifier = Modifier
@@ -157,7 +154,7 @@ private fun CountryPreview() {
                 selectedCountry = Country.getCountries().first()
             ),
             action = {},
-            navigateToExpertiseScreen = {}
+            onBackPressed = {},
         )
     }
 }
