@@ -1,5 +1,8 @@
 package br.com.hellodev.setup.domain.model.country
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Country(
     val id: Int? = null,
     val name: String? = null

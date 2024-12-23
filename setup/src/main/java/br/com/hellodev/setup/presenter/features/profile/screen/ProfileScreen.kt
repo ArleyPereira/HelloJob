@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -29,6 +30,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.core.enums.input.InputType.*
 import br.com.hellodev.core.functions.inputErrorMessage
@@ -52,13 +55,21 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProfileScreen(
-    parameterBackResult: ProfileParameter? = null,
+    parameter: ProfileParameter? = null,
     navigateToCountryScreen: () -> Unit,
     navigateToGenreScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
     val viewModel = koinViewModel<ProfileViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
+
+    LifecycleEventEffect(event = Lifecycle.Event.ON_RESUME) {
+        parameter?.let {
+            viewModel.dispatchAction(
+                action = ProfileAction.SetBackResult(it)
+            )
+        }
+    }
 
     ProfileContent(
         state = state,
@@ -90,6 +101,7 @@ private fun ProfileContent(
                     .fillMaxWidth()
                     .background(HelloTheme.colorScheme.screen.background)
                     .windowInsetsPadding(WindowInsets.navigationBars)
+                    .imePadding()
             ) {
                 HorizontalDividerUI()
 
@@ -236,7 +248,7 @@ private fun ProfileContent(
                 )
 
                 TextFieldClickUI(
-                    value = state.genre,
+                    value = state.genre?.name ?: "",
                     placeholder = stringResource(R.string.label_input_genre_edit_profile_screen),
                     painter = painterResource(id = R.drawable.ic_right),
                     error = stringResource(inputErrorMessage(GENRE)),
@@ -245,7 +257,7 @@ private fun ProfileContent(
                 )
 
                 TextFieldClickUI(
-                    value = state.country,
+                    value = state.country?.name ?: "",
                     placeholder = stringResource(R.string.label_input_country_edit_profile_screen),
                     painter = painterResource(id = R.drawable.ic_right),
                     error = stringResource(inputErrorMessage(COUNTRY)),

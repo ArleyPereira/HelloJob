@@ -34,7 +34,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun GenreScreen(
-    onBackPressed: () -> Unit
+    onBackPressed: (Genre?) -> Unit
 ) {
 
     val viewModel = koinViewModel<GenreViewModel>()
@@ -52,13 +52,13 @@ fun GenreScreen(
 fun GenreContent(
     state: GenreState,
     action: (GenreAction) -> Unit,
-    onBackPressed: () -> Unit
+    onBackPressed: (Genre?) -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBarUI(
                 title = stringResource(R.string.text_title_genre_screen),
-                onClick = onBackPressed
+                onClick = { onBackPressed(null) }
             )
         },
         bottomBar = {
@@ -80,7 +80,7 @@ fun GenreContent(
                         ),
                     text = stringResource(R.string.text_button_select_genre_screen),
                     enabled = state.selectedGenre != null,
-                    onClick = { }
+                    onClick = { onBackPressed(state.selectedGenre) }
                 )
             }
         },

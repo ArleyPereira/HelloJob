@@ -39,7 +39,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CountryScreen(
-    onBackPressed: () -> Unit
+    onBackPressed: (Country?) -> Unit
 ) {
     val viewModel = koinViewModel<CountryViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -55,13 +55,13 @@ fun CountryScreen(
 private fun CountryContent(
     state: CountryState,
     action: (CountryAction) -> Unit,
-    onBackPressed: () -> Unit
+    onBackPressed: (Country?) -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBarUI(
                 title = stringResource(R.string.text_title_country_screen),
-                onClick = onBackPressed
+                onClick = { onBackPressed(null) }
             )
         },
         bottomBar = {
@@ -80,9 +80,9 @@ private fun CountryContent(
                             top = 24.dp,
                             bottom = 32.dp
                         ),
-                    text = stringResource(R.string.text_button_next_country_screen),
+                    text = stringResource(R.string.text_button_select_country_screen),
                     enabled = state.selectedCountry != null,
-                    onClick = onBackPressed
+                    onClick = { onBackPressed(state.selectedCountry) }
                 )
             }
         },

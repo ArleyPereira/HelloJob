@@ -17,6 +17,9 @@ sealed class SetupRoutes {
     data object Expertise: SetupRoutes()
 
     @Serializable
-    data object Profile: SetupRoutes()
+    data class Profile(
+        val genre: String? = "",
+        val country: String? = ""
+    ): SetupRoutes()
 
 }

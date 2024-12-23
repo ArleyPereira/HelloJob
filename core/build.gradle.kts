@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -33,6 +34,12 @@ android {
 }
 
 dependencies {
+
+    // Compose
+    implementation(libs.navigation.compose)
+
+    // Serialization
+    implementation(libs.serialization.json)
 
     // Koin
     implementation(libs.koin.compose)

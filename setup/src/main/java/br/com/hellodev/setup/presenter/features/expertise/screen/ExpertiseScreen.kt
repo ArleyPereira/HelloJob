@@ -85,7 +85,7 @@ private fun ExpertiseContent(
                             top = 24.dp,
                             bottom = 32.dp
                         ),
-                    text = stringResource(R.string.text_button_next_country_screen),
+                    text = stringResource(R.string.text_button_next_expertise_screen),
                     enabled = state.selectedExpertises.isNotEmpty(),
                     onClick = navigateToProfileScreen
                 )
