@@ -115,7 +115,7 @@ private fun SocialButtonPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background)
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center
         ) {

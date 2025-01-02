@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":authentication"))
     implementation(project(":onboarding"))
     implementation(project(":setup"))
+    implementation(project(":common"))
 
     // Koin
     implementation(libs.koin.compose)

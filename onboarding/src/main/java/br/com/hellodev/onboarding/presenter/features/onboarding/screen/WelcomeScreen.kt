@@ -80,7 +80,7 @@ private fun WelcomeContent(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(HelloTheme.colorScheme.screen.background),
+                    .background(HelloTheme.colorScheme.screen.backgroundPrimary),
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

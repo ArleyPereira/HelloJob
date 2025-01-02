@@ -1,5 +1,8 @@
 package br.com.hellodev.setup.presenter.features.profile.screen
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,7 +36,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.core.enums.input.InputType.*
+import br.com.hellodev.core.enums.input.InputType.COUNTRY
+import br.com.hellodev.core.enums.input.InputType.DATE_BIRTH
+import br.com.hellodev.core.enums.input.InputType.EMAIL
+import br.com.hellodev.core.enums.input.InputType.FIRST_NAME
+import br.com.hellodev.core.enums.input.InputType.GENRE
+import br.com.hellodev.core.enums.input.InputType.PHONE
+import br.com.hellodev.core.enums.input.InputType.SURNAME
 import br.com.hellodev.core.functions.inputErrorMessage
 import br.com.hellodev.core.mask.MaskVisualTransformation
 import br.com.hellodev.core.mask.MaskVisualTransformation.Companion.BIRTH_DATE_MASK
@@ -88,6 +97,13 @@ private fun ProfileContent(
     navigateToGenreScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = { uri ->
+            action(ProfileAction.OnChangeImage(uri))
+        }
+    )
+
     Scaffold(
         topBar = {
             TopAppBarUI(
@@ -99,7 +115,7 @@ private fun ProfileContent(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(HelloTheme.colorScheme.screen.background)
+                    .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                     .windowInsetsPadding(WindowInsets.navigationBars)
                     .imePadding()
             ) {
@@ -118,7 +134,7 @@ private fun ProfileContent(
                 )
             }
         },
-        containerColor = HelloTheme.colorScheme.screen.background,
+        containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
         content = { paddingValues ->
             Column(
                 modifier = Modifier
@@ -136,12 +152,15 @@ private fun ProfileContent(
                     ImageUI(
                         modifier = Modifier
                             .size(160.dp),
-                        imageModel = R.drawable.ic_person,
+                        imageModel = state.selectedImageUri ?: R.drawable.placeholder_photo_profile,
                         contentScale = ContentScale.Crop,
-                        previewPlaceholder = painterResource(id = R.drawable.ic_person),
                         shape = CircleShape,
                         isLoading = state.isLoading,
-                        onClick = {}
+                        onClick = {
+                            imagePickerLauncher.launch(
+                                PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                            )
+                        }
                     )
 
                     Icon(

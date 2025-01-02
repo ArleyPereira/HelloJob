@@ -7,9 +7,11 @@ val DefaultColor = Color(0xFF246BFD)
 val DisabledDefaultColor = Color(0xFF3062C8)
 val AlphaDefaultColor = Color(0x14246BFD)
 
-// Background - Primary
-val BackgroundColorLight = Color(0xFFFFFFFF)
-val BackgroundColorDark = Color(0xFF181A20)
+// Background
+val PrimaryBackgroundColorLight = Color(0xFFFFFFFF)
+val PrimaryBackgroundColorDark = Color(0xFF181A20)
+val SecondaryBackgroundColorLight = Color(0xFFFFFFFF)
+val SecondaryBackgroundColorDark = Color(0xFF1F222A)
 
 // Text
 val TextColorLight = Color(0xFF212121)
@@ -41,6 +43,14 @@ val SecondaryButtonTextColorDark = Color(0xFFFFFFFF)
 val SelectedBorderColor = Color(0xFF246BFD)
 val UnselectedBorderColorDark = Color(0xFF35383F)
 val UnselectedBorderColorLight = Color(0xFFEEEEEE)
+
+// Tag
+val TagBackgroundColorLight = Color(0xFFFFFFFF)
+val TagBackgroundColorDark = Color(0xFF35383F)
+val TagTextColorLight = Color(0xFF757575)
+val TagTextColorDark = Color(0xFFE0E0E0)
+val TagBorderColorLight = Color(0xFF757575)
+val TagBorderColorDark = Color.Transparent
 
 // HorizontalDivider
 val DividerColorLight = Color(0xFFEEEEEE)
@@ -86,7 +96,7 @@ val SwitchUnselectedBackgroundColor = Color(0xFF246BFD)
 val SuccessColor = Color(0xFF07BD74)
 val InfoColor = Color(0xFF246BFD)
 val WarningColor = Color(0xFFFACC15)
-val ErrorColor = Color(0xFFE21221)
+val AlertColor = Color(0xFFE21221)
 val DisabledColor = Color(0xFFD8D8D8)
 
 // Greyscale

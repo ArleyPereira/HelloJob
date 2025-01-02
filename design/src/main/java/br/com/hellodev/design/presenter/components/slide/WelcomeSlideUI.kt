@@ -37,7 +37,7 @@ fun WelcomeSlideUI(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(HelloTheme.colorScheme.screen.background),
+            .background(HelloTheme.colorScheme.screen.backgroundPrimary),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         HorizontalPager(
@@ -113,7 +113,7 @@ private fun WelcomeSlideUIPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background),
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

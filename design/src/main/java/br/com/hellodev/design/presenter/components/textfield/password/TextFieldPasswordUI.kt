@@ -165,7 +165,7 @@ private fun TextFieldPasswordUIPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background),
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

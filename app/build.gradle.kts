@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":design"))
     implementation(project(":onboarding"))
     implementation(project(":authentication"))
+    implementation(project(":common"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

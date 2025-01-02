@@ -67,6 +67,5 @@ fun NavGraphBuilder.setupNavHost(navHostController: NavHostController) {
                 }
             )
         }
-
     }
 }

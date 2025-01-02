@@ -18,6 +18,7 @@ multiplatform-settings = "1.2.0"
 appcompatVersion = "1.7.0"
 materialVersion = "1.12.0"
 landscapist-coil = "2.4.0"
+moko-permissions = "0.18.1"
 
 [libraries]
 # Compose
@@ -30,6 +31,9 @@ navigation-compose = { module = "androidx.navigation:navigation-compose", versio
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# Moko Permissions
+moko-permissions = { module = "dev.icerock.moko:permissions", version.ref = "moko-permissions" }
 
 # Serialization
 serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json" }

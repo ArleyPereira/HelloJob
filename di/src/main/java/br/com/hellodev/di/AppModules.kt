@@ -1,6 +1,7 @@
 package br.com.hellodev.di
 
 import br.com.hellodev.authentication.di.authenticationModules
+import br.com.hellodev.common.di.commonModules
 import br.com.hellodev.core.di.coreModules
 import br.com.hellodev.onboarding.di.onboardingModules
 import br.com.hellodev.setup.di.setupModules
@@ -11,6 +12,7 @@ val appModules = module {
         coreModules,
         onboardingModules,
         authenticationModules,
-        setupModules
+        setupModules,
+        commonModules
     )
 }

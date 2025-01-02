@@ -38,7 +38,7 @@ fun FeedbackUI(
         SUCCESS -> HelloTheme.colorScheme.successColor
         INFO -> HelloTheme.colorScheme.infoColor
         WARNING -> HelloTheme.colorScheme.warningColor
-        ERROR -> HelloTheme.colorScheme.errorColor
+        ERROR -> HelloTheme.colorScheme.alertColor
     }
 
     Card(
@@ -83,7 +83,7 @@ private fun FeedbackUIPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background),
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

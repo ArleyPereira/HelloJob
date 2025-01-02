@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
@@ -37,7 +36,7 @@ private fun HorizontalDividerUIPreview() {
     HelloTheme {
         Column(
             modifier = Modifier
-                .background(HelloTheme.colorScheme.screen.background)
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

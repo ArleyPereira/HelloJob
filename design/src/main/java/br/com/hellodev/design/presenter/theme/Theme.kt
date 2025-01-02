@@ -19,6 +19,7 @@ import br.com.hellodev.design.presenter.theme.scheme.RadioColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.ScreenColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.SocialButtonColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.SwitchColorScheme
+import br.com.hellodev.design.presenter.theme.scheme.TagColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.TextColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.TextFieldColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.TopAppBarColorScheme
@@ -29,7 +30,8 @@ private val LightColorScheme = MyColorScheme(
         disabled = DisabledTextColorLight
     ),
     screen = ScreenColorScheme(
-        background = BackgroundColorLight
+        backgroundPrimary = PrimaryBackgroundColorLight,
+        backgroundSecondary = SecondaryBackgroundColorLight
     ),
     icon = IconColorScheme(
         color = IconColorLight,
@@ -76,11 +78,16 @@ private val LightColorScheme = MyColorScheme(
         checked = CheckedColor,
         unchecked = UncheckedColor,
     ),
+   tag = TagColorScheme(
+       background = TagBackgroundColorLight,
+       text = TagTextColorLight,
+       border = TagBorderColorLight
+   ),
     defaultColor = DefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     successColor = SuccessColor,
-    errorColor = ErrorColor,
+    alertColor = AlertColor,
     warningColor = WarningColor,
     infoColor = InfoColor,
     disabledColor = DisabledColor,
@@ -104,7 +111,8 @@ private val DarkColorScheme = MyColorScheme(
         disabled = DisabledTextColorDark
     ),
     screen = ScreenColorScheme(
-        background = BackgroundColorDark
+        backgroundPrimary = PrimaryBackgroundColorDark,
+        backgroundSecondary = SecondaryBackgroundColorDark
     ),
     icon = IconColorScheme(
         color = IconColorDark,
@@ -151,11 +159,16 @@ private val DarkColorScheme = MyColorScheme(
         checked = CheckedColor,
         unchecked = UncheckedColor,
     ),
+    tag = TagColorScheme(
+        background = TagBackgroundColorDark,
+        text = TagTextColorDark,
+        border = TagBorderColorDark
+    ),
     defaultColor = DefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     successColor = SuccessColor,
-    errorColor = ErrorColor,
+    alertColor = AlertColor,
     warningColor = WarningColor,
     infoColor = InfoColor,
     disabledColor = DisabledColor,

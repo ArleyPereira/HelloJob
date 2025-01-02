@@ -78,7 +78,7 @@ private fun TopAppBarUIPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background),
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary),
         ) {
             TopAppBarUI(
                 title = "Fill Your Profile",

@@ -36,7 +36,6 @@ import org.koin.androidx.compose.koinViewModel
 fun GenreScreen(
     onBackPressed: (Genre?) -> Unit
 ) {
-
     val viewModel = koinViewModel<GenreViewModel>()
     val state by viewModel.state.collectAsState()
 
@@ -45,7 +44,6 @@ fun GenreScreen(
         action = viewModel::submitAction,
         onBackPressed = onBackPressed
     )
-
 }
 
 @Composable
@@ -66,7 +64,7 @@ fun GenreContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .background(HelloTheme.colorScheme.screen.background)
+                    .background(HelloTheme.colorScheme.screen.backgroundPrimary)
             ) {
                 HorizontalDividerUI()
 
@@ -84,7 +82,7 @@ fun GenreContent(
                 )
             }
         },
-        containerColor = HelloTheme.colorScheme.screen.background,
+        containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
         content = { paddingValues ->
             LazyColumn(
                 modifier = Modifier

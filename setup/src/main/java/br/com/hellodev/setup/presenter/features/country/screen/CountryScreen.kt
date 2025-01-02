@@ -86,7 +86,7 @@ private fun CountryContent(
                 )
             }
         },
-        containerColor = HelloTheme.colorScheme.screen.background,
+        containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
         content = { paddingValues ->
             Column(
                 modifier = Modifier

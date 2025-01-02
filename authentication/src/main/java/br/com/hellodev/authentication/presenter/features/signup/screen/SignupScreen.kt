@@ -130,7 +130,7 @@ private fun SignupContent(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(HelloTheme.colorScheme.screen.background)
+                    .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                     .verticalScroll(rememberScrollState())
                     .padding(paddingValues)
                     .padding(horizontal = 24.dp, vertical = 48.dp),

@@ -99,7 +99,7 @@ private fun CheckBoxUiPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background)
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

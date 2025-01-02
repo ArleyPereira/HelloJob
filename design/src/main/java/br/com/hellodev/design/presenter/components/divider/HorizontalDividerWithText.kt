@@ -63,7 +63,7 @@ private fun HorizontalDividerWithTextPreview() {
     HelloTheme {
         Column(
             modifier = Modifier
-                .background(HelloTheme.colorScheme.screen.background)
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

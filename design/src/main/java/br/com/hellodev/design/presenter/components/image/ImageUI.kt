@@ -41,6 +41,7 @@ fun ImageUI(
     shape: Shape = RoundedCornerShape(12.dp),
     borderStroke: BorderStroke = BorderStroke(0.dp, Color.Transparent),
     isLoading: Boolean = false,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     val failureComposition by rememberLottieComposition(LottieCompositionSpec.Asset("error_loading_error.json"))
@@ -49,7 +50,10 @@ fun ImageUI(
         imageModel = { imageModel },
         modifier = modifier
             .clip(shape)
-            .clickable { onClick() }
+            .clickable(
+                enabled = enabled,
+                onClick = onClick
+            )
             .border(borderStroke, shape),
         imageOptions = ImageOptions(
             contentScale = contentScale,
@@ -90,7 +94,7 @@ private fun ImageUIPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(HelloTheme.colorScheme.screen.background),
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

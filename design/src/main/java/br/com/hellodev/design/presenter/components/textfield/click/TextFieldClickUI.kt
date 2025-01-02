@@ -63,7 +63,7 @@ fun TextFieldClickUI(
                 .border(
                     width = 1.dp,
                     color = if (isError) {
-                        HelloTheme.colorScheme.errorColor
+                        HelloTheme.colorScheme.alertColor
                     } else {
                         Color.Transparent
                     },
@@ -116,7 +116,7 @@ fun TextFieldClickUI(
                     fontSize = 12.sp,
                     lineHeight = 19.6.sp,
                     fontFamily = UrbanistFamily,
-                    color = HelloTheme.colorScheme.errorColor,
+                    color = HelloTheme.colorScheme.alertColor,
                     letterSpacing = 0.2.sp
                 )
             )
@@ -131,7 +131,7 @@ private fun TextFieldClickUIPreview() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(HelloTheme.colorScheme.screen.background)
+                .background(HelloTheme.colorScheme.screen.backgroundPrimary)
         ) {
             TextFieldClickUI(
                 modifier = Modifier

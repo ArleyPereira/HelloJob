@@ -18,7 +18,7 @@ fun CircularLoadingScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = HelloTheme.colorScheme.screen.background),
+            .background(color = HelloTheme.colorScheme.screen.backgroundPrimary),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -1,5 +1,6 @@
 package br.com.hellodev.setup.presenter.features.profile.viewmodel
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.core.enums.input.InputType
@@ -39,6 +40,10 @@ class ProfileViewModel : ViewModel() {
             is ProfileAction.SetBackResult -> {
                 setBackResult(parameter = action.parameter)
             }
+
+            is ProfileAction.OnChangeImage -> {
+                onChangeImage(uri = action.uri)
+            }
         }
     }
 
@@ -69,6 +74,12 @@ class ProfileViewModel : ViewModel() {
                 DATE_BIRTH -> currentState.copy(dateBirth = value)
                 else -> currentState
             }
+        }
+    }
+
+    private fun onChangeImage(uri: Uri?) {
+        _state.update { currentState ->
+            currentState.copy(selectedImageUri = uri)
         }
     }
 
