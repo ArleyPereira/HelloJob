@@ -8,7 +8,7 @@ data class Genre(
     val name: String? = null
 ) {
     companion object {
-        val genres = listOf(
+        val items = listOf(
             Genre(id = 1, name = "Masculino"),
             Genre(id = 2, name = "Feminino")
         )

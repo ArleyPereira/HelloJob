@@ -20,12 +20,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -34,22 +34,27 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.core.enums.icon.IconType
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.image.ImageUI
 import br.com.hellodev.design.presenter.components.tag.JobTagUI
 import br.com.hellodev.design.presenter.theme.BorderStrokeNone
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.design.presenter.theme.borderStrokeDefault
+import br.com.hellodev.design.presenter.theme.iconTintColor
 
 @Composable
 fun JobItemUI(
     modifier: Modifier = Modifier,
-    job: JobItemDomain? = null
+    job: JobItemDomain? = null,
+    onSaveClick: (Int) -> Unit,
+    onClick: (Int) -> Unit
 ) {
     Card(
-        onClick = {},
+        onClick = { onClick(job?.id ?: 0) },
         modifier = modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(28.dp),
@@ -95,8 +100,7 @@ fun JobItemUI(
                                 imageModel = job?.company?.logo,
                                 contentScale = ContentScale.Crop,
                                 previewPlaceholder = painterResource(R.drawable.ic_google),
-                                enabled = false,
-                                onClick = {}
+                                onClick = { onClick(job?.id ?: 0) }
                             )
                         }
 
@@ -133,20 +137,10 @@ fun JobItemUI(
                     }
 
                     val checked = false
-                    Icon(
-                        painter = if (checked) {
-                            painterResource(R.drawable.ic_mark_fill)
-                        } else painterResource(R.drawable.ic_mark_line),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                onClick = {}
-                            ),
-                        tint = if (isSystemInDarkTheme() || checked) {
-                            HelloTheme.colorScheme.defaultColor
-                        } else HelloTheme.colorScheme.icon.color
+                    DefaultIcon(
+                        type = if(checked) IconType.IC_MARK_FILL else IconType.IC_MARK_LINE,
+                        tint = iconTintColor(filled = checked),
+                        onClick = { onSaveClick(job?.id ?: 0) }
                     )
                 }
 
@@ -225,7 +219,9 @@ fun JobItemUI(
 private fun JobItemUIPreview() {
     HelloTheme {
         JobItemUI(
-            job = JobItemDomain.items.random()
+            job = JobItemDomain.items.random(),
+            onSaveClick = {},
+            onClick = {}
         )
     }
 }

@@ -80,7 +80,7 @@ fun SearchBarUI(
                     tint = HelloTheme.colorScheme.icon.color
                 )
 
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(16.dp))
             }
 
             TextField(

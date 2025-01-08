@@ -12,21 +12,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.design.R
+import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.icon.IconType.IC_RIGHT
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 
@@ -35,7 +34,7 @@ fun TextFieldClickUI(
     modifier: Modifier = Modifier,
     value: String = "",
     placeholder: String,
-    painter: Painter,
+    iconType: IconType,
     isError: Boolean = false,
     enabled: Boolean = true,
     error: String = "",
@@ -98,9 +97,8 @@ fun TextFieldClickUI(
                 )
             }
 
-            Icon(
-                painter = painter,
-                contentDescription = null,
+            DefaultIcon(
+                type = iconType,
                 tint = if (value.isNotEmpty()) {
                     HelloTheme.colorScheme.icon.color
                 } else HelloTheme.colorScheme.icon.default
@@ -138,7 +136,7 @@ private fun TextFieldClickUIPreview() {
                     .padding(32.dp),
                 value = "Masculino",
                 placeholder = "Gênero",
-                painter = painterResource(id = R.drawable.ic_right),
+                iconType = IC_RIGHT,
                 error = "Gênero inválido",
                 isError = true,
                 onClick = {}

@@ -8,6 +8,8 @@ import br.com.hellodev.core.constants.navigation.PROFILE_SCREEN_KEY
 import br.com.hellodev.core.extensions.popBackStackSafely
 import br.com.hellodev.core.serialization.getObject
 import br.com.hellodev.core.serialization.putObject
+import br.com.hellodev.main.presenter.navigation.host.mainNavHost
+import br.com.hellodev.main.presenter.navigation.routes.MainRoutes
 import br.com.hellodev.setup.presenter.features.country.screen.CountryScreen
 import br.com.hellodev.setup.presenter.features.expertise.screen.ExpertiseScreen
 import br.com.hellodev.setup.presenter.features.genre.screen.GenreScreen
@@ -51,6 +53,9 @@ fun NavGraphBuilder.setupNavHost(navHostController: NavHostController) {
                 navigateToGenreScreen = {
                     navHostController.navigate(SetupRoutes.Genre)
                 },
+                navigateToHomeScreen = {
+                    navHostController.navigate(MainRoutes.Graph)
+                },
                 onBackPressed = navHostController::popBackStackSafely
             )
         }
@@ -67,5 +72,7 @@ fun NavGraphBuilder.setupNavHost(navHostController: NavHostController) {
                 }
             )
         }
+
+        mainNavHost(navHostController = navHostController)
     }
 }

@@ -1,6 +1,8 @@
 package br.com.hellodev.design.presenter.components.item.job.section
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,7 +36,10 @@ import br.com.hellodev.design.presenter.theme.UrbanistFamily
 @Composable
 fun HorizontalJobSectionUI(
     section: JobSectionDomain? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSaveClick: (Int) -> Unit,
+    onJobClick: (Int) -> Unit,
+    onAllClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -41,7 +47,8 @@ fun HorizontalJobSectionUI(
     ) {
         JobHeaderSection(
             leftTitle = section?.leftTitle,
-            rightTitle = section?.rightTitle
+            rightTitle = section?.rightTitle,
+            onClick = onAllClick
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -59,7 +66,9 @@ fun HorizontalJobSectionUI(
                 JobItemUI(
                     modifier = Modifier
                         .fillParentMaxWidth(0.95f),
-                    job = job
+                    job = job,
+                    onSaveClick = onSaveClick,
+                    onClick = onJobClick
                 )
             }
         }
@@ -70,14 +79,18 @@ fun LazyListScope.verticalJobSectionUI(
     section: JobSectionDomain? = null,
     categorySelected: CategoryDomain? = null,
     search: String? = "",
-    onCategorySelected: (CategoryDomain?) -> Unit
+    onCategorySelected: (CategoryDomain?) -> Unit,
+    onSaveClick: (Int) -> Unit,
+    onJobClick: (Int) -> Unit,
+    onAllClick: () -> Unit
 ) {
     item {
         Spacer(modifier = Modifier.height(8.dp))
 
         JobHeaderSection(
             leftTitle = section?.leftTitle,
-            rightTitle = section?.rightTitle
+            rightTitle = section?.rightTitle,
+            onClick = onAllClick
         )
     }
 
@@ -118,7 +131,9 @@ fun LazyListScope.verticalJobSectionUI(
         JobItemUI(
             modifier = Modifier
                 .padding(horizontal = 24.dp),
-            job = job
+            job = job,
+            onSaveClick = onSaveClick,
+            onClick = onJobClick
         )
     }
 }
@@ -127,7 +142,8 @@ fun LazyListScope.verticalJobSectionUI(
 fun JobHeaderSection(
     modifier: Modifier = Modifier,
     rightTitle: String?,
-    leftTitle: String?
+    leftTitle: String?,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -148,6 +164,12 @@ fun JobHeaderSection(
 
         Text(
             text = rightTitle ?: "",
+            modifier = Modifier
+                .clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() },
+                    onClick = onClick
+                ),
             style = TextStyle(
                 lineHeight = 22.4.sp,
                 fontFamily = UrbanistFamily,
@@ -169,7 +191,14 @@ private fun JobSectionUIPreview() {
                 .background(HelloTheme.colorScheme.screen.backgroundPrimary),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            HorizontalJobSectionUI()
+            HorizontalJobSectionUI(
+                section =  JobSectionDomain.Companion.items[0],
+                modifier = Modifier
+                    .padding(top = 24.dp),
+                onSaveClick = {},
+                onJobClick = {},
+                onAllClick = {}
+            )
         }
     }
 }

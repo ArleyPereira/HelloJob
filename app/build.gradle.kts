@@ -41,11 +41,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":di"))
+    implementation(project(":common"))
     implementation(project(":design"))
+    implementation(project(":di"))
     implementation(project(":onboarding"))
     implementation(project(":authentication"))
-    implementation(project(":common"))
+    implementation(project(":main"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

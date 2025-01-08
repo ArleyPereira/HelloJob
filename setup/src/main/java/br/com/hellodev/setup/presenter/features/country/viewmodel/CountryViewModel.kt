@@ -36,8 +36,8 @@ class CountryViewModel : ViewModel() {
             _state.update { currentState ->
                 currentState.copy(
                     isLoading = false,
-                    countries = Country.getCountries(),
-                    countriesFiltered = Country.getCountries()
+                    countries = Country.items,
+                    countriesFiltered = Country.items
                 )
             }
         }

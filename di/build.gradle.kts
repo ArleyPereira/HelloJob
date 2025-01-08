@@ -34,10 +34,13 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":authentication"))
-    implementation(project(":onboarding"))
-    implementation(project(":setup"))
     implementation(project(":common"))
+    implementation(project(":onboarding"))
+    implementation(project(":authentication"))
+    implementation(project(":setup"))
+    implementation(project(":main"))
+    implementation(project(":job-search"))
+    implementation(project(":job-details"))
 
     // Koin
     implementation(libs.koin.compose)

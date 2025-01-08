@@ -15,23 +15,23 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.design.R
+import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.icon.IconType.IC_FACEBOOK
+import br.com.hellodev.core.enums.icon.IconType.IC_GITHUB
+import br.com.hellodev.core.enums.icon.IconType.IC_GOOGLE
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import com.airbnb.lottie.compose.LottieAnimation
@@ -43,7 +43,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 fun SocialButton(
     modifier: Modifier = Modifier,
     text: String? = null,
-    icon: Painter,
+    iconType: IconType,
     isLoading: Boolean = false,
     onClick: () -> Unit,
 ) {
@@ -77,12 +77,9 @@ fun SocialButton(
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Icon(
-                        painter = icon,
-                        contentDescription = text,
-                        modifier = Modifier
-                            .size(24.dp),
-                        tint = Color.Unspecified
+                    DefaultIcon(
+                        type = iconType,
+                        contentDescription = text
                     )
 
                     text?.let {
@@ -123,7 +120,7 @@ private fun SocialButtonPreview() {
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = "Continuar com o Google",
-                icon = painterResource(id = R.drawable.ic_google),
+                iconType = IC_GOOGLE,
                 isLoading = false,
                 onClick = {}
             )
@@ -134,7 +131,7 @@ private fun SocialButtonPreview() {
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = "Continuar com o Facebook",
-                icon = painterResource(id = R.drawable.ic_facebook),
+                iconType = IC_FACEBOOK,
                 isLoading = false,
                 onClick = {}
             )
@@ -145,7 +142,7 @@ private fun SocialButtonPreview() {
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = "Continuar com o Github",
-                icon = painterResource(id = R.drawable.ic_github),
+                iconType = IC_GITHUB,
                 isLoading = false,
                 onClick = {}
             )
@@ -158,7 +155,7 @@ private fun SocialButtonPreview() {
                 horizontalArrangement = Arrangement.Center
             ) {
                 SocialButton(
-                    icon = painterResource(id = R.drawable.ic_google),
+                    iconType = IC_GOOGLE,
                     isLoading = false,
                     onClick = {}
                 )
@@ -166,7 +163,7 @@ private fun SocialButtonPreview() {
                 Spacer(modifier = Modifier.width(20.dp))
 
                 SocialButton(
-                    icon = painterResource(id = R.drawable.ic_facebook),
+                    iconType = IC_FACEBOOK,
                     isLoading = false,
                     onClick = {}
                 )
@@ -174,7 +171,7 @@ private fun SocialButtonPreview() {
                 Spacer(modifier = Modifier.width(20.dp))
 
                 SocialButton(
-                    icon = painterResource(id = R.drawable.ic_github),
+                    iconType = IC_GITHUB,
                     isLoading = false,
                     onClick = {}
                 )

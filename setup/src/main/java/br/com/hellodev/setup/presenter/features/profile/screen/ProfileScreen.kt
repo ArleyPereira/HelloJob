@@ -20,14 +20,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -36,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.hellodev.core.enums.icon.IconType
 import br.com.hellodev.core.enums.input.InputType.COUNTRY
 import br.com.hellodev.core.enums.input.InputType.DATE_BIRTH
 import br.com.hellodev.core.enums.input.InputType.EMAIL
@@ -50,6 +50,7 @@ import br.com.hellodev.core.mask.MaskVisualTransformation.Companion.PHONE_MASK
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.image.ImageUI
 import br.com.hellodev.design.presenter.components.textfield.click.TextFieldClickUI
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
@@ -67,6 +68,7 @@ fun ProfileScreen(
     parameter: ProfileParameter? = null,
     navigateToCountryScreen: () -> Unit,
     navigateToGenreScreen: () -> Unit,
+    navigateToHomeScreen: () -> Unit,
     onBackPressed: () -> Unit
 ) {
     val viewModel = koinViewModel<ProfileViewModel>()
@@ -77,6 +79,12 @@ fun ProfileScreen(
             viewModel.dispatchAction(
                 action = ProfileAction.SetBackResult(it)
             )
+        }
+    }
+
+    LaunchedEffect(state.navigateToHomeScreen) {
+        if (state.navigateToHomeScreen) {
+            navigateToHomeScreen()
         }
     }
 
@@ -163,9 +171,8 @@ private fun ProfileContent(
                         }
                     )
 
-                    Icon(
-                        painter = painterResource(R.drawable.ic_edit),
-                        contentDescription = null,
+                    DefaultIcon(
+                        type = IconType.IC_EDIT,
                         modifier = Modifier
                             .size(32.dp)
                             .align(Alignment.BottomEnd)
@@ -212,9 +219,8 @@ private fun ProfileContent(
                     maxLength = MaskVisualTransformation.BIRTH_DATE_MASK_SIZE,
                     visualTransformation = MaskVisualTransformation(BIRTH_DATE_MASK),
                     trailingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_calendar),
-                            contentDescription = null,
+                        DefaultIcon(
+                            type = IconType.IC_CALENDAR,
                             tint = iconTintColor(
                                 filled = state.dateBirth.isNotEmpty(),
                                 isError = state.inputError == DATE_BIRTH
@@ -236,9 +242,8 @@ private fun ProfileContent(
                         imeAction = ImeAction.Next
                     ),
                     trailingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_email),
-                            contentDescription = null,
+                        DefaultIcon(
+                            type = IconType.IC_EMAIL,
                             tint = iconTintColor(
                                 filled = state.email.isNotEmpty(),
                                 isError = state.inputError == EMAIL
@@ -269,7 +274,7 @@ private fun ProfileContent(
                 TextFieldClickUI(
                     value = state.genre?.name ?: "",
                     placeholder = stringResource(R.string.label_input_genre_edit_profile_screen),
-                    painter = painterResource(id = R.drawable.ic_right),
+                    iconType = IconType.IC_RIGHT,
                     error = stringResource(inputErrorMessage(GENRE)),
                     isError = state.inputError == GENRE,
                     onClick = navigateToGenreScreen
@@ -278,7 +283,7 @@ private fun ProfileContent(
                 TextFieldClickUI(
                     value = state.country?.name ?: "",
                     placeholder = stringResource(R.string.label_input_country_edit_profile_screen),
-                    painter = painterResource(id = R.drawable.ic_right),
+                    iconType = IconType.IC_RIGHT,
                     error = stringResource(inputErrorMessage(COUNTRY)),
                     isError = state.inputError == COUNTRY,
                     onClick = navigateToCountryScreen

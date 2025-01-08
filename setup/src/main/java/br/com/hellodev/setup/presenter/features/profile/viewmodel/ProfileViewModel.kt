@@ -58,6 +58,10 @@ class ProfileViewModel : ViewModel() {
                 return@launch
             }
 
+            _state.update { currentState ->
+                currentState.copy(navigateToHomeScreen = true)
+            }
+
             // Envia os dados do perfil para algum lugar
         }
     }

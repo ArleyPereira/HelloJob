@@ -2,6 +2,7 @@ package br.com.hellodev.design.presenter.theme
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,6 +17,11 @@ import androidx.compose.ui.unit.dp
 val BorderStrokeNone = BorderStroke(
     width = 0.dp,
     color = Color.Transparent
+)
+
+val ShapeBottomSheet = RoundedCornerShape(
+    topStart = 32.dp,
+    topEnd = 32.dp
 )
 
 @Composable
@@ -51,12 +57,13 @@ fun borderStrokeDefault(isSelect: Boolean = false): BorderStroke {
 }
 
 @Composable
-fun iconTintColor(filled: Boolean, isError: Boolean = false): Color {
-    return if (isError) {
-        HelloTheme.colorScheme.alertColor
-    } else {
-        if (filled) {
-            HelloTheme.colorScheme.icon.color
-        } else HelloTheme.colorScheme.icon.default
+fun iconTintColor(
+    filled: Boolean,
+    isError: Boolean = false
+): Color {
+    return when {
+        isError -> HelloTheme.colorScheme.alertColor
+        filled -> HelloTheme.colorScheme.defaultColor
+        else -> HelloTheme.colorScheme.icon.color
     }
 }

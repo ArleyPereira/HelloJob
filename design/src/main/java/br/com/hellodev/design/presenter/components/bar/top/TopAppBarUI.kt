@@ -2,6 +2,7 @@ package br.com.hellodev.design.presenter.components.bar.top
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -30,6 +31,7 @@ fun TopAppBarUI(
     modifier: Modifier = Modifier,
     title: String = "",
     showNavigationIcon: Boolean = true,
+    actions: @Composable (RowScope.() -> Unit) = {},
     onClick: () -> Unit
 ) {
     TopAppBar(
@@ -45,11 +47,12 @@ fun TopAppBarUI(
             )
         },
         modifier = modifier,
+        actions = actions,
         navigationIcon = {
             if (showNavigationIcon) {
                 IconButton(
                     modifier = Modifier
-                        .padding(start = 8.dp),
+                        .padding(start = 16.dp),
                     onClick = onClick,
                     content = {
                         Icon(

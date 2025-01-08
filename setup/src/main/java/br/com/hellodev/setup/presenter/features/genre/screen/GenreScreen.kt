@@ -117,7 +117,7 @@ private fun GenrePreview() {
     HelloTheme {
         GenreContent(
             state = GenreState(
-                genres = Genre.genres
+                genres = Genre.items
             ),
             action = {},
             onBackPressed = {}

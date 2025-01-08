@@ -13,20 +13,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.hellodev.core.enums.icon.IconType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.radio.RadioButtonUi
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
@@ -104,11 +103,7 @@ private fun CountryContent(
                     value = state.searchQuery,
                     placeholder = stringResource(R.string.text_placeholder_country_screen),
                     leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_search),
-                            contentDescription = null,
-                            tint = Color.Unspecified
-                        )
+                        DefaultIcon(type = IconType.IC_SEARCH)
                     },
                     onValueChange = {
                         action(CountryAction.OnSearch(query = it))
@@ -149,9 +144,9 @@ private fun CountryPreview() {
     HelloTheme {
         CountryContent(
             state = CountryState(
-                countries = Country.getCountries(),
-                countriesFiltered = Country.getCountries(),
-                selectedCountry = Country.getCountries().first()
+                countries = Country.items,
+                countriesFiltered = Country.items,
+                selectedCountry = Country.items.first()
             ),
             action = {},
             onBackPressed = {},

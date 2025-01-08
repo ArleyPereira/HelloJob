@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -31,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -47,14 +45,16 @@ import br.com.hellodev.authentication.R
 import br.com.hellodev.authentication.presenter.features.login.action.LoginAction
 import br.com.hellodev.authentication.presenter.features.login.state.LoginState
 import br.com.hellodev.authentication.presenter.features.login.viewmodel.LoginViewModel
+import br.com.hellodev.core.enums.icon.IconType
 import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerWithText
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.snackbar.FeedbackUI
-import br.com.hellodev.design.presenter.components.textfield.password.TextFieldPasswordUI
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
+import br.com.hellodev.design.presenter.components.textfield.password.TextFieldPasswordUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import kotlinx.coroutines.launch
@@ -71,7 +71,6 @@ fun LoginScreen(
     LaunchedEffect(state.isAuthenticated) {
         if (state.isAuthenticated) {
             navigateToAppScreen()
-            //navigateToAppScreen()
         }
     }
 
@@ -166,11 +165,7 @@ private fun LoginContent(
                     value = state.email,
                     placeholder = stringResource(id = R.string.label_input_email_login_screen),
                     leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_email),
-                            contentDescription = null,
-                            tint = Color.Unspecified
-                        )
+                        DefaultIcon(type = IconType.IC_EMAIL)
                     },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email,
@@ -240,7 +235,7 @@ private fun LoginContent(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     SocialButton(
-                        icon = painterResource(id = R.drawable.ic_google),
+                        iconType = IconType.IC_GOOGLE,
                         isLoading = false,
                         onClick = {}
                     )
@@ -248,7 +243,7 @@ private fun LoginContent(
                     Spacer(modifier = Modifier.width(20.dp))
 
                     SocialButton(
-                        icon = painterResource(id = R.drawable.ic_facebook),
+                        iconType = IconType.IC_FACEBOOK,
                         isLoading = false,
                         onClick = {}
                     )
@@ -256,7 +251,7 @@ private fun LoginContent(
                     Spacer(modifier = Modifier.width(20.dp))
 
                     SocialButton(
-                        icon = painterResource(id = R.drawable.ic_github),
+                        iconType = IconType.IC_GITHUB,
                         isLoading = false,
                         onClick = {}
                     )

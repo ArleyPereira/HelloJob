@@ -7,13 +7,14 @@ import br.com.hellodev.setup.domain.model.genre.Genre
 
 data class ProfileState(
     val isLoading: Boolean = true,
-    val name: String = "",
-    val surname: String = "",
-    val dateBirth: String = "",
-    val email: String = "",
-    val phone: String = "",
-    val genre: Genre? = null,
-    val country: Country? = null,
+    val name: String = "Arley",
+    val surname: String = "Santana",
+    val dateBirth: String = "28041995",
+    val email: String = "arley@gmail.com",
+    val phone: String = "27996375733",
+    val genre: Genre? = Genre.items[0],
+    val country: Country? = Country.items[23],
     val inputError: InputType? = null,
-    val selectedImageUri: Uri? = null
+    val selectedImageUri: Uri? = null,
+    val navigateToHomeScreen: Boolean = false,
 )

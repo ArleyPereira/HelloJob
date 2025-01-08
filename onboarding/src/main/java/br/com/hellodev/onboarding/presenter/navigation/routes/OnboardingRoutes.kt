@@ -10,9 +10,4 @@ sealed class OnboardingRoutes {
     @Serializable
     data object Welcome: OnboardingRoutes()
 
-    @Serializable
-    data class Search(
-        val query: String
-    ): OnboardingRoutes()
-
 }

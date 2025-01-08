@@ -3,9 +3,9 @@ package br.com.hellodev.hellojob.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import br.com.hellodev.hellojob.home.presenter.screen.HomeScreen
-import br.com.hellodev.hellojob.search.presenter.screen.SearchScreen
+import br.com.hellodev.main.presenter.navigation.host.mainNavHost
+import br.com.hellodev.main.presenter.navigation.routes.MainRoutes
+import br.com.hellodev.onboarding.presenter.navigation.host.onboardingNavHost
 import br.com.hellodev.onboarding.presenter.navigation.routes.OnboardingRoutes
 
 @Composable
@@ -14,24 +14,9 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = OnboardingRoutes.Graph,
+        startDestination = MainRoutes.Graph,
     ) {
-        composable<OnboardingRoutes.Graph> {
-            HomeScreen(
-                navigateToSearchScreen = {
-                    navHostController.navigate(OnboardingRoutes.Search(it))
-                }
-            )
-        }
-
-        composable<OnboardingRoutes.Search> {
-            SearchScreen(
-                onBackPressed = navHostController::popBackStack
-            )
-        }
-//        onboardingNavHost(
-//            navHostController = navHostController
-//        )
+        mainNavHost(navHostController = navHostController)
+        //onboardingNavHost(navHostController = navHostController)
     }
-
 }

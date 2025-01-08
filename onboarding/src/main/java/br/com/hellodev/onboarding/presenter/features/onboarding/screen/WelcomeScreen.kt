@@ -5,10 +5,16 @@ import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -37,10 +43,15 @@ fun WelcomeScreen(
     val uiState by viewModel.state.collectAsState()
     val activity = LocalActivity.current
 
+    LaunchedEffect(uiState.viewed) {
+        if (uiState.viewed) {
+            navigateToAuthentication()
+        }
+    }
+
     WelcomeContent(
         uiState = uiState,
         action = viewModel::dispatchAction,
-        navigateToAuthentication = navigateToAuthentication,
         onBackPressed = {
             activity?.finish()
         }
@@ -51,7 +62,6 @@ fun WelcomeScreen(
 private fun WelcomeContent(
     uiState: WelcomeUiState,
     action: (WelcomeAction) -> Unit,
-    navigateToAuthentication: () -> Unit,
     onBackPressed: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
@@ -70,10 +80,6 @@ private fun WelcomeContent(
     when {
         uiState.isLoading -> {
             CircularLoadingScreen()
-        }
-
-        uiState.viewed -> {
-            navigateToAuthentication()
         }
 
         else -> {
@@ -100,7 +106,8 @@ private fun WelcomeContent(
                             bottom = 32.dp,
                             start = 24.dp,
                             end = 24.dp
-                        ),
+                        )
+                        .windowInsetsPadding(WindowInsets.navigationBars),
                     onClick = {
                         scope.launch {
                             val nextPage = pagerState.currentPage + 1
@@ -123,10 +130,10 @@ private fun WelcomePreview() {
     HelloTheme(isDarkTheme = false) {
         WelcomeContent(
             uiState = WelcomeUiState(
+                isLoading = false,
                 slideItems = SliderItem.getSlideItems
             ),
             action = {},
-            navigateToAuthentication = {},
             onBackPressed = {}
         )
     }

@@ -16,6 +16,10 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/design" />
             <option value="$PROJECT_DIR$/di" />
+            <option value="$PROJECT_DIR$/job-applying" />
+            <option value="$PROJECT_DIR$/job-details" />
+            <option value="$PROJECT_DIR$/job-search" />
+            <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/onboarding" />
             <option value="$PROJECT_DIR$/setup" />
           </set>
