@@ -5,11 +5,16 @@ import kotlinx.serialization.Serializable
 sealed class DetailsRoutes {
 
     @Serializable
-    data object Graph: DetailsRoutes()
+    data object Graph : DetailsRoutes()
 
     @Serializable
     data class Details(
         val id: Int
-    ): DetailsRoutes()
+    ) : DetailsRoutes()
+
+    @Serializable
+    data class Applying(
+        val id: Int
+    ) : DetailsRoutes()
 
 }

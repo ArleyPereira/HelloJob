@@ -19,6 +19,12 @@ fun isValidSurname(surname: String): Boolean {
     return regex.matches(surname)
 }
 
+fun isValidFullName(fullName: String): Boolean {
+    val parts = fullName.trim().split(" ".toRegex())
+    return parts.size >= 2 && parts.all { it.length >= 3 }
+}
+
+
 fun isValidPhone(phone: String): Boolean {
     val regex = """^\d{2}9\d{8}$""".toRegex()
     return regex.matches(phone)

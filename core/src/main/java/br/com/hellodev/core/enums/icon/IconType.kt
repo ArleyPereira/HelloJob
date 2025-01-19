@@ -16,5 +16,12 @@ enum class IconType {
     IC_RIGHT,
     IC_MARK_FILL,
     IC_MARK_LINE,
-    IC_SEND
+    IC_SEND,
+    IC_UPLOAD,
+    IC_PDF,
+    IC_CLOSE,
+    IC_ERROR,
+    IC_SUCCESS,
+    IC_ARROW_LEFT,
+    IC_ARROW_RIGHT
 }

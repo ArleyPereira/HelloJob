@@ -1,0 +1,177 @@
+package br.com.hellodev.main.presenter.features.applications.list.screen
+
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.core.enums.icon.IconType.IC_CLOSE
+import br.com.hellodev.core.enums.icon.IconType.IC_FILTER
+import br.com.hellodev.design.presenter.components.bar.search.SearchBarUI
+import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
+import br.com.hellodev.design.presenter.components.empty.EmptyUI
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
+import br.com.hellodev.design.presenter.components.item.job.application.JobApplicationItemUI
+import br.com.hellodev.design.presenter.components.loading.CircularLoadingScreen
+import br.com.hellodev.design.presenter.theme.HelloTheme
+import br.com.hellodev.main.presenter.features.applications.list.action.ApplicationListAction
+import br.com.hellodev.main.presenter.features.applications.list.state.ApplicationListState
+import br.com.hellodev.main.presenter.features.applications.list.viewmodel.ApplicationListViewModel
+import org.koin.androidx.compose.koinViewModel
+
+@Composable
+fun ApplicationListScreen() {
+    val viewModel = koinViewModel<ApplicationListViewModel>()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    ApplicationListContent(
+        state = state,
+        action = viewModel::dispatchAction
+    )
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Composable
+fun ApplicationListContent(
+    state: ApplicationListState,
+    action: (ApplicationListAction) -> Unit
+) {
+    Scaffold(
+        containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
+        content = {
+            when {
+                state.isScreenLoading -> {
+                    CircularLoadingScreen()
+                }
+
+                else -> {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 16.dp)
+                            .windowInsetsPadding(WindowInsets.statusBars)
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .padding(start = 24.dp, end = 12.dp)
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            SearchBarUI(
+                                modifier = Modifier
+                                    .weight(1f),
+                                value = state.query,
+                                placeholder = "Pesquise",
+                                trailingIcon = {
+                                    DefaultIcon(
+                                        type = IC_CLOSE,
+                                        tint = HelloTheme.colorScheme.textField.placeholder,
+                                        onClick = { action(ApplicationListAction.OnClearSearch) }
+                                    )
+                                },
+                                onValueChange = {
+                                    action(ApplicationListAction.OnSearchChange(it))
+                                },
+                                onSearchAction = {
+                                    action(ApplicationListAction.OnSearch)
+                                }
+                            )
+
+                            IconButton(
+                                onClick = {},
+                                content = {
+                                    DefaultIcon(type = IC_FILTER)
+                                }
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        when {
+                            state.isSearchLoading -> {
+                                CircularLoadingScreen()
+                            }
+
+                            state.items?.isEmpty() == true -> {
+                                EmptyUI(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    title = "Não encontrado",
+                                    description = "Desculpe, a palavra-chave que você digitou não pode ser encontrada. Verifique novamente ou pesquise com outra palavra-chave."
+                                )
+                            }
+
+                            else -> {
+                                LazyColumn(
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    contentPadding = PaddingValues(
+                                        bottom = WindowInsets.systemBars.asPaddingValues()
+                                            .calculateBottomPadding() + 32.dp
+                                    )
+                                ) {
+                                    itemsIndexed(
+                                        items = state.items ?: emptyList(),
+                                        key = { _, item -> item.id ?: 0 }
+                                    ) { index, job ->
+                                        JobApplicationItemUI(
+                                            job = job,
+                                            modifier = Modifier
+                                                .padding(
+                                                    horizontal = 24.dp,
+                                                    vertical = 16.dp
+                                                ),
+                                            onClick = {}
+                                        )
+
+                                        if (index < (state.items?.size ?: 0) - 1) {
+                                            HorizontalDividerUI(
+                                                modifier = Modifier
+                                                    .padding(horizontal = 24.dp)
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    )
+}
+
+@PreviewLightDark
+@Composable
+private fun ApplicationListPreview() {
+    HelloTheme {
+        ApplicationListContent(
+            state = ApplicationListState(
+                isScreenLoading = false,
+                items = JobItemDomain.items
+            ),
+            action = {}
+        )
+    }
+}

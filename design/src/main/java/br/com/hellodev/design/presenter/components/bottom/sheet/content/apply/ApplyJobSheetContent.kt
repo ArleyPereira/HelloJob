@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.hellodev.design.presenter.components.bottom.sheet.drag.DragBottomSheet
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SecondaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
@@ -42,6 +43,8 @@ fun ApplyJobSheetContent(
             .background(HelloTheme.colorScheme.screen.backgroundSecondary),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        DragBottomSheet()
+
         Text(
             text = "Apply Job",
             style = TextStyle(

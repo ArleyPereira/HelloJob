@@ -3,8 +3,8 @@ package br.com.hellodev.design.presenter.components.textfield.default
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -31,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.core.mask.MaskVisualTransformation
@@ -47,8 +48,9 @@ fun TextFieldUI(
     readOnly: Boolean = false,
     isError: Boolean = false,
     error: String = "",
-    singleLine: Boolean = false,
+    singleLine: Boolean = true,
     maxLength: Int = Int.MAX_VALUE,
+    height: Dp = TextFieldDefaults.MinHeight,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     requireKeyboardFocus: Boolean = false,
@@ -82,6 +84,7 @@ fun TextFieldUI(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(height)
                     .border(
                         width = 1.dp,
                         color = if (isError) {
@@ -119,7 +122,7 @@ fun TextFieldUI(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
-                    errorContainerColor = HelloTheme.colorScheme.textField.errorBackground,
+                    errorContainerColor = HelloTheme.colorScheme.alertAlphaColor,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedTextColor = HelloTheme.colorScheme.textField.text,
                     focusedTextColor = HelloTheme.colorScheme.textField.text,
@@ -163,7 +166,7 @@ private fun TextFieldUIPreview() {
     HelloTheme {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .background(HelloTheme.colorScheme.screen.backgroundPrimary),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

@@ -55,7 +55,7 @@ fun TextFieldClickUI(
                 .fillMaxWidth()
                 .background(
                     color = if (isError) {
-                        HelloTheme.colorScheme.textField.errorBackground
+                        HelloTheme.colorScheme.alertAlphaColor
                     } else HelloTheme.colorScheme.textField.background,
                     shape = RoundedCornerShape(16.dp)
                 )

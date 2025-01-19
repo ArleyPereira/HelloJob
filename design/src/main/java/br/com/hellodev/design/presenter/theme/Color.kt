@@ -42,7 +42,7 @@ val SecondaryButtonTextColorDark = Color(0xFFFFFFFF)
 // Border
 val SelectedBorderColor = Color(0xFF246BFD)
 val UnselectedBorderColorDark = Color(0xFF35383F)
-val UnselectedBorderColorLight = Color(0xFFEEEEEE)
+val UnselectedBorderColorLight = Color(0xFFE0E0E0)
 
 // Tag
 val TagBackgroundColorLight = Color(0xFFFFFFFF)
@@ -79,24 +79,32 @@ val TopAppBarContentColorLight = Color(0xFF212121)
 val TopAppBarContentColorDark = Color(0xFFFFFFFF)
 
 // TextField
-val TextFieldBackgroundColorLight = Color(0xFFF5F5F5)
+val TextFieldBackgroundColorLight = Color(0xFFFAFAFA)
 val TextFieldBackgroundColorDark = Color(0xFF1F222A)
 val TextFieldTextColorLight = Color(0xFF212121)
 val TextFieldTextColorDark = Color(0xFFFFFFFF)
 val TextFieldPlaceholderColor = Color(0xFF9E9E9E)
 val DisabledTextFieldTextColorLight = TextFieldTextColorLight.copy(alpha = 0.5f)
 val DisabledTextFieldTextColorDark = TextFieldTextColorDark.copy(alpha = 0.5f)
-val TextFieldBackgroundErrorColor = Color(0x14F75555)
 
 // Switch
 val SwitchSelectedBackgroundColor = Color(0xFF246BFD)
 val SwitchUnselectedBackgroundColor = Color(0xFF246BFD)
 
+// Upload
+val UploadBackgroundLight = Color(0xFFFAFAFA)
+val UploadBorderColorLight = Color(0xFFE0E0E0)
+val UploadTextColorLight = Color(0xFF9E9E9E)
+val UploadBackgroundColorDark = Color(0xFF1F222A)
+val UploadBorderColorDark = Color(0xFF35383F)
+val UploadTextColorDark = Color(0xFF9E9E9E)
+
 // Alert & Status
 val SuccessColor = Color(0xFF07BD74)
 val InfoColor = Color(0xFF246BFD)
 val WarningColor = Color(0xFFFACC15)
-val AlertColor = Color(0xFFE21221)
+val AlertColor = Color(0xFFF75555)
+val AlertAlphaColor = Color(0x14F75555)
 val DisabledColor = Color(0xFFD8D8D8)
 
 // Greyscale

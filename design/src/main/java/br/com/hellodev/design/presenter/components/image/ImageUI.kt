@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -24,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.hellodev.design.R
+import br.com.hellodev.design.presenter.components.loading.CircularProgressLoading
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
@@ -63,13 +63,10 @@ fun ImageUI(
         loading = {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .align(Alignment.Center),
-                    color = HelloTheme.colorScheme.defaultColor
-                )
+                CircularProgressLoading()
             }
         },
         failure = {

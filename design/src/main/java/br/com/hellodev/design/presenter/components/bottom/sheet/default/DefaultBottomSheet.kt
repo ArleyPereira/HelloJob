@@ -6,7 +6,6 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import br.com.hellodev.design.presenter.components.bottom.sheet.drag.DragBottomSheet
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.ShapeBottomSheet
 
@@ -24,7 +23,7 @@ fun DefaultBottomSheet(
         sheetState = sheetState,
         shape = ShapeBottomSheet,
         containerColor = HelloTheme.colorScheme.screen.backgroundSecondary,
-        dragHandle = { DragBottomSheet() },
+        dragHandle = {},
         content = content
     )
 }

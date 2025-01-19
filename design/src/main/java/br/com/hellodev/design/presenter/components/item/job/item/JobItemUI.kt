@@ -1,8 +1,6 @@
 package br.com.hellodev.design.presenter.components.item.job.item
 
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,13 +17,12 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -50,6 +47,10 @@ import br.com.hellodev.design.presenter.theme.iconTintColor
 fun JobItemUI(
     modifier: Modifier = Modifier,
     job: JobItemDomain? = null,
+    isSaved: Boolean = false,
+    colors: CardColors = CardDefaults.cardColors(
+        containerColor = HelloTheme.colorScheme.screen.backgroundSecondary
+    ),
     onSaveClick: (Int) -> Unit,
     onClick: (Int) -> Unit
 ) {
@@ -58,9 +59,7 @@ fun JobItemUI(
         modifier = modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(28.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = HelloTheme.colorScheme.screen.backgroundSecondary
-        ),
+        colors = colors,
         border = if (isSystemInDarkTheme()) {
             BorderStrokeNone
         } else {
@@ -136,10 +135,9 @@ fun JobItemUI(
                         }
                     }
 
-                    val checked = false
                     DefaultIcon(
-                        type = if(checked) IconType.IC_MARK_FILL else IconType.IC_MARK_LINE,
-                        tint = iconTintColor(filled = checked),
+                        type = if(isSaved) IconType.IC_MARK_FILL else IconType.IC_MARK_LINE,
+                        tint = iconTintColor(filled = isSaved),
                         onClick = { onSaveClick(job?.id ?: 0) }
                     )
                 }
@@ -220,6 +218,7 @@ private fun JobItemUIPreview() {
     HelloTheme {
         JobItemUI(
             job = JobItemDomain.items.random(),
+            isSaved = true,
             onSaveClick = {},
             onClick = {}
         )

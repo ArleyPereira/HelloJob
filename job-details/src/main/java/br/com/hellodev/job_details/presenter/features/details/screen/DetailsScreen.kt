@@ -1,14 +1,11 @@
 package br.com.hellodev.job_details.presenter.features.details.screen
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -18,10 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -40,17 +34,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.util.fastCbrt
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
 import br.com.hellodev.core.enums.icon.IconType
@@ -64,7 +55,6 @@ import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.image.ImageUI
 import br.com.hellodev.design.presenter.components.loading.CircularLoadingScreen
 import br.com.hellodev.design.presenter.components.tag.JobTagUI
-import br.com.hellodev.design.presenter.theme.BorderStrokeNone
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.design.presenter.theme.borderStrokeDefault
@@ -77,6 +67,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DetailsScreen(
+    navigateToApplyingScreen: (Int) -> Unit,
     onBackPressed: () -> Unit
 ) {
     val viewModel = koinViewModel<DetailsViewModel>()
@@ -85,6 +76,7 @@ fun DetailsScreen(
     DetailsContent(
         state = state,
         action = viewModel::dispatchAction,
+        navigateToApplyingScreen = navigateToApplyingScreen,
         onBackPressed = onBackPressed
     )
 }
@@ -94,6 +86,7 @@ fun DetailsScreen(
 private fun DetailsContent(
     state: DetailsState,
     action: (DetailsAction) -> Unit,
+    navigateToApplyingScreen: (Int) -> Unit,
     onBackPressed: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
@@ -270,7 +263,13 @@ private fun DetailsContent(
                                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                                     ) {
                                         state.job?.tags?.forEach { tag ->
-                                            JobTagUI(text = tag.name ?: "")
+                                            JobTagUI(
+                                                text = tag.name ?: "",
+                                                border = BorderStroke(
+                                                    width = 1.dp,
+                                                    color = HelloTheme.colorScheme.tag.border
+                                                )
+                                            )
                                         }
                                     }
 
@@ -304,6 +303,7 @@ private fun DetailsContent(
                                     onCurriculumClick = {
                                         scope.launch { sheetState.hide() }.invokeOnCompletion {
                                             showBottomSheet = false
+                                            navigateToApplyingScreen(state.job?.id ?: 0)
                                         }
                                     },
                                     onProfileClick = {
@@ -331,6 +331,7 @@ private fun DetailsPreview() {
                 job = JobItemDomain.items.random()
             ),
             action = {},
+            navigateToApplyingScreen = {},
             onBackPressed = {}
         )
     }

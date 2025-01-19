@@ -10,11 +10,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import br.com.hellodev.design.presenter.theme.scheme.BorderColorScheme
-import br.com.hellodev.design.presenter.theme.scheme.MyColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.ButtonColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.CheckColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.DividerColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.IconColorScheme
+import br.com.hellodev.design.presenter.theme.scheme.MyColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.RadioColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.ScreenColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.SocialButtonColorScheme
@@ -23,6 +23,7 @@ import br.com.hellodev.design.presenter.theme.scheme.TagColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.TextColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.TextFieldColorScheme
 import br.com.hellodev.design.presenter.theme.scheme.TopAppBarColorScheme
+import br.com.hellodev.design.presenter.theme.scheme.UploadColorScheme
 
 private val LightColorScheme = MyColorScheme(
     text = TextColorScheme(
@@ -57,7 +58,6 @@ private val LightColorScheme = MyColorScheme(
     ),
     textField = TextFieldColorScheme(
         background = TextFieldBackgroundColorLight,
-        errorBackground = TextFieldBackgroundErrorColor,
         text = TextFieldTextColorLight,
         placeholder = TextFieldPlaceholderColor,
         disabledText = DisabledTextFieldTextColorLight
@@ -78,16 +78,22 @@ private val LightColorScheme = MyColorScheme(
         checked = CheckedColor,
         unchecked = UncheckedColor,
     ),
-   tag = TagColorScheme(
-       background = TagBackgroundColorLight,
-       text = TagTextColorLight,
-       border = TagBorderColorLight
-   ),
+    tag = TagColorScheme(
+        background = TagBackgroundColorLight,
+        text = TagTextColorLight,
+        border = TagBorderColorLight
+    ),
+    upload = UploadColorScheme(
+        background = UploadBackgroundLight,
+        border = UploadBorderColorLight,
+        text = UploadTextColorLight
+    ),
     defaultColor = DefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     successColor = SuccessColor,
     alertColor = AlertColor,
+    alertAlphaColor = AlertAlphaColor,
     warningColor = WarningColor,
     infoColor = InfoColor,
     disabledColor = DisabledColor,
@@ -138,7 +144,6 @@ private val DarkColorScheme = MyColorScheme(
     ),
     textField = TextFieldColorScheme(
         background = TextFieldBackgroundColorDark,
-        errorBackground = TextFieldBackgroundErrorColor,
         text = TextFieldTextColorDark,
         placeholder = TextFieldPlaceholderColor,
         disabledText = DisabledTextFieldTextColorDark
@@ -164,11 +169,17 @@ private val DarkColorScheme = MyColorScheme(
         text = TagTextColorDark,
         border = TagBorderColorDark
     ),
+    upload = UploadColorScheme(
+        background = UploadBackgroundColorDark,
+        border = UploadBorderColorDark,
+        text = UploadTextColorDark
+    ),
     defaultColor = DefaultColor,
     disabledDefaultColor = DisabledDefaultColor,
     alphaDefaultColor = AlphaDefaultColor,
     successColor = SuccessColor,
     alertColor = AlertColor,
+    alertAlphaColor = AlertAlphaColor,
     warningColor = WarningColor,
     infoColor = InfoColor,
     disabledColor = DisabledColor,

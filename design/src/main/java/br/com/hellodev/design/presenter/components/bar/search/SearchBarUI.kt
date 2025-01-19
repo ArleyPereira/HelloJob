@@ -39,7 +39,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.hellodev.core.enums.icon.IconType.IC_FILTER
 import br.com.hellodev.design.R
+import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 
@@ -132,7 +134,7 @@ fun SearchBarUI(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
-                    errorContainerColor = HelloTheme.colorScheme.textField.errorBackground,
+                    errorContainerColor = HelloTheme.colorScheme.alertAlphaColor,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedTextColor = HelloTheme.colorScheme.textField.text,
                     focusedTextColor = HelloTheme.colorScheme.textField.text,
@@ -168,10 +170,11 @@ private fun SearchBarUIPreview() {
                     IconButton(
                         onClick = {},
                         content = {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_filter),
-                                contentDescription = null,
-                                tint = Color.Unspecified
+                            IconButton(
+                                onClick = {},
+                                content = {
+                                    DefaultIcon(type = IC_FILTER)
+                                }
                             )
                         }
                     )

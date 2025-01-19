@@ -7,6 +7,7 @@
     <!--    Invalid Input Error-->
     <string name="error_first_name_invalid">Insira um nome válido</string>
     <string name="error_surname_invalid">Insira um sobrenome válido</string>
+    <string name="error_full_name_invalid">Insira um nome completo válido</string>
     <string name="error_date_birth_invalid">Insira uma data de nascimento válida</string>
     <string name="error_email_invalid">Insira um email válido</string>
     <string name="error_phone_invalid">Insira um telefone válido</string>

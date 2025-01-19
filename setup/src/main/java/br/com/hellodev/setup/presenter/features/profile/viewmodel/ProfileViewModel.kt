@@ -4,8 +4,14 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.core.enums.input.InputType
-import br.com.hellodev.core.enums.input.InputType.*
-import br.com.hellodev.core.functions.capitalizeFirstLetter
+import br.com.hellodev.core.enums.input.InputType.COUNTRY
+import br.com.hellodev.core.enums.input.InputType.DATE_BIRTH
+import br.com.hellodev.core.enums.input.InputType.EMAIL
+import br.com.hellodev.core.enums.input.InputType.FIRST_NAME
+import br.com.hellodev.core.enums.input.InputType.GENRE
+import br.com.hellodev.core.enums.input.InputType.PHONE
+import br.com.hellodev.core.enums.input.InputType.SURNAME
+import br.com.hellodev.core.functions.capitalizeEachWord
 import br.com.hellodev.core.functions.isValidBirthDate
 import br.com.hellodev.core.functions.isValidEmail
 import br.com.hellodev.core.functions.isValidName
@@ -71,8 +77,8 @@ class ProfileViewModel : ViewModel() {
 
         _state.update { currentState ->
             when (type) {
-                FIRST_NAME -> currentState.copy(name = capitalizeFirstLetter(value))
-                SURNAME -> currentState.copy(surname = capitalizeFirstLetter(value))
+                FIRST_NAME -> currentState.copy(name = capitalizeEachWord(value))
+                SURNAME -> currentState.copy(surname = capitalizeEachWord(value))
                 EMAIL -> currentState.copy(email = value.lowercase())
                 PHONE -> currentState.copy(phone = value)
                 DATE_BIRTH -> currentState.copy(dateBirth = value)

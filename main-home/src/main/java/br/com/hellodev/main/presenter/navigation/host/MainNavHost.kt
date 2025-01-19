@@ -24,7 +24,7 @@ fun NavGraphBuilder.mainNavHost(
 
         composable<MainRoutes.Search> {
             SearchScreen(
-                onBackPressed = navHostController::popBackStack
+                onBackPressed = navHostController::popBackStackSafely
             )
         }
     }

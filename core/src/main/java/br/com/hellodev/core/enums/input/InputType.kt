@@ -1,6 +1,7 @@
 package br.com.hellodev.core.enums.input
 
 enum class InputType {
+    FULL_NAME,
     FIRST_NAME,
     SURNAME,
     DATE_BIRTH,
@@ -8,5 +9,6 @@ enum class InputType {
     PHONE,
     GENRE,
     COUNTRY,
-    PASSWORD
+    PASSWORD,
+    UPLOAD
 }

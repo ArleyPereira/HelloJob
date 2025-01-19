@@ -36,7 +36,7 @@ class DetailsViewModel(
 
     private fun getJobDetails() {
         viewModelScope.launch {
-            delay(3000)
+            delay(2000)
 
             _state.value = _state.value.copy(
                 isLoading = false,

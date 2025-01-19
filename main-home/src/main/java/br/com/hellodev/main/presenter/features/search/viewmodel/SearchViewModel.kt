@@ -50,7 +50,7 @@ class SearchViewModel(
                 it.title?.contains(query, true) == true
             }
 
-            delay(3000)
+            delay(2000)
 
             _state.update { currentState ->
                 currentState.copy(
@@ -74,7 +74,7 @@ class SearchViewModel(
                 currentState.copy(isLoading = true)
             }
 
-            delay(3000)
+            delay(2000)
 
             val query = _state.value.query
             val filteredJobs = JobItemDomain.items.filter {
