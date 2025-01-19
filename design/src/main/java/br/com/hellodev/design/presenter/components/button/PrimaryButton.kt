@@ -25,8 +25,8 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
 fun PrimaryButton(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     isLoading: Boolean = false,
     onClick: () -> Unit,

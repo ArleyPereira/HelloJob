@@ -36,7 +36,7 @@ import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.image.ImageUI
-import br.com.hellodev.design.presenter.components.tag.JobTagUI
+import br.com.hellodev.design.presenter.components.tag.TagUI
 import br.com.hellodev.design.presenter.theme.BorderStrokeNone
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
@@ -202,7 +202,7 @@ fun JobItemUI(
                                 items = job?.tags ?: emptyList(),
                                 key = { it.id ?: 0 }
                             ) { tag ->
-                                JobTagUI(text = tag.name ?: "")
+                                TagUI(text = tag.name ?: "")
                             }
                         }
                     }

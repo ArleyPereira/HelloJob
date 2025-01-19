@@ -5,15 +5,20 @@ import kotlinx.serialization.Serializable
 sealed class MainRoutes {
 
     @Serializable
-    data object Graph: MainRoutes()
+    data object Graph : MainRoutes()
 
     @Serializable
-    data object Home: MainRoutes()
+    data object Home : MainRoutes()
 
     @Serializable
-    data object Saved: MainRoutes()
+    data object Saved : MainRoutes()
 
     @Serializable
-    data object Application: MainRoutes()
+    data object ApplicationList : MainRoutes()
+
+    @Serializable
+    data class ApplicationStatus(
+        val id: Int
+    ) : MainRoutes()
 
 }

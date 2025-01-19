@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,11 +36,21 @@ import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 
 @Composable
-fun JobTagUI(
-    modifier: Modifier = Modifier,
+fun TagUI(
     text: String,
+    modifier: Modifier = Modifier,
     type: TagType = NEUTRAL,
     isAlpha: Boolean = false,
+    paddingValues: PaddingValues = PaddingValues(
+        vertical = 6.dp,
+        horizontal = 10.dp
+    ),
+    textStyle: TextStyle = TextStyle(
+        fontSize = 10.sp,
+        fontFamily = UrbanistFamily,
+        fontWeight = FontWeight(600),
+        letterSpacing = 0.2.sp
+    ),
     shape: Shape = RoundedCornerShape(6.dp),
     border: BorderStroke = BorderStroke(
         width = 1.dp,
@@ -71,29 +82,21 @@ fun JobTagUI(
             .border(
                 border = border,
                 shape = shape
-            )
+            ),
+        horizontalArrangement = Arrangement.Center,
     ) {
         Text(
             text = text,
             modifier = Modifier
-                .padding(
-                    vertical = 6.dp,
-                    horizontal = 10.dp
-                ),
-            style = TextStyle(
-                fontSize = 10.sp,
-                fontFamily = UrbanistFamily,
-                fontWeight = FontWeight(600),
-                color = textColor,
-                letterSpacing = 0.2.sp
-            )
+                .padding(paddingValues),
+            style = textStyle.copy(color = textColor)
         )
     }
 }
 
 @PreviewLightDark
 @Composable
-private fun JobTagUIPreview() {
+private fun TagUIPreview() {
     HelloTheme {
         Column(
             modifier = Modifier
@@ -107,7 +110,7 @@ private fun JobTagUIPreview() {
                     .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                JobTagUI(
+                TagUI(
                     text = "Freenlance",
                     border = BorderStroke(
                         width = 1.dp,
@@ -115,7 +118,7 @@ private fun JobTagUIPreview() {
                     )
                 )
 
-                JobTagUI(
+                TagUI(
                     text = "Remoto",
                     border = BorderStroke(
                         width = 1.dp,
@@ -131,13 +134,13 @@ private fun JobTagUIPreview() {
                     .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                JobTagUI(
+                TagUI(
                     text = "Freenlance",
                     type = DEFAULT,
                     isAlpha = true
                 )
 
-                JobTagUI(
+                TagUI(
                     text = "Remoto",
                     type = DEFAULT,
                     isAlpha = true
@@ -151,13 +154,13 @@ private fun JobTagUIPreview() {
                     .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                JobTagUI(
+                TagUI(
                     text = "Freenlance",
                     type = SUCCESS,
                     isAlpha = true
                 )
 
-                JobTagUI(
+                TagUI(
                     text = "Remoto",
                     type = SUCCESS,
                     isAlpha = true
@@ -171,13 +174,13 @@ private fun JobTagUIPreview() {
                     .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                JobTagUI(
+                TagUI(
                     text = "Freenlance",
                     type = WARNING,
                     isAlpha = true
                 )
 
-                JobTagUI(
+                TagUI(
                     text = "Remoto",
                     type = WARNING,
                     isAlpha = true
@@ -191,13 +194,13 @@ private fun JobTagUIPreview() {
                     .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                JobTagUI(
+                TagUI(
                     text = "Freenlance",
                     type = ALERT,
                     isAlpha = true
                 )
 
-                JobTagUI(
+                TagUI(
                     text = "Remoto",
                     type = ALERT,
                     isAlpha = true

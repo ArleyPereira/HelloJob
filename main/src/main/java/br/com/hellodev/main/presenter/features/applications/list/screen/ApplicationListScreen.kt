@@ -41,13 +41,16 @@ import br.com.hellodev.main.presenter.features.applications.list.viewmodel.Appli
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ApplicationListScreen() {
+fun ApplicationListScreen(
+    navigateToApplicationStatusScreen: () -> Unit
+) {
     val viewModel = koinViewModel<ApplicationListViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     ApplicationListContent(
         state = state,
-        action = viewModel::dispatchAction
+        action = viewModel::dispatchAction,
+        navigateToApplicationStatusScreen = navigateToApplicationStatusScreen
     )
 }
 
@@ -55,7 +58,8 @@ fun ApplicationListScreen() {
 @Composable
 fun ApplicationListContent(
     state: ApplicationListState,
-    action: (ApplicationListAction) -> Unit
+    action: (ApplicationListAction) -> Unit,
+    navigateToApplicationStatusScreen: () -> Unit
 ) {
     Scaffold(
         containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
@@ -142,7 +146,7 @@ fun ApplicationListContent(
                                                     horizontal = 24.dp,
                                                     vertical = 16.dp
                                                 ),
-                                            onClick = {}
+                                            onClick = navigateToApplicationStatusScreen
                                         )
 
                                         if (index < (state.items?.size ?: 0) - 1) {
@@ -171,7 +175,8 @@ private fun ApplicationListPreview() {
                 isScreenLoading = false,
                 items = JobItemDomain.items
             ),
-            action = {}
+            action = {},
+            navigateToApplicationStatusScreen = {}
         )
     }
 }

@@ -32,7 +32,7 @@ import br.com.hellodev.core.enums.tag.TagType
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.image.ImageUI
-import br.com.hellodev.design.presenter.components.tag.JobTagUI
+import br.com.hellodev.design.presenter.components.tag.TagUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.design.presenter.theme.borderStrokeDefault
@@ -119,7 +119,7 @@ fun JobApplicationItemUI(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            JobTagUI(
+            TagUI(
                 modifier = Modifier
                     .padding(start = 80.dp),
                 text = "Freenlance",

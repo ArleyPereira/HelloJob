@@ -21,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,7 +28,7 @@ import br.com.hellodev.common.domain.model.category.CategoryDomain
 import br.com.hellodev.common.domain.model.job.section.JobSectionDomain
 import br.com.hellodev.design.presenter.components.empty.EmptyUI
 import br.com.hellodev.design.presenter.components.item.job.item.JobItemUI
-import br.com.hellodev.design.presenter.components.tag.CategoryTagUI
+import br.com.hellodev.design.presenter.components.tag.category.CategoryTagUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 
