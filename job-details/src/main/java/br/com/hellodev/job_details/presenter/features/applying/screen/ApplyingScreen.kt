@@ -174,7 +174,7 @@ fun ApplyingContent(
                     error = stringResource(inputErrorMessage(EMAIL)),
                     placeholder = "Email",
                     trailingIcon = {
-                        DefaultIcon(type = IconType.IC_EMAIL)
+                        DefaultIcon(type = IconType.IC_EMAIL_FILL)
                     },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email

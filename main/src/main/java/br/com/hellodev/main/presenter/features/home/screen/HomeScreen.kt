@@ -15,13 +15,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -106,8 +103,7 @@ private fun HomeContent(
                     top = 16.dp,
                     start = 24.dp,
                     end = 24.dp
-                )
-                .windowInsetsPadding(WindowInsets.statusBars),
+                ),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             ImageUI(
@@ -175,7 +171,7 @@ private fun HomeContent(
                 .fillMaxSize(),
             contentPadding = PaddingValues(
                 bottom = WindowInsets.systemBars.asPaddingValues()
-                    .calculateBottomPadding() + 32.dp
+                    .calculateBottomPadding()
             ),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {

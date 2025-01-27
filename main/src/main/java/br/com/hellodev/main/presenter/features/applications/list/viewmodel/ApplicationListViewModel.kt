@@ -19,14 +19,16 @@ class ApplicationListViewModel(
     var state: StateFlow<ApplicationListState> = _state
 
     init {
-        _state.update { currentState ->
-            currentState.copy(
-                isScreenLoading = false,
-                items = JobItemDomain.items
-            )
+        viewModelScope.launch {
+            delay(2000)
 
+            _state.update { currentState ->
+                currentState.copy(
+                    isScreenLoading = false,
+                    items = JobItemDomain.items
+                )
+            }
         }
-
     }
 
     fun dispatchAction(action: ApplicationListAction) {

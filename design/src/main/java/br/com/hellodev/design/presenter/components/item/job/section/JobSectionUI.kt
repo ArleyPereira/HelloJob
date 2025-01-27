@@ -114,8 +114,8 @@ fun LazyListScope.verticalJobSectionUI(
         }
     }
 
-    item {
-        if (section?.items?.isEmpty() == true) {
+    if (section?.items?.isEmpty() == true) {
+        item {
             EmptyUI(
                 title = "Nenhuma vaga encontrada",
                 description = "Com o termo pesquisado: $search",
@@ -191,7 +191,7 @@ private fun JobSectionUIPreview() {
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             HorizontalJobSectionUI(
-                section =  JobSectionDomain.Companion.items[0],
+                section = JobSectionDomain.Companion.items[0],
                 modifier = Modifier
                     .padding(top = 24.dp),
                 onSaveClick = {},

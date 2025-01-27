@@ -68,7 +68,7 @@ fun JobDetailsItemUI(
                     ImageUI(
                         modifier = Modifier
                             .size(60.dp),
-                        imageModel = job.company?.logo,
+                        imageModel = job.company?.image,
                         contentScale = ContentScale.Crop,
                         previewPlaceholder = painterResource(R.drawable.ic_google),
                         enabled = false,

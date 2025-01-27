@@ -7,6 +7,6 @@ fun CompanyResponse.toDomain(): CompanyDomain {
     return CompanyDomain(
         id = id,
         name = name,
-        logo = logo
+        image = image
     )
 }

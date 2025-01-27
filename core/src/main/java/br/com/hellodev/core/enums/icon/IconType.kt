@@ -2,7 +2,8 @@ package br.com.hellodev.core.enums.icon
 
 enum class IconType {
     IC_FILTER,
-    IC_EMAIL,
+    IC_EMAIL_FILL,
+    IC_EMAIL_LINE,
     IC_FACEBOOK,
     IC_GOOGLE,
     IC_GITHUB,
@@ -11,7 +12,9 @@ enum class IconType {
     IC_LOCK_PASSWORD,
     IC_CLASSIFY,
     IC_SEARCH,
-    IC_EDIT,
+    IC_EDIT_FILL,
+    IC_EDIT_LINE,
+    IC_ADD,
     IC_CALENDAR,
     IC_RIGHT,
     IC_MARK_FILL,
@@ -23,5 +26,17 @@ enum class IconType {
     IC_ERROR,
     IC_SUCCESS,
     IC_ARROW_LEFT,
-    IC_ARROW_RIGHT
+    IC_ARROW_RIGHT,
+    IC_PERSON,
+    IC_PHONE,
+    IC_LOCATION,
+    IC_SUMMARY,
+    IC_EXPECTED_SALARY,
+    IC_WORK_EXPERIENCE,
+    IC_EDUCATION,
+    IC_PROJECTS,
+    IC_LANGUAGES,
+    IC_SKILLS,
+    IC_CV_RESUME,
+    IC_SETTINGS
 }

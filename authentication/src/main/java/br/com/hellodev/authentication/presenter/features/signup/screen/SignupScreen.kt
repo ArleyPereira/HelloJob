@@ -164,7 +164,7 @@ private fun SignupContent(
                     value = state.email,
                     placeholder = stringResource(id = R.string.label_input_email_signup_screen),
                     leadingIcon = {
-                        DefaultIcon(type = IconType.IC_EMAIL)
+                        DefaultIcon(type = IconType.IC_EMAIL_FILL)
                     },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email,

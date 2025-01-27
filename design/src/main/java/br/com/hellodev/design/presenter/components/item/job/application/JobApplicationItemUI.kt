@@ -73,7 +73,7 @@ fun JobApplicationItemUI(
                     ImageUI(
                         modifier = Modifier
                             .size(32.dp),
-                        imageModel = job?.company?.logo,
+                        imageModel = job?.company?.image,
                         contentScale = ContentScale.Crop,
                         previewPlaceholder = painterResource(R.drawable.ic_google),
                         onClick = { }

@@ -29,8 +29,9 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.authentication.R
-import br.com.hellodev.core.enums.icon.IconType
-import br.com.hellodev.core.enums.icon.IconType.*
+import br.com.hellodev.core.enums.icon.IconType.IC_FACEBOOK
+import br.com.hellodev.core.enums.icon.IconType.IC_GITHUB
+import br.com.hellodev.core.enums.icon.IconType.IC_GOOGLE
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerWithText
@@ -60,7 +61,7 @@ private fun HomeAuthenticationContent(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
-                    .padding(paddingValues)
+                    //.padding(paddingValues)
                     .padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {

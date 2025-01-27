@@ -11,6 +11,6 @@ data class CompanyResponse(
     @SerialName("name")
     val name: String? = null,
 
-    @SerialName("logo")
-    val logo: String? = null
+    @SerialName("image")
+    val image: String? = null
 )

@@ -1,5 +1,6 @@
 package br.com.hellodev.design.presenter.components.item.job.item
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -96,7 +97,7 @@ fun JobItemUI(
                             ImageUI(
                                 modifier = Modifier
                                     .size(32.dp),
-                                imageModel = job?.company?.logo,
+                                imageModel = job?.company?.image,
                                 contentScale = ContentScale.Crop,
                                 previewPlaceholder = painterResource(R.drawable.ic_google),
                                 onClick = { onClick(job?.id ?: 0) }
@@ -202,7 +203,13 @@ fun JobItemUI(
                                 items = job?.tags ?: emptyList(),
                                 key = { it.id ?: 0 }
                             ) { tag ->
-                                TagUI(text = tag.name ?: "")
+                                TagUI(
+                                    text = tag.name ?: "",
+                                    border = BorderStroke(
+                                        width = 1.dp,
+                                        color = HelloTheme.colorScheme.tag.border
+                                    )
+                                )
                             }
                         }
                     }

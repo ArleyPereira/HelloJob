@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,7 +8,20 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
+val localPropertiesFile: File = rootProject.file("local.properties")
+val localProperties = Properties()
+localProperties.load(FileInputStream(localPropertiesFile))
+
 android {
+    signingConfigs {
+        create("release") {
+            keyAlias = localProperties["keyAlias"] as String
+            keyPassword = localProperties["keyPassword"] as String
+            storeFile = file(localProperties["storeFile"] as String)
+            storePassword = localProperties["storePassword"] as String
+        }
+    }
+
     namespace = "br.com.hellodev.hellojob"
     compileSdk = 35
 
@@ -17,6 +33,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("release")
     }
 
     buildTypes {

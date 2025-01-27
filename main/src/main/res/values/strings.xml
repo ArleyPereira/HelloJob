@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    BottomAppBar-->
+    <string name="label_home_bottom_app_bar">Início</string>
+    <string name="label_saved_bottom_app_bar">Salvos</string>
+    <string name="label_application_bottom_app_bar">Inscrições</string>
+    <string name="label_message_bottom_app_bar">Chat</string>
+    <string name="label_profile_bottom_app_bar">Perfil</string>
+
+</resources>
