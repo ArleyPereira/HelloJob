@@ -3,6 +3,7 @@ package br.com.hellodev.main.presenter.features.account.viewmodel
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.hellodev.common.domain.model.user.UserDomain
 import br.com.hellodev.main.presenter.features.account.action.AccountAction
 import br.com.hellodev.main.presenter.features.account.state.AccountState
 import kotlinx.coroutines.delay
@@ -13,13 +14,13 @@ import kotlinx.coroutines.launch
 
 class AccountViewModel(
 
-): ViewModel() {
+) : ViewModel() {
 
     private var _state = MutableStateFlow(AccountState())
     var state: StateFlow<AccountState> = _state
 
     init {
-
+        initData()
     }
 
     fun dispatchAction(action: AccountAction) {
@@ -34,6 +35,16 @@ class AccountViewModel(
 
             is AccountAction.OnDeleteCurriculum -> {
                 onDeleteCurriculum()
+            }
+        }
+    }
+
+    private fun initData() {
+        viewModelScope.launch {
+            _state.update { currentState ->
+                currentState.copy(
+                    user = UserDomain.userDomainDefault
+                )
             }
         }
     }

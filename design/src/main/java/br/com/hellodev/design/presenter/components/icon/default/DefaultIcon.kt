@@ -30,13 +30,15 @@ import br.com.hellodev.core.enums.icon.IconType.IC_GITHUB
 import br.com.hellodev.core.enums.icon.IconType.IC_GOOGLE
 import br.com.hellodev.core.enums.icon.IconType.IC_HIDE
 import br.com.hellodev.core.enums.icon.IconType.IC_LANGUAGES
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION
+import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_FILL
+import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_LINE
 import br.com.hellodev.core.enums.icon.IconType.IC_LOCK_PASSWORD
 import br.com.hellodev.core.enums.icon.IconType.IC_MARK_FILL
 import br.com.hellodev.core.enums.icon.IconType.IC_MARK_LINE
 import br.com.hellodev.core.enums.icon.IconType.IC_PDF
 import br.com.hellodev.core.enums.icon.IconType.IC_PERSON
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE
+import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_FILL
+import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_LINE
 import br.com.hellodev.core.enums.icon.IconType.IC_PROJECTS
 import br.com.hellodev.core.enums.icon.IconType.IC_RIGHT
 import br.com.hellodev.core.enums.icon.IconType.IC_SEARCH
@@ -82,8 +84,10 @@ fun getIconWrawable(
         IC_ARROW_LEFT -> R.drawable.ic_arrow_left
         IC_ARROW_RIGHT -> R.drawable.ic_arrow_right
         IC_PERSON -> R.drawable.ic_person_fill
-        IC_PHONE -> R.drawable.ic_phone
-        IC_LOCATION -> R.drawable.ic_location
+        IC_PHONE_LINE -> R.drawable.ic_phone_line
+        IC_PHONE_FILL -> R.drawable.ic_phone_fill
+        IC_LOCATION_LINE -> R.drawable.ic_location_line
+        IC_LOCATION_FILL -> R.drawable.ic_location_fill
         IC_SUMMARY -> R.drawable.ic_summary
         IC_EXPECTED_SALARY -> R.drawable.ic_expected_salary
         IC_WORK_EXPERIENCE -> R.drawable.ic_work_experience
@@ -133,8 +137,10 @@ fun DefaultIcon(
             IC_PERSON -> R.drawable.ic_person_fill
             IC_EMAIL_LINE -> R.drawable.ic_email_line
             IC_ADD -> R.drawable.ic_add
-            IC_PHONE -> R.drawable.ic_phone
-            IC_LOCATION -> R.drawable.ic_location
+            IC_PHONE_LINE -> R.drawable.ic_phone_line
+            IC_PHONE_FILL -> R.drawable.ic_phone_fill
+            IC_LOCATION_LINE -> R.drawable.ic_location_line
+            IC_LOCATION_FILL -> R.drawable.ic_location_fill
             IC_SUMMARY -> R.drawable.ic_summary
             IC_EXPECTED_SALARY -> R.drawable.ic_expected_salary
             IC_WORK_EXPERIENCE -> R.drawable.ic_work_experience

@@ -10,5 +10,6 @@ enum class InputType {
     GENRE,
     COUNTRY,
     PASSWORD,
-    UPLOAD
+    UPLOAD,
+    ADDRESS
 }

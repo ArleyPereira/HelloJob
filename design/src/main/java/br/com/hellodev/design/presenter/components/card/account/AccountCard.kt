@@ -43,9 +43,9 @@ import br.com.hellodev.core.enums.icon.IconType
 import br.com.hellodev.core.enums.icon.IconType.IC_ADD
 import br.com.hellodev.core.enums.icon.IconType.IC_EDIT_LINE
 import br.com.hellodev.core.enums.icon.IconType.IC_EMAIL_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION
+import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_LINE
 import br.com.hellodev.core.enums.icon.IconType.IC_PERSON
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE
+import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_LINE
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.icon.default.getIconWrawable
@@ -175,7 +175,7 @@ private fun AccountCardPreview() {
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
                         Icon(
-                            painter = painterResource(getIconWrawable(type = IC_LOCATION)),
+                            painter = painterResource(getIconWrawable(type = IC_LOCATION_LINE)),
                             contentDescription = null,
                             tint = HelloTheme.colorScheme.icon.color
                         )
@@ -200,7 +200,7 @@ private fun AccountCardPreview() {
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
                         Icon(
-                            painter = painterResource(getIconWrawable(type = IC_PHONE)),
+                            painter = painterResource(getIconWrawable(type = IC_PHONE_LINE)),
                             contentDescription = null,
                             tint = HelloTheme.colorScheme.icon.color
                         )

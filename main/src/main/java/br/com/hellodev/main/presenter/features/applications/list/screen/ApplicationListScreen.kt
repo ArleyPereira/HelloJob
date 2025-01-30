@@ -1,6 +1,7 @@
 package br.com.hellodev.main.presenter.features.applications.list.screen
 
-import android.annotation.SuppressLint
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -10,12 +11,13 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -52,106 +54,109 @@ fun ApplicationListScreen(
     )
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ApplicationListContent(
     state: ApplicationListState,
     action: (ApplicationListAction) -> Unit,
     navigateToApplicationStatusScreen: () -> Unit
 ) {
-    Scaffold(
-        containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
-        content = {
-            when {
-                state.isScreenLoading -> {
-                    CircularLoadingScreen()
-                }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(HelloTheme.colorScheme.screen.backgroundPrimary)
+    ) {
+        when {
+            state.isScreenLoading -> {
+                CircularLoadingScreen()
+            }
 
-                else -> {
-                    Column(
+            else -> {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .windowInsetsPadding(WindowInsets.statusBars)
+                        .padding(top = 16.dp)
+                ) {
+                    Row(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 16.dp)
+                            .padding(start = 24.dp, end = 12.dp)
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Row(
+                        SearchBarUI(
                             modifier = Modifier
-                                .padding(start = 24.dp, end = 12.dp)
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            SearchBarUI(
-                                modifier = Modifier
-                                    .weight(1f),
-                                value = state.query,
-                                placeholder = "Pesquise",
-                                trailingIcon = {
-                                    DefaultIcon(
-                                        type = IC_CLOSE,
-                                        tint = HelloTheme.colorScheme.textField.placeholder,
-                                        onClick = { action(ApplicationListAction.OnClearSearch) }
-                                    )
-                                },
-                                onValueChange = {
-                                    action(ApplicationListAction.OnSearchChange(it))
-                                },
-                                onSearchAction = {
-                                    action(ApplicationListAction.OnSearch)
-                                }
-                            )
+                                .weight(1f),
+                            value = state.query,
+                            placeholder = "Pesquise",
+                            trailingIcon = {
+                                DefaultIcon(
+                                    type = IC_CLOSE,
+                                    tint = HelloTheme.colorScheme.textField.placeholder,
+                                    onClick = { action(ApplicationListAction.OnClearSearch) }
+                                )
+                            },
+                            onValueChange = {
+                                action(ApplicationListAction.OnSearchChange(it))
+                            },
+                            onSearchAction = {
+                                action(ApplicationListAction.OnSearch)
+                            }
+                        )
 
-                            IconButton(
-                                onClick = {},
-                                content = {
-                                    DefaultIcon(type = IC_FILTER)
-                                }
+                        IconButton(
+                            onClick = {},
+                            content = {
+                                DefaultIcon(type = IC_FILTER)
+                            }
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    when {
+                        state.isSearchLoading -> {
+                            CircularLoadingScreen()
+                        }
+
+                        state.items?.isEmpty() == true -> {
+                            EmptyUI(
+                                modifier = Modifier
+                                    .fillMaxSize(),
+                                title = "Não encontrado",
+                                description = "Desculpe, a palavra-chave que você digitou não pode ser encontrada. Verifique novamente ou pesquise com outra palavra-chave."
                             )
                         }
 
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        when {
-                            state.isSearchLoading -> {
-                                CircularLoadingScreen()
-                            }
-
-                            state.items?.isEmpty() == true -> {
-                                EmptyUI(
-                                    modifier = Modifier
-                                        .fillMaxSize(),
-                                    title = "Não encontrado",
-                                    description = "Desculpe, a palavra-chave que você digitou não pode ser encontrada. Verifique novamente ou pesquise com outra palavra-chave."
-                                )
-                            }
-
-                            else -> {
-                                LazyColumn(
-                                    modifier = Modifier
-                                        .fillMaxSize(),
-                                    contentPadding = PaddingValues(
-                                        bottom = WindowInsets.systemBars.asPaddingValues()
-                                            .calculateBottomPadding() + 32.dp
+                        else -> {
+                            LazyColumn(
+                                modifier = Modifier
+                                    .fillMaxSize(),
+                                contentPadding = PaddingValues(
+                                    bottom = WindowInsets.navigationBars.asPaddingValues()
+                                        .calculateBottomPadding() * 3
+                                ),
+                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                            ) {
+                                itemsIndexed(
+                                    items = state.items ?: emptyList(),
+                                    key = { _, item -> item.id ?: 0 }
+                                ) { index, job ->
+                                    JobApplicationItemUI(
+                                        job = job,
+                                        modifier = Modifier
+                                            .padding(
+                                                start = 24.dp,
+                                                end = 24.dp,
+                                                bottom = 16.dp
+                                            ),
+                                        onClick = navigateToApplicationStatusScreen
                                     )
-                                ) {
-                                    itemsIndexed(
-                                        items = state.items ?: emptyList(),
-                                        key = { _, item -> item.id ?: 0 }
-                                    ) { index, job ->
-                                        JobApplicationItemUI(
-                                            job = job,
-                                            modifier = Modifier
-                                                .padding(
-                                                    horizontal = 24.dp,
-                                                    vertical = 16.dp
-                                                ),
-                                            onClick = navigateToApplicationStatusScreen
-                                        )
 
-                                        if (index < (state.items?.size ?: 0) - 1) {
-                                            HorizontalDividerUI(
-                                                modifier = Modifier
-                                                    .padding(horizontal = 24.dp)
-                                            )
-                                        }
+                                    if (index < (state.items?.size ?: 0) - 1) {
+                                        HorizontalDividerUI(
+                                            modifier = Modifier
+                                                .padding(horizontal = 24.dp)
+                                        )
                                     }
                                 }
                             }
@@ -160,7 +165,7 @@ fun ApplicationListContent(
                 }
             }
         }
-    )
+    }
 }
 
 @PreviewLightDark

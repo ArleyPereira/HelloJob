@@ -24,4 +24,7 @@ sealed class BottomBarRoutes {
         val id: Int
     ) : BottomBarRoutes()
 
+    @Serializable
+    data object ContactInformation : BottomBarRoutes()
+
 }

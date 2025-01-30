@@ -61,5 +61,23 @@ class MaskVisualTransformation(private val mask: String) : VisualTransformation 
 
         const val CARD_EXPIRATION_MASK = "##/##"
         const val CARD_EXPIRATION_MASK_SIZE = 4
+
+        fun maskText(value: String, mask: String): String {
+            var stringWithMask = ""
+            var i = 0
+            for (m in mask.toCharArray()) {
+                if (m != '#') {
+                    stringWithMask += m
+                    continue
+                }
+                try {
+                    stringWithMask += value[i]
+                } catch (e: Exception) {
+                    break
+                }
+                i++
+            }
+            return stringWithMask
+        }
     }
 }

@@ -2,6 +2,7 @@ package br.com.hellodev.core.functions
 
 import br.com.hellodev.core.R
 import br.com.hellodev.core.enums.input.InputType
+import br.com.hellodev.core.enums.input.InputType.ADDRESS
 import br.com.hellodev.core.enums.input.InputType.COUNTRY
 import br.com.hellodev.core.enums.input.InputType.DATE_BIRTH
 import br.com.hellodev.core.enums.input.InputType.EMAIL
@@ -29,6 +30,7 @@ fun inputErrorMessage(type: InputType?): Int {
         PHONE -> R.string.error_phone_invalid
         GENRE -> R.string.error_genre_invalid
         COUNTRY -> R.string.error_country_invalid
+        ADDRESS -> R.string.error_address_invalid
         else -> R.string.error_generic
     }
 }

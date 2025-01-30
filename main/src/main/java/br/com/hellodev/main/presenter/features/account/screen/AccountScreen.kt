@@ -8,9 +8,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -39,8 +42,10 @@ import br.com.hellodev.core.enums.account.AccountCardType
 import br.com.hellodev.core.enums.account.AccountCardType.CONTACT_INFORMATION
 import br.com.hellodev.core.enums.icon.IconType
 import br.com.hellodev.core.enums.icon.IconType.IC_EMAIL_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE
+import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_LINE
+import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_LINE
+import br.com.hellodev.core.mask.MaskVisualTransformation
+import br.com.hellodev.core.mask.MaskVisualTransformation.Companion.PHONE_MASK
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.card.account.AccountCard
@@ -57,7 +62,9 @@ import br.com.hellodev.main.presenter.features.account.viewmodel.AccountViewMode
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AccountScreen() {
+fun AccountScreen(
+    navigateToContactInformationScreen: () -> Unit
+) {
     val viewModel = koinViewModel<AccountViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -74,7 +81,8 @@ fun AccountScreen() {
         action = viewModel::dispatchAction,
         onUploadClick = {
             pickPdfLauncher.launch(arrayOf("application/pdf"))
-        }
+        },
+        navigateToContactInformationScreen = navigateToContactInformationScreen
     )
 }
 
@@ -84,6 +92,7 @@ fun AccountContent(
     state: AccountState,
     action: (AccountAction) -> Unit,
     onUploadClick: () -> Unit,
+    navigateToContactInformationScreen: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -111,12 +120,18 @@ fun AccountContent(
             )
         },
         containerColor = HelloTheme.colorScheme.screen.backgroundPrimary,
-        content = {
+        content = { paddingValues ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .padding(paddingValues)
                     .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 24.dp),
+                    .padding(
+                        start = 24.dp,
+                        end = 24.dp,
+                        bottom = WindowInsets.navigationBars.asPaddingValues()
+                            .calculateBottomPadding() * 3
+                    ),
                 verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
                 Row(
@@ -189,13 +204,13 @@ fun AccountContent(
                                 horizontalArrangement = Arrangement.spacedBy(16.dp)
                             ) {
                                 Icon(
-                                    painter = painterResource(getIconWrawable(type = IC_LOCATION)),
+                                    painter = painterResource(getIconWrawable(type = IC_LOCATION_LINE)),
                                     contentDescription = null,
                                     tint = HelloTheme.colorScheme.icon.color
                                 )
 
                                 Text(
-                                    text = "Vitória, Espiríto Santo",
+                                    text = state.user?.address ?: "",
                                     style = TextStyle(
                                         lineHeight = 22.4.sp,
                                         fontFamily = UrbanistFamily,
@@ -214,13 +229,16 @@ fun AccountContent(
                                 horizontalArrangement = Arrangement.spacedBy(16.dp)
                             ) {
                                 Icon(
-                                    painter = painterResource(getIconWrawable(type = IC_PHONE)),
+                                    painter = painterResource(getIconWrawable(type = IC_PHONE_LINE)),
                                     contentDescription = null,
                                     tint = HelloTheme.colorScheme.icon.color
                                 )
 
                                 Text(
-                                    text = "(27) 99637-5733",
+                                    text = MaskVisualTransformation.maskText(
+                                        value = state.user?.phone ?: "",
+                                        mask = PHONE_MASK
+                                    ),
                                     style = TextStyle(
                                         lineHeight = 22.4.sp,
                                         fontFamily = UrbanistFamily,
@@ -244,7 +262,7 @@ fun AccountContent(
                                 )
 
                                 Text(
-                                    text = "arley.santana@hellodev.com.br",
+                                    text = state.user?.email ?: "",
                                     style = TextStyle(
                                         lineHeight = 22.4.sp,
                                         fontFamily = UrbanistFamily,
@@ -256,7 +274,7 @@ fun AccountContent(
                             }
                         }
                     },
-                    onActionClick = {}
+                    onActionClick = navigateToContactInformationScreen
                 )
 
                 AccountCard(
@@ -375,7 +393,8 @@ private fun AccountPreview() {
         AccountContent(
             state = AccountState(),
             action = {},
-            onUploadClick = {}
+            onUploadClick = {},
+            navigateToContactInformationScreen = {}
         )
     }
 }

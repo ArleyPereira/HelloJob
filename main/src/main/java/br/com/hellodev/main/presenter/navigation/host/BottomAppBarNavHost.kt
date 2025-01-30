@@ -13,6 +13,7 @@ import br.com.hellodev.job_search.presenter.navigation.routes.SearchRoutes
 import br.com.hellodev.main.presenter.features.account.screen.AccountScreen
 import br.com.hellodev.main.presenter.features.applications.list.screen.ApplicationListScreen
 import br.com.hellodev.main.presenter.features.applications.status.screen.ApplicationStatusScreen
+import br.com.hellodev.main.presenter.features.contact.screen.ContactInformationScreen
 import br.com.hellodev.main.presenter.features.home.screen.HomeScreen
 import br.com.hellodev.main.presenter.features.saved.screen.SavedScreen
 import br.com.hellodev.main.presenter.navigation.routes.BottomBarRoutes
@@ -65,7 +66,17 @@ fun BottomAppBarNavHost(
         }
 
         composable<BottomBarRoutes.Account> {
-            AccountScreen()
+            AccountScreen(
+                navigateToContactInformationScreen = {
+                    navHostController.navigate(BottomBarRoutes.ContactInformation)
+                }
+            )
+        }
+
+        composable<BottomBarRoutes.ContactInformation> {
+            ContactInformationScreen(
+                onBackPressed = navHostController::popBackStackSafely
+            )
         }
 
         detailsNavHost(navHostController = navHostController)

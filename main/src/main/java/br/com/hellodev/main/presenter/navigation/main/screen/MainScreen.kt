@@ -1,11 +1,10 @@
 package br.com.hellodev.main.presenter.navigation.main.screen
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Scaffold
@@ -41,6 +40,7 @@ fun MainScreen(
     )
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainContent(
     //state: MainState,
@@ -89,16 +89,10 @@ fun MainContent(
                 }
             )
         },
-        content = { paddingValues ->
+        content = {
             BottomAppBarNavHost(
                 modifier = Modifier
-                    .background(HelloTheme.colorScheme.screen.backgroundPrimary)
-                    .padding(
-                        when (isBottomAppBar(currentDestination)) {
-                            true -> paddingValues
-                            else -> PaddingValues()
-                        }
-                    ),
+                    .background(HelloTheme.colorScheme.screen.backgroundPrimary),
                 navHostController = navController
             )
         }

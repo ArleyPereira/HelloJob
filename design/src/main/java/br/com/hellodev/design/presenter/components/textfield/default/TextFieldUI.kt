@@ -26,9 +26,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
@@ -43,6 +45,7 @@ import br.com.hellodev.design.presenter.theme.UrbanistFamily
 fun TextFieldUI(
     modifier: Modifier = Modifier,
     value: String = "",
+    label: String = "",
     placeholder: String = "",
     enabled: Boolean = true,
     readOnly: Boolean = false,
@@ -58,6 +61,7 @@ fun TextFieldUI(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     onValueChange: (String) -> Unit
 ) {
+    var isFocused by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
     val customTextSelectionColors = TextSelectionColors(
         handleColor = HelloTheme.colorScheme.defaultColor,
@@ -94,20 +98,44 @@ fun TextFieldUI(
                         },
                         shape = RoundedCornerShape(16.dp)
                     )
+                    .onFocusChanged { focusState ->
+                        isFocused = focusState.isFocused
+                    }
                     .focusRequester(focusRequester),
                 enabled = enabled,
                 readOnly = readOnly,
-                placeholder = {
+                label = {
                     Text(
-                        text = placeholder,
-                        style = TextStyle(
-                            lineHeight = 19.6.sp,
-                            fontFamily = UrbanistFamily,
-                            color = HelloTheme.colorScheme.textField.placeholder,
-                            letterSpacing = 0.2.sp
-                        )
+                        fontFamily = UrbanistFamily,
+                        text = label,
+                        style = if (isFocused) {
+                            TextStyle(
+                                fontSize = 12.sp,
+                                lineHeight = 11.sp,
+                                fontFamily = UrbanistFamily,
+                                fontWeight = FontWeight(700),
+                                color = HelloTheme.colorScheme.defaultColor
+                            )
+                        } else {
+                            TextStyle(
+                                lineHeight = 15.4.sp,
+                                fontFamily = UrbanistFamily,
+                                color = HelloTheme.colorScheme.textField.placeholder
+                            )
+                        }
                     )
                 },
+//                placeholder = {
+//                    Text(
+//                        text = placeholder,
+//                        style = TextStyle(
+//                            lineHeight = 19.6.sp,
+//                            fontFamily = UrbanistFamily,
+//                            color = HelloTheme.colorScheme.textField.placeholder,
+//                            letterSpacing = 0.2.sp
+//                        )
+//                    )
+//                },
                 leadingIcon = leadingIcon,
                 trailingIcon = trailingIcon,
                 isError = isError,
