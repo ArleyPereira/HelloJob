@@ -39,7 +39,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.core.enums.icon.IconType.IC_FILTER
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FILTER
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.theme.HelloTheme

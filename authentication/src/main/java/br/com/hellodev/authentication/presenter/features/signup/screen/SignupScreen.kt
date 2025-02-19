@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.sp
 import br.com.hellodev.authentication.R
 import br.com.hellodev.authentication.presenter.features.signup.action.SignupAction
 import br.com.hellodev.authentication.presenter.features.signup.viewmodel.SignupViewModel
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
@@ -164,7 +164,7 @@ private fun SignupContent(
                     value = state.email,
                     placeholder = stringResource(id = R.string.label_input_email_signup_screen),
                     leadingIcon = {
-                        DefaultIcon(type = IconType.IC_EMAIL_FILL)
+                        DefaultIcon(type = IllustrationType.IC_EMAIL_FILL)
                     },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email,
@@ -219,7 +219,7 @@ private fun SignupContent(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     SocialButton(
-                        iconType = IconType.IC_GOOGLE,
+                        illustrationType = IllustrationType.IC_GOOGLE,
                         isLoading = false,
                         onClick = {}
                     )
@@ -227,7 +227,7 @@ private fun SignupContent(
                     Spacer(modifier = Modifier.width(20.dp))
 
                     SocialButton(
-                        iconType = IconType.IC_FACEBOOK,
+                        illustrationType = IllustrationType.IC_FACEBOOK,
                         isLoading = false,
                         onClick = {}
                     )
@@ -235,7 +235,7 @@ private fun SignupContent(
                     Spacer(modifier = Modifier.width(20.dp))
 
                     SocialButton(
-                        iconType = IconType.IC_GITHUB,
+                        illustrationType = IllustrationType.IC_GITHUB,
                         isLoading = false,
                         onClick = {}
                     )

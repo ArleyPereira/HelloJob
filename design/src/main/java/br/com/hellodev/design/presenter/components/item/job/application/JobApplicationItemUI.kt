@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.tag.TagType
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
@@ -112,7 +112,7 @@ fun JobApplicationItemUI(
                 }
 
                 DefaultIcon(
-                    type = IconType.IC_ARROW_RIGHT,
+                    type = IllustrationType.IC_ARROW_RIGHT,
                     tint = HelloTheme.colorScheme.icon.color
                 )
             }

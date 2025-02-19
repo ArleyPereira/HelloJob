@@ -1,6 +1,6 @@
-package br.com.hellodev.core.enums.icon
+package br.com.hellodev.core.enums.illustration
 
-enum class IconType {
+enum class IllustrationType {
     IC_FILTER,
     IC_EMAIL_FILL,
     IC_EMAIL_LINE,
@@ -27,6 +27,7 @@ enum class IconType {
     IC_SUCCESS,
     IC_ARROW_LEFT,
     IC_ARROW_RIGHT,
+    IC_ARROW_DOWN,
     IC_PERSON,
     IC_PHONE_LINE,
     IC_PHONE_FILL,

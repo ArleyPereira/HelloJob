@@ -45,7 +45,7 @@ import br.com.hellodev.authentication.R
 import br.com.hellodev.authentication.presenter.features.login.action.LoginAction
 import br.com.hellodev.authentication.presenter.features.login.state.LoginState
 import br.com.hellodev.authentication.presenter.features.login.viewmodel.LoginViewModel
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
@@ -165,7 +165,7 @@ private fun LoginContent(
                     value = state.email,
                     placeholder = stringResource(id = R.string.label_input_email_login_screen),
                     leadingIcon = {
-                        DefaultIcon(type = IconType.IC_EMAIL_FILL)
+                        DefaultIcon(type = IllustrationType.IC_EMAIL_FILL)
                     },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email,
@@ -235,7 +235,7 @@ private fun LoginContent(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     SocialButton(
-                        iconType = IconType.IC_GOOGLE,
+                        illustrationType = IllustrationType.IC_GOOGLE,
                         isLoading = false,
                         onClick = {}
                     )
@@ -243,7 +243,7 @@ private fun LoginContent(
                     Spacer(modifier = Modifier.width(20.dp))
 
                     SocialButton(
-                        iconType = IconType.IC_FACEBOOK,
+                        illustrationType = IllustrationType.IC_FACEBOOK,
                         isLoading = false,
                         onClick = {}
                     )
@@ -251,7 +251,7 @@ private fun LoginContent(
                     Spacer(modifier = Modifier.width(20.dp))
 
                     SocialButton(
-                        iconType = IconType.IC_GITHUB,
+                        illustrationType = IllustrationType.IC_GITHUB,
                         isLoading = false,
                         onClick = {}
                     )

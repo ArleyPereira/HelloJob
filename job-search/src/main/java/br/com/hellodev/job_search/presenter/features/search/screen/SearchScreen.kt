@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
-import br.com.hellodev.core.enums.icon.IconType.*
+import br.com.hellodev.core.enums.illustration.IllustrationType.*
 import br.com.hellodev.design.presenter.components.bar.search.SearchBarUI
 import br.com.hellodev.design.presenter.components.empty.EmptyUI
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon

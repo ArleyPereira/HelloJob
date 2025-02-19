@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.bottom.sheet.content.apply.ApplyJobSheetContent
 import br.com.hellodev.design.presenter.components.bottom.sheet.default.DefaultBottomSheet
@@ -93,7 +93,7 @@ private fun DetailsContent(
                                     onClick = { checked = !checked },
                                     content = {
                                         DefaultIcon(
-                                            type = IconType.IC_SEND,
+                                            type = IllustrationType.IC_SEND,
                                             tint = HelloTheme.colorScheme.icon.color
                                         )
                                     }
@@ -103,7 +103,7 @@ private fun DetailsContent(
                                     onClick = { checked = !checked },
                                     content = {
                                         DefaultIcon(
-                                            type = if (checked) IconType.IC_MARK_FILL else IconType.IC_MARK_LINE,
+                                            type = if (checked) IllustrationType.IC_MARK_FILL else IllustrationType.IC_MARK_LINE,
                                             tint = iconTintColor(filled = checked)
                                         )
                                     }

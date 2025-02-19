@@ -33,8 +33,8 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
-import br.com.hellodev.core.enums.icon.IconType.IC_CLOSE
-import br.com.hellodev.core.enums.icon.IconType.IC_FILTER
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CLOSE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FILTER
 import br.com.hellodev.design.presenter.components.bar.search.SearchBarUI
 import br.com.hellodev.design.presenter.components.bottom.sheet.content.saved.SavedJobSheetContent
 import br.com.hellodev.design.presenter.components.bottom.sheet.default.DefaultBottomSheet

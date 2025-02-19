@@ -1,4 +1,4 @@
-package br.com.hellodev.core.mask
+package br.com.hellodev.design.presenter.util.transformation
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping

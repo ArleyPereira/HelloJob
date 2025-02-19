@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.core.enums.dialog.applying.ApplyingDialogType.APPLYING_ERROR
 import br.com.hellodev.core.enums.dialog.applying.ApplyingDialogType.APPLYING_SUCCESS
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.input.InputType.EMAIL
 import br.com.hellodev.core.enums.input.InputType.FULL_NAME
 import br.com.hellodev.core.enums.input.InputType.UPLOAD
@@ -174,7 +174,7 @@ fun ApplyingContent(
                     error = stringResource(inputErrorMessage(EMAIL)),
                     placeholder = "Email",
                     trailingIcon = {
-                        DefaultIcon(type = IconType.IC_EMAIL_FILL)
+                        DefaultIcon(type = IllustrationType.IC_EMAIL_FILL)
                     },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Email

@@ -11,5 +11,9 @@ enum class InputType {
     COUNTRY,
     PASSWORD,
     UPLOAD,
-    ADDRESS
+    ADDRESS,
+    SALARY_MINIMUM,
+    SALARY_MAXIMUM,
+    SALARY_CURRENCY,
+    SALARY_FREQUENCY
 }

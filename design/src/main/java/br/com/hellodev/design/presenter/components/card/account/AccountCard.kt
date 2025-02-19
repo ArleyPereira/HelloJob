@@ -39,13 +39,13 @@ import br.com.hellodev.core.enums.account.AccountCardType.PROJECTS
 import br.com.hellodev.core.enums.account.AccountCardType.SKILLS
 import br.com.hellodev.core.enums.account.AccountCardType.SUMMARY
 import br.com.hellodev.core.enums.account.AccountCardType.WORK_EXPERIENCE
-import br.com.hellodev.core.enums.icon.IconType
-import br.com.hellodev.core.enums.icon.IconType.IC_ADD
-import br.com.hellodev.core.enums.icon.IconType.IC_EDIT_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_EMAIL_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_PERSON
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ADD
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EDIT_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EMAIL_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_LOCATION_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PERSON
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PHONE_LINE
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.icon.default.getIconWrawable
@@ -64,16 +64,16 @@ fun AccountCard(
 ) {
     var expandedState by remember { mutableStateOf(false) }
 
-    val leftIconType = when (cardType) {
+    val leftIllustrationType = when (cardType) {
         CONTACT_INFORMATION -> IC_PERSON
-        SUMMARY -> IconType.IC_SUMMARY
-        EXPECTED_SALARY -> IconType.IC_EXPECTED_SALARY
-        WORK_EXPERIENCE -> IconType.IC_WORK_EXPERIENCE
-        EDUCATION -> IconType.IC_EDUCATION
-        PROJECTS -> IconType.IC_PROJECTS
-        LANGUAGES -> IconType.IC_LANGUAGES
-        SKILLS -> IconType.IC_SKILLS
-        CV_RESUME -> IconType.IC_CV_RESUME
+        SUMMARY -> IllustrationType.IC_SUMMARY
+        EXPECTED_SALARY -> IllustrationType.IC_EXPECTED_SALARY
+        WORK_EXPERIENCE -> IllustrationType.IC_WORK_EXPERIENCE
+        EDUCATION -> IllustrationType.IC_EDUCATION
+        PROJECTS -> IllustrationType.IC_PROJECTS
+        LANGUAGES -> IllustrationType.IC_LANGUAGES
+        SKILLS -> IllustrationType.IC_SKILLS
+        CV_RESUME -> IllustrationType.IC_CV_RESUME
     }
 
     val rightIconType = when (actionType) {
@@ -104,7 +104,7 @@ fun AccountCard(
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     DefaultIcon(
-                        type = leftIconType,
+                        type = leftIllustrationType,
                         onClick = { expandedState = !expandedState }
                     )
 

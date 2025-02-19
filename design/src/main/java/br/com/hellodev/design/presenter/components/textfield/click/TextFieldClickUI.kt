@@ -23,8 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.core.enums.icon.IconType
-import br.com.hellodev.core.enums.icon.IconType.IC_RIGHT
+import br.com.hellodev.core.enums.illustration.IllustrationType
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_RIGHT
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
@@ -34,7 +34,7 @@ fun TextFieldClickUI(
     modifier: Modifier = Modifier,
     value: String = "",
     placeholder: String,
-    iconType: IconType,
+    illustrationType: IllustrationType,
     isError: Boolean = false,
     enabled: Boolean = true,
     error: String = "",
@@ -98,7 +98,7 @@ fun TextFieldClickUI(
             }
 
             DefaultIcon(
-                type = iconType,
+                type = illustrationType,
                 tint = if (value.isNotEmpty()) {
                     HelloTheme.colorScheme.icon.color
                 } else HelloTheme.colorScheme.icon.default
@@ -136,7 +136,7 @@ private fun TextFieldClickUIPreview() {
                     .padding(32.dp),
                 value = "Masculino",
                 placeholder = "Gênero",
-                iconType = IC_RIGHT,
+                illustrationType = IC_RIGHT,
                 error = "Gênero inválido",
                 isError = true,
                 onClick = {}

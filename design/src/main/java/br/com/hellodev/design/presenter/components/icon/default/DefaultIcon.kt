@@ -9,52 +9,53 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.hellodev.core.enums.icon.IconType
-import br.com.hellodev.core.enums.icon.IconType.IC_ADD
-import br.com.hellodev.core.enums.icon.IconType.IC_ARROW_LEFT
-import br.com.hellodev.core.enums.icon.IconType.IC_ARROW_RIGHT
-import br.com.hellodev.core.enums.icon.IconType.IC_CALENDAR
-import br.com.hellodev.core.enums.icon.IconType.IC_CLASSIFY
-import br.com.hellodev.core.enums.icon.IconType.IC_CLOSE
-import br.com.hellodev.core.enums.icon.IconType.IC_CV_RESUME
-import br.com.hellodev.core.enums.icon.IconType.IC_EDIT_FILL
-import br.com.hellodev.core.enums.icon.IconType.IC_EDIT_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_EDUCATION
-import br.com.hellodev.core.enums.icon.IconType.IC_EMAIL_FILL
-import br.com.hellodev.core.enums.icon.IconType.IC_EMAIL_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_ERROR
-import br.com.hellodev.core.enums.icon.IconType.IC_EXPECTED_SALARY
-import br.com.hellodev.core.enums.icon.IconType.IC_FACEBOOK
-import br.com.hellodev.core.enums.icon.IconType.IC_FILTER
-import br.com.hellodev.core.enums.icon.IconType.IC_GITHUB
-import br.com.hellodev.core.enums.icon.IconType.IC_GOOGLE
-import br.com.hellodev.core.enums.icon.IconType.IC_HIDE
-import br.com.hellodev.core.enums.icon.IconType.IC_LANGUAGES
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_FILL
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCK_PASSWORD
-import br.com.hellodev.core.enums.icon.IconType.IC_MARK_FILL
-import br.com.hellodev.core.enums.icon.IconType.IC_MARK_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_PDF
-import br.com.hellodev.core.enums.icon.IconType.IC_PERSON
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_FILL
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_PROJECTS
-import br.com.hellodev.core.enums.icon.IconType.IC_RIGHT
-import br.com.hellodev.core.enums.icon.IconType.IC_SEARCH
-import br.com.hellodev.core.enums.icon.IconType.IC_SEND
-import br.com.hellodev.core.enums.icon.IconType.IC_SETTINGS
-import br.com.hellodev.core.enums.icon.IconType.IC_SHOW
-import br.com.hellodev.core.enums.icon.IconType.IC_SKILLS
-import br.com.hellodev.core.enums.icon.IconType.IC_SUCCESS
-import br.com.hellodev.core.enums.icon.IconType.IC_SUMMARY
-import br.com.hellodev.core.enums.icon.IconType.IC_UPLOAD
-import br.com.hellodev.core.enums.icon.IconType.IC_WORK_EXPERIENCE
+import br.com.hellodev.core.enums.illustration.IllustrationType
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ADD
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ARROW_DOWN
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ARROW_LEFT
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ARROW_RIGHT
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CALENDAR
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CLASSIFY
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CLOSE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CV_RESUME
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EDIT_FILL
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EDIT_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EDUCATION
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EMAIL_FILL
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EMAIL_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ERROR
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EXPECTED_SALARY
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FACEBOOK
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FILTER
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_GITHUB
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_GOOGLE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_HIDE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_LANGUAGES
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_LOCATION_FILL
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_LOCATION_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_LOCK_PASSWORD
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_MARK_FILL
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_MARK_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PDF
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PERSON
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PHONE_FILL
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PHONE_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PROJECTS
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_RIGHT
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SEARCH
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SEND
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SETTINGS
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SHOW
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SKILLS
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SUCCESS
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SUMMARY
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_UPLOAD
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_WORK_EXPERIENCE
 import br.com.hellodev.design.R
 
 @Composable
 fun getIconWrawable(
-    type: IconType
+    type: IllustrationType
 ): Int {
     return when (type) {
         IC_FILTER -> R.drawable.ic_filter
@@ -83,6 +84,7 @@ fun getIconWrawable(
         IC_SUCCESS -> R.drawable.ic_success
         IC_ARROW_LEFT -> R.drawable.ic_arrow_left
         IC_ARROW_RIGHT -> R.drawable.ic_arrow_right
+        IC_ARROW_DOWN -> R.drawable.ic_arrow_down
         IC_PERSON -> R.drawable.ic_person_fill
         IC_PHONE_LINE -> R.drawable.ic_phone_line
         IC_PHONE_FILL -> R.drawable.ic_phone_fill
@@ -102,7 +104,7 @@ fun getIconWrawable(
 
 @Composable
 fun DefaultIcon(
-    type: IconType,
+    type: IllustrationType,
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
     tint: Color = Color.Unspecified,
@@ -134,6 +136,7 @@ fun DefaultIcon(
             IC_SUCCESS -> R.drawable.ic_success
             IC_ARROW_LEFT -> R.drawable.ic_arrow_left
             IC_ARROW_RIGHT -> R.drawable.ic_arrow_right
+            IC_ARROW_DOWN -> R.drawable.ic_arrow_down
             IC_PERSON -> R.drawable.ic_person_fill
             IC_EMAIL_LINE -> R.drawable.ic_email_line
             IC_ADD -> R.drawable.ic_add

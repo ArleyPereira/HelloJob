@@ -25,7 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.util.formatFileSize
 import br.com.hellodev.core.util.getFileName
 import br.com.hellodev.core.util.getFileSize
@@ -71,7 +71,7 @@ fun UploadUI(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 DefaultIcon(
-                    type = IconType.IC_PDF,
+                    type = IllustrationType.IC_PDF,
                     onClick = { openPdf(context, uri) }
                 )
 
@@ -110,7 +110,7 @@ fun UploadUI(
                 }
 
                 DefaultIcon(
-                    type = IconType.IC_CLOSE,
+                    type = IllustrationType.IC_CLOSE,
                     onClick = onDeleteClick
                 )
             }
@@ -160,7 +160,7 @@ fun UploadUI(
                             )
                         } else {
                             DefaultIcon(
-                                type = IconType.IC_UPLOAD,
+                                type = IllustrationType.IC_UPLOAD,
                                 onClick = onLoadClick
                             )
 

@@ -1,4 +1,4 @@
-package br.com.hellodev.main.presenter.features.account.screen
+package br.com.hellodev.main.presenter.features.main.account.screen
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -40,12 +40,11 @@ import br.com.hellodev.core.enums.account.AccountCardActionType.ADD
 import br.com.hellodev.core.enums.account.AccountCardActionType.EDIT
 import br.com.hellodev.core.enums.account.AccountCardType
 import br.com.hellodev.core.enums.account.AccountCardType.CONTACT_INFORMATION
-import br.com.hellodev.core.enums.icon.IconType
-import br.com.hellodev.core.enums.icon.IconType.IC_EMAIL_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_LOCATION_LINE
-import br.com.hellodev.core.enums.icon.IconType.IC_PHONE_LINE
-import br.com.hellodev.core.mask.MaskVisualTransformation
-import br.com.hellodev.core.mask.MaskVisualTransformation.Companion.PHONE_MASK
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EDIT_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_EMAIL_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_LOCATION_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_PHONE_LINE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SETTINGS
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.card.account.AccountCard
@@ -56,6 +55,8 @@ import br.com.hellodev.design.presenter.components.image.ImageUI
 import br.com.hellodev.design.presenter.components.upload.UploadUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
+import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation
+import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation.Companion.PHONE_MASK
 import br.com.hellodev.main.presenter.features.account.action.AccountAction
 import br.com.hellodev.main.presenter.features.account.state.AccountState
 import br.com.hellodev.main.presenter.features.account.viewmodel.AccountViewModel
@@ -63,7 +64,9 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AccountScreen(
-    navigateToContactInformationScreen: () -> Unit
+    navigateToContactInformationScreen: () -> Unit,
+    navigateToSummaryScreen: () -> Unit,
+    navigateToSalaryExpectationScreen: () -> Unit
 ) {
     val viewModel = koinViewModel<AccountViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -82,7 +85,9 @@ fun AccountScreen(
         onUploadClick = {
             pickPdfLauncher.launch(arrayOf("application/pdf"))
         },
-        navigateToContactInformationScreen = navigateToContactInformationScreen
+        navigateToContactInformationScreen = navigateToContactInformationScreen,
+        navigateToSummaryScreen = navigateToSummaryScreen,
+        navigateToSalaryExpectationScreen = navigateToSalaryExpectationScreen,
     )
 }
 
@@ -92,7 +97,9 @@ fun AccountContent(
     state: AccountState,
     action: (AccountAction) -> Unit,
     onUploadClick: () -> Unit,
-    navigateToContactInformationScreen: () -> Unit
+    navigateToContactInformationScreen: () -> Unit,
+    navigateToSummaryScreen: () -> Unit,
+    navigateToSalaryExpectationScreen: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -109,7 +116,7 @@ fun AccountContent(
                             onClick = { },
                             content = {
                                 DefaultIcon(
-                                    type = IconType.IC_SETTINGS,
+                                    type = IC_SETTINGS,
                                     tint = HelloTheme.colorScheme.icon.color
                                 )
                             }
@@ -181,7 +188,7 @@ fun AccountContent(
                     }
 
                     DefaultIcon(
-                        type = IconType.IC_EDIT_LINE,
+                        type = IC_EDIT_LINE,
                         onClick = {}
                     )
                 }
@@ -298,7 +305,7 @@ fun AccountContent(
                             )
                         }
                     },
-                    onActionClick = {}
+                    onActionClick = navigateToSummaryScreen
                 )
 
                 AccountCard(
@@ -322,7 +329,7 @@ fun AccountContent(
                             )
                         }
                     },
-                    onActionClick = {}
+                    onActionClick = navigateToSalaryExpectationScreen
                 )
 
                 AccountCard(
@@ -394,7 +401,9 @@ private fun AccountPreview() {
             state = AccountState(),
             action = {},
             onUploadClick = {},
-            navigateToContactInformationScreen = {}
+            navigateToContactInformationScreen = {},
+            navigateToSummaryScreen = {},
+            navigateToSalaryExpectationScreen = {}
         )
     }
 }

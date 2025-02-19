@@ -36,10 +36,10 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.core.mask.MaskVisualTransformation
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
+import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation
 
 @Composable
 fun TextFieldUI(

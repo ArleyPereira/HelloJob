@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.common.domain.model.job.item.JobItemDomain
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
@@ -137,7 +137,7 @@ fun JobItemUI(
                     }
 
                     DefaultIcon(
-                        type = if(isSaved) IconType.IC_MARK_FILL else IconType.IC_MARK_LINE,
+                        type = if(isSaved) IllustrationType.IC_MARK_FILL else IllustrationType.IC_MARK_LINE,
                         tint = iconTintColor(filled = isSaved),
                         onClick = { onSaveClick(job?.id ?: 0) }
                     )

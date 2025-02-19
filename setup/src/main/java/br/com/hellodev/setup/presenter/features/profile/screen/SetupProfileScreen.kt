@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.input.InputType.COUNTRY
 import br.com.hellodev.core.enums.input.InputType.DATE_BIRTH
 import br.com.hellodev.core.enums.input.InputType.EMAIL
@@ -44,9 +44,6 @@ import br.com.hellodev.core.enums.input.InputType.GENRE
 import br.com.hellodev.core.enums.input.InputType.PHONE
 import br.com.hellodev.core.enums.input.InputType.SURNAME
 import br.com.hellodev.core.functions.inputErrorMessage
-import br.com.hellodev.core.mask.MaskVisualTransformation
-import br.com.hellodev.core.mask.MaskVisualTransformation.Companion.BIRTH_DATE_MASK
-import br.com.hellodev.core.mask.MaskVisualTransformation.Companion.PHONE_MASK
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
@@ -56,6 +53,9 @@ import br.com.hellodev.design.presenter.components.textfield.click.TextFieldClic
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.iconTintColor
+import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation
+import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation.Companion.BIRTH_DATE_MASK
+import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation.Companion.PHONE_MASK
 import br.com.hellodev.setup.R
 import br.com.hellodev.setup.presenter.features.profile.action.SetupProfileAction
 import br.com.hellodev.setup.presenter.features.profile.parameter.SetupProfileParameter
@@ -172,7 +172,7 @@ private fun SetupProfileContent(
                     )
 
                     DefaultIcon(
-                        type = IconType.IC_EDIT_FILL,
+                        type = IllustrationType.IC_EDIT_FILL,
                         modifier = Modifier
                             .size(32.dp)
                             .align(Alignment.BottomEnd)
@@ -220,7 +220,7 @@ private fun SetupProfileContent(
                     visualTransformation = MaskVisualTransformation(BIRTH_DATE_MASK),
                     trailingIcon = {
                         DefaultIcon(
-                            type = IconType.IC_CALENDAR,
+                            type = IllustrationType.IC_CALENDAR,
                             tint = iconTintColor(
                                 filled = state.dateBirth.isNotEmpty(),
                                 isError = state.inputError == DATE_BIRTH
@@ -243,7 +243,7 @@ private fun SetupProfileContent(
                     ),
                     trailingIcon = {
                         DefaultIcon(
-                            type = IconType.IC_EMAIL_FILL,
+                            type = IllustrationType.IC_EMAIL_FILL,
                             tint = iconTintColor(
                                 filled = state.email.isNotEmpty(),
                                 isError = state.inputError == EMAIL
@@ -274,7 +274,7 @@ private fun SetupProfileContent(
                 TextFieldClickUI(
                     value = state.genre?.name ?: "",
                     placeholder = stringResource(R.string.label_input_genre_edit_profile_screen),
-                    iconType = IconType.IC_RIGHT,
+                    illustrationType = IllustrationType.IC_RIGHT,
                     error = stringResource(inputErrorMessage(GENRE)),
                     isError = state.inputError == GENRE,
                     onClick = navigateToGenreScreen
@@ -283,7 +283,7 @@ private fun SetupProfileContent(
                 TextFieldClickUI(
                     value = state.country?.name ?: "",
                     placeholder = stringResource(R.string.label_input_country_edit_profile_screen),
-                    iconType = IconType.IC_RIGHT,
+                    illustrationType = IllustrationType.IC_RIGHT,
                     error = stringResource(inputErrorMessage(COUNTRY)),
                     isError = state.inputError == COUNTRY,
                     onClick = navigateToCountryScreen

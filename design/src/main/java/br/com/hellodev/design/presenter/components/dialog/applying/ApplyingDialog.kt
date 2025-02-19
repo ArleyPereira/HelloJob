@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import br.com.hellodev.core.enums.dialog.applying.ApplyingDialogType.APPLYING_ERROR
 import br.com.hellodev.core.enums.dialog.applying.ApplyingDialogType.APPLYING_SUCCESS
-import br.com.hellodev.core.enums.icon.IconType.IC_ERROR
-import br.com.hellodev.core.enums.icon.IconType.IC_SUCCESS
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_ERROR
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_SUCCESS
 import br.com.hellodev.design.model.dialog.applying.ApplyingDialogDS
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SecondaryButton

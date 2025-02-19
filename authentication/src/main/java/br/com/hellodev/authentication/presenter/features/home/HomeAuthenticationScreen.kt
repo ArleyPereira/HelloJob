@@ -29,9 +29,9 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.authentication.R
-import br.com.hellodev.core.enums.icon.IconType.IC_FACEBOOK
-import br.com.hellodev.core.enums.icon.IconType.IC_GITHUB
-import br.com.hellodev.core.enums.icon.IconType.IC_GOOGLE
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FACEBOOK
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_GITHUB
+import br.com.hellodev.core.enums.illustration.IllustrationType.IC_GOOGLE
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SocialButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerWithText
@@ -90,7 +90,7 @@ private fun HomeAuthenticationContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "Continuar com o Google",
-                    iconType = IC_GOOGLE,
+                    illustrationType = IC_GOOGLE,
                     isLoading = false,
                     onClick = {}
                 )
@@ -101,7 +101,7 @@ private fun HomeAuthenticationContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "Continuar com o Facebook",
-                    iconType = IC_FACEBOOK,
+                    illustrationType = IC_FACEBOOK,
                     isLoading = false,
                     onClick = {}
                 )
@@ -112,7 +112,7 @@ private fun HomeAuthenticationContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "Continuar com o Github",
-                    iconType = IC_GITHUB,
+                    illustrationType = IC_GITHUB,
                     isLoading = false,
                     onClick = {}
                 )

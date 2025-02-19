@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.core.enums.icon.IconType
+import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
@@ -103,7 +103,7 @@ private fun CountryContent(
                     value = state.searchQuery,
                     placeholder = stringResource(R.string.text_placeholder_country_screen),
                     leadingIcon = {
-                        DefaultIcon(type = IconType.IC_SEARCH)
+                        DefaultIcon(type = IllustrationType.IC_SEARCH)
                     },
                     onValueChange = {
                         action(CountryAction.OnSearch(query = it))

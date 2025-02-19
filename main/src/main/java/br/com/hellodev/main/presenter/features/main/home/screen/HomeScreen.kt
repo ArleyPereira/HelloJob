@@ -1,4 +1,4 @@
-package br.com.hellodev.main.presenter.features.home.screen
+package br.com.hellodev.main.presenter.features.main.home.screen
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.tween

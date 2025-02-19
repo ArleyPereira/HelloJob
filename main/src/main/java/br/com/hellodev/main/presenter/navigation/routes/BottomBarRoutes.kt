@@ -27,4 +27,10 @@ sealed class BottomBarRoutes {
     @Serializable
     data object ContactInformation : BottomBarRoutes()
 
+    @Serializable
+    data object Summary : BottomBarRoutes()
+
+    @Serializable
+    data object SalaryExpectation : BottomBarRoutes()
+
 }
