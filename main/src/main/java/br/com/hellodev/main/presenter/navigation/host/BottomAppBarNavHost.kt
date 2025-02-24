@@ -19,6 +19,7 @@ import br.com.hellodev.main.presenter.features.salary.screen.SalaryExpectationSc
 import br.com.hellodev.main.presenter.features.saved.screen.SavedScreen
 import br.com.hellodev.main.presenter.features.summary.screen.SummaryScreen
 import br.com.hellodev.main.presenter.navigation.routes.BottomBarRoutes
+import br.com.hellodev.profile.presenter.features.profile.screen.ProfileScreen
 
 @Composable
 fun BottomAppBarNavHost(
@@ -69,6 +70,9 @@ fun BottomAppBarNavHost(
 
         composable<BottomBarRoutes.Account> {
             AccountScreen(
+                navigateToProfileScreen = {
+                    navHostController.navigate(BottomBarRoutes.Profile)
+                },
                 navigateToContactInformationScreen = {
                     navHostController.navigate(BottomBarRoutes.ContactInformation)
                 },
@@ -78,6 +82,15 @@ fun BottomAppBarNavHost(
                 navigateToSalaryExpectationScreen = {
                     navHostController.navigate(BottomBarRoutes.SalaryExpectation)
                 }
+            )
+        }
+
+        composable<BottomBarRoutes.Profile> {
+            ProfileScreen(
+                navigateToCountryScreen = {
+
+                },
+                onBackPressed = navHostController::popBackStackSafely
             )
         }
 

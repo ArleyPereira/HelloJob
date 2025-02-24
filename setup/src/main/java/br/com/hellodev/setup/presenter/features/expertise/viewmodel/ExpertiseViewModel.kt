@@ -2,7 +2,7 @@ package br.com.hellodev.setup.presenter.features.expertise.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.setup.domain.model.expertise.Expertise
+import br.com.hellodev.common.domain.model.expertise.Expertise
 import br.com.hellodev.setup.presenter.features.expertise.action.ExpertiseAction
 import br.com.hellodev.setup.presenter.features.expertise.state.ExpertiseState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,12 +30,12 @@ class ExpertiseViewModel : ViewModel() {
         viewModelScope.launch {
             _state.value = _state.value.copy(
                 isLoading = false,
-                expertises = Expertise.getExpertises()
+                expertises = br.com.hellodev.common.domain.model.expertise.Expertise.getExpertises()
             )
         }
     }
 
-    private fun onSelect(expertise: Expertise) {
+    private fun onSelect(expertise: br.com.hellodev.common.domain.model.expertise.Expertise) {
         val selectedExpertise = _state.value.expertises.first { it.id == expertise.id }
         val selectedExpertises = _state.value.selectedExpertises.toMutableList()
 

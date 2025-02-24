@@ -39,6 +39,7 @@ import dashedBorder
 @Composable
 fun UploadUI(
     modifier: Modifier = Modifier,
+    label: String? = null,
     isLoading: Boolean = false,
     uri: Uri? = null,
     isError: Boolean = false,
@@ -54,147 +55,168 @@ fun UploadUI(
         HelloTheme.colorScheme.upload.border
     }
 
-    uri?.let {
-        Card(
-            onClick = { openPdf(context, uri) },
-            modifier = modifier
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = HelloTheme.colorScheme.alertAlphaColor
-            )
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                DefaultIcon(
-                    type = IllustrationType.IC_PDF,
-                    onClick = { openPdf(context, uri) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        label?.let {
+            Text(
+                text = it,
+                style = TextStyle(
+                    fontSize = 16.sp,
+                    lineHeight = 22.4.sp,
+                    fontFamily = UrbanistFamily,
+                    fontWeight = FontWeight(500),
+                    color = HelloTheme.colorScheme.text.color,
+                    letterSpacing = 0.2.sp
                 )
+            )
 
-                Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.height(12.dp))
+        }
 
-                Column(
+        uri?.let {
+            Card(
+                onClick = { openPdf(context, uri) },
+                modifier = modifier
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = HelloTheme.colorScheme.alertAlphaColor
+                )
+            ) {
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(1f)
+                        .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = getFileName(context, uri),
-                        style = TextStyle(
-                            lineHeight = 22.4.sp,
-                            fontFamily = UrbanistFamily,
-                            fontWeight = FontWeight(700),
-                            color = HelloTheme.colorScheme.text.color,
-                            letterSpacing = 0.2.sp
-                        ),
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                    DefaultIcon(
+                        type = IllustrationType.IC_PDF,
+                        onClick = { openPdf(context, uri) }
                     )
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.width(12.dp))
 
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
+                    ) {
+                        Text(
+                            text = getFileName(context, uri),
+                            style = TextStyle(
+                                lineHeight = 22.4.sp,
+                                fontFamily = UrbanistFamily,
+                                fontWeight = FontWeight(700),
+                                color = HelloTheme.colorScheme.text.color,
+                                letterSpacing = 0.2.sp
+                            ),
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = formatFileSize(getFileSize(context, uri)),
+                            style = TextStyle(
+                                fontSize = 12.sp,
+                                fontFamily = UrbanistFamily,
+                                fontWeight = FontWeight(500),
+                                color = HelloTheme.colorScheme.text.color,
+                                letterSpacing = 0.2.sp
+                            )
+                        )
+                    }
+
+                    DefaultIcon(
+                        type = IllustrationType.IC_CLOSE,
+                        onClick = onDeleteClick
+                    )
+                }
+            }
+        } ?: run {
+            Column(
+                modifier = modifier
+                    .fillMaxWidth()
+            ) {
+                Card(
+                    onClick = onLoadClick,
+                    modifier = Modifier,
+                    shape = RoundedCornerShape(20.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = HelloTheme.colorScheme.upload.background
+                    ),
+                    content = {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .dashedBorder(
+                                    color = borderColor,
+                                    shape = RoundedCornerShape(20.dp),
+                                    strokeWidth = 2.dp,
+                                    dashLength = 16.dp,
+                                    gapLength = 16.dp
+                                )
+                                .padding(32.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            if (isLoading) {
+                                CircularProgressLoading()
+
+                                Spacer(modifier = Modifier.height(16.dp))
+
+                                Text(
+                                    text = "Aguarde...",
+                                    style = TextStyle(
+                                        lineHeight = 19.6.sp,
+                                        fontFamily = UrbanistFamily,
+                                        fontWeight = FontWeight(600),
+                                        color = HelloTheme.colorScheme.upload.text,
+                                        textAlign = TextAlign.Center,
+                                        letterSpacing = 0.2.sp
+                                    )
+                                )
+                            } else {
+                                DefaultIcon(
+                                    type = IllustrationType.IC_UPLOAD,
+                                    onClick = onLoadClick
+                                )
+
+                                Spacer(modifier = Modifier.height(16.dp))
+
+                                Text(
+                                    text = "Escolher arquivo",
+                                    style = TextStyle(
+                                        lineHeight = 19.6.sp,
+                                        fontFamily = UrbanistFamily,
+                                        fontWeight = FontWeight(600),
+                                        color = HelloTheme.colorScheme.upload.text,
+                                        textAlign = TextAlign.Center,
+                                        letterSpacing = 0.2.sp
+                                    )
+                                )
+                            }
+                        }
+                    }
+                )
+
+                if (isError) {
                     Text(
-                        text = formatFileSize(getFileSize(context, uri)),
+                        text = error,
+                        modifier = Modifier
+                            .padding(start = 16.dp, top = 4.dp),
                         style = TextStyle(
                             fontSize = 12.sp,
+                            lineHeight = 19.6.sp,
                             fontFamily = UrbanistFamily,
-                            fontWeight = FontWeight(500),
-                            color = HelloTheme.colorScheme.text.color,
+                            color = HelloTheme.colorScheme.alertColor,
                             letterSpacing = 0.2.sp
                         )
                     )
                 }
-
-                DefaultIcon(
-                    type = IllustrationType.IC_CLOSE,
-                    onClick = onDeleteClick
-                )
-            }
-        }
-    } ?: run {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-        ) {
-            Card(
-                onClick = onLoadClick,
-                modifier = Modifier,
-                shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = HelloTheme.colorScheme.upload.background
-                ),
-                content = {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .dashedBorder(
-                                color = borderColor,
-                                shape = RoundedCornerShape(20.dp),
-                                strokeWidth = 2.dp,
-                                dashLength = 16.dp,
-                                gapLength = 16.dp
-                            )
-                            .padding(32.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        if (isLoading) {
-                            CircularProgressLoading()
-
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            Text(
-                                text = "Aguarde...",
-                                style = TextStyle(
-                                    lineHeight = 19.6.sp,
-                                    fontFamily = UrbanistFamily,
-                                    fontWeight = FontWeight(600),
-                                    color = HelloTheme.colorScheme.upload.text,
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 0.2.sp
-                                )
-                            )
-                        } else {
-                            DefaultIcon(
-                                type = IllustrationType.IC_UPLOAD,
-                                onClick = onLoadClick
-                            )
-
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            Text(
-                                text = "Escolher arquivo",
-                                style = TextStyle(
-                                    lineHeight = 19.6.sp,
-                                    fontFamily = UrbanistFamily,
-                                    fontWeight = FontWeight(600),
-                                    color = HelloTheme.colorScheme.upload.text,
-                                    textAlign = TextAlign.Center,
-                                    letterSpacing = 0.2.sp
-                                )
-                            )
-                        }
-                    }
-                }
-            )
-
-            if (isError) {
-                Text(
-                    text = error,
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 4.dp),
-                    style = TextStyle(
-                        fontSize = 12.sp,
-                        lineHeight = 19.6.sp,
-                        fontFamily = UrbanistFamily,
-                        color = HelloTheme.colorScheme.alertColor,
-                        letterSpacing = 0.2.sp
-                    )
-                )
             }
         }
     }
@@ -214,6 +236,7 @@ private fun UploadUIEmptyPreview() {
             UploadUI(
                 modifier = Modifier
                     .padding(24.dp),
+                label = "Upload currículo",
                 uri = null,
                 onLoadClick = {},
                 onDeleteClick = {}

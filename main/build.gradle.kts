@@ -40,6 +40,7 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":job-search"))
     implementation(project(":job-details"))
+    implementation(project(":features:profile"))
 
     // Compose
     implementation(platform(libs.compose.bom))

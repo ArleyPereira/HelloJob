@@ -1,6 +1,6 @@
 package br.com.hellodev.setup.presenter.features.country.state
 
-import br.com.hellodev.setup.domain.model.country.Country
+import br.com.hellodev.common.domain.model.country.Country
 
 data class CountryState(
     val isLoading: Boolean = true,

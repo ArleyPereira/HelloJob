@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -64,6 +65,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AccountScreen(
+    navigateToProfileScreen: () -> Unit,
     navigateToContactInformationScreen: () -> Unit,
     navigateToSummaryScreen: () -> Unit,
     navigateToSalaryExpectationScreen: () -> Unit
@@ -85,6 +87,7 @@ fun AccountScreen(
         onUploadClick = {
             pickPdfLauncher.launch(arrayOf("application/pdf"))
         },
+        navigateToProfileScreen = navigateToProfileScreen,
         navigateToContactInformationScreen = navigateToContactInformationScreen,
         navigateToSummaryScreen = navigateToSummaryScreen,
         navigateToSalaryExpectationScreen = navigateToSalaryExpectationScreen,
@@ -97,6 +100,7 @@ fun AccountContent(
     state: AccountState,
     action: (AccountAction) -> Unit,
     onUploadClick: () -> Unit,
+    navigateToProfileScreen: () -> Unit,
     navigateToContactInformationScreen: () -> Unit,
     navigateToSummaryScreen: () -> Unit,
     navigateToSalaryExpectationScreen: () -> Unit,
@@ -139,11 +143,12 @@ fun AccountContent(
                         bottom = WindowInsets.navigationBars.asPaddingValues()
                             .calculateBottomPadding() * 3
                     ),
-                verticalArrangement = Arrangement.spacedBy(24.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .clickable { navigateToProfileScreen() },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     ImageUI(
@@ -193,7 +198,10 @@ fun AccountContent(
                     )
                 }
 
-                HorizontalDividerUI()
+                HorizontalDividerUI(
+                    modifier = Modifier
+                        .padding(vertical = 8.dp)
+                )
 
                 AccountCard(
                     title = "Informações de contato",
@@ -401,6 +409,7 @@ private fun AccountPreview() {
             state = AccountState(),
             action = {},
             onUploadClick = {},
+            navigateToProfileScreen = {},
             navigateToContactInformationScreen = {},
             navigateToSummaryScreen = {},
             navigateToSalaryExpectationScreen = {}

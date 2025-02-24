@@ -3,8 +3,8 @@ package br.com.hellodev.hellojob.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import br.com.hellodev.main.presenter.navigation.host.mainNavHost
-import br.com.hellodev.main.presenter.navigation.routes.MainRoutes
+import br.com.hellodev.onboarding.presenter.navigation.host.onboardingNavHost
+import br.com.hellodev.onboarding.presenter.navigation.routes.OnboardingRoutes
 
 @Composable
 fun AppNavHost(
@@ -12,9 +12,10 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = MainRoutes.Graph,
+        startDestination = OnboardingRoutes.Graph,
+        //startDestination = MainRoutes.Graph,
     ) {
-        mainNavHost(navHostController = navHostController)
-        //onboardingNavHost(navHostController = navHostController)
+        //mainNavHost(navHostController = navHostController)
+        onboardingNavHost(navHostController = navHostController)
     }
 }

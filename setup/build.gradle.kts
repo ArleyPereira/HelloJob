@@ -35,8 +35,16 @@ android {
 }
 
 dependencies {
+    // Core
     implementation(project(":core"))
+
+    // Common
+    implementation(project(":common"))
+
+    // Design
     implementation(project(":design"))
+
+    // Main
     implementation(project(":main"))
 
     // Compose

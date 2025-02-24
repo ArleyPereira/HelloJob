@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":main"))
     implementation(project(":job-search"))
     implementation(project(":job-details"))
+    implementation(project(":features:profile"))
 
     // Koin
     implementation(libs.koin.compose)

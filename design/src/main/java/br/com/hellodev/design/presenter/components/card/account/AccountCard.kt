@@ -86,7 +86,7 @@ fun AccountCard(
         onClick = { expandedState = !expandedState },
         modifier = modifier
             .fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
+        shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
             containerColor = HelloTheme.colorScheme.screen.backgroundSecondary
         ),

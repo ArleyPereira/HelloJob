@@ -4,17 +4,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import br.com.hellodev.core.constants.navigation.PROFILE_SCREEN_KEY
 import br.com.hellodev.core.extensions.popBackStackSafely
-import br.com.hellodev.core.serialization.getObject
-import br.com.hellodev.core.serialization.putObject
 import br.com.hellodev.main.presenter.navigation.host.mainNavHost
 import br.com.hellodev.main.presenter.navigation.routes.MainRoutes
 import br.com.hellodev.setup.presenter.features.country.screen.CountryScreen
 import br.com.hellodev.setup.presenter.features.expertise.screen.ExpertiseScreen
-import br.com.hellodev.setup.presenter.features.genre.screen.GenreScreen
-import br.com.hellodev.setup.presenter.features.profile.parameter.SetupProfileParameter
-import br.com.hellodev.setup.presenter.features.profile.screen.SetupProfileScreen
 import br.com.hellodev.setup.presenter.navigation.routes.SetupRoutes
 
 fun NavGraphBuilder.setupNavHost(navHostController: NavHostController) {
@@ -23,53 +17,16 @@ fun NavGraphBuilder.setupNavHost(navHostController: NavHostController) {
     ) {
         composable<SetupRoutes.Country> {
             CountryScreen(
-                onBackPressed = { country ->
-                    val setupProfileParameter = SetupProfileParameter(country = country)
-                    navHostController.previousBackStackEntry?.savedStateHandle?.putObject(
-                        PROFILE_SCREEN_KEY,
-                        setupProfileParameter
-                    )
-                    navHostController.popBackStackSafely()
-                }
+                onBackPressed = navHostController::popBackStackSafely
             )
         }
 
         composable<SetupRoutes.Expertise> {
             ExpertiseScreen(
                 navigateToProfileScreen = {
-                    navHostController.navigate(SetupRoutes.Profile())
-                },
-                onBackPressed = navHostController::popBackStackSafely
-            )
-        }
-
-        composable<SetupRoutes.Profile> { backStackEntry ->
-            val parameter = backStackEntry.savedStateHandle.getObject<SetupProfileParameter>(PROFILE_SCREEN_KEY)
-            SetupProfileScreen(
-                parameter = parameter,
-                navigateToCountryScreen = {
-                    navHostController.navigate(SetupRoutes.Country)
-                },
-                navigateToGenreScreen = {
-                    navHostController.navigate(SetupRoutes.Genre)
-                },
-                navigateToHomeScreen = {
                     navHostController.navigate(MainRoutes.Graph)
                 },
                 onBackPressed = navHostController::popBackStackSafely
-            )
-        }
-
-        composable<SetupRoutes.Genre> {
-            GenreScreen(
-                onBackPressed = { genre ->
-                    val setupProfileParameter = SetupProfileParameter(genre = genre)
-                    navHostController.previousBackStackEntry?.savedStateHandle?.putObject(
-                        PROFILE_SCREEN_KEY,
-                        setupProfileParameter
-                    )
-                    navHostController.popBackStackSafely()
-                }
             )
         }
 

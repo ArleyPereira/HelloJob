@@ -1,8 +1,8 @@
 package br.com.hellodev.setup.presenter.features.country.action
 
-import br.com.hellodev.setup.domain.model.country.Country
+import br.com.hellodev.common.domain.model.country.Country
 
 sealed class CountryAction {
     data class OnSearch(val query: String): CountryAction()
-    data class OnSelect(val country: Country): CountryAction()
+    data class OnSelect(val country: br.com.hellodev.common.domain.model.country.Country): CountryAction()
 }

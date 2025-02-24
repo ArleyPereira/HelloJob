@@ -9,19 +9,4 @@
     <!--    ExpertiseScreen-->
     <string name="text_button_next_expertise_screen">Continuar</string>
 
-    <!--    EditProfileScreen-->
-    <string name="label_title_edit_profile_screen">Preencha seu perfil</string>
-    <string name="label_input_first_name_edit_profile_screen">Nome</string>
-    <string name="label_input_surname_edit_profile_screen">Sobrenome</string>
-    <string name="label_input_date_birth_edit_profile_screen">Aniversário</string>
-    <string name="label_input_email_edit_profile_screen">E-mail</string>
-    <string name="label_input_phone_edit_profile_screen">Telefone</string>
-    <string name="label_input_genre_edit_profile_screen">Gênero</string>
-    <string name="label_input_country_edit_profile_screen">País</string>
-    <string name="label_button_update_edit_profile_screen">Atualizar</string>
-
-    <!--    GenreScreen-->
-    <string name="text_title_genre_screen">Seu gêneros</string>
-    <string name="text_button_select_genre_screen">Selecionar</string>
-
 </resources>

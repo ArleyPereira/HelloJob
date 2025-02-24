@@ -20,7 +20,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -41,6 +40,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.hellodev.core.enums.illustration.IllustrationType
+import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.icon.default.getIconWrawable
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
@@ -49,7 +49,7 @@ import br.com.hellodev.design.presenter.theme.UrbanistFamily
 @Composable
 fun TextFieldDropdown(
     modifier: Modifier = Modifier,
-    value: String = "",
+    items: List<String>,
     label: String = "",
     illustrationType: IllustrationType,
     isError: Boolean = false,
@@ -57,13 +57,8 @@ fun TextFieldDropdown(
     error: String = "",
     onOptionSelected: (String) -> Unit
 ) {
-    val options: List<String> = listOf(
-        "Mensal",
-        "Semestral",
-        "Anual"
-    )
     var expanded by remember { mutableStateOf(false) }
-    val textFieldState = rememberTextFieldState(options[0])
+    val textFieldState = rememberTextFieldState(items[0])
     val rotation by animateFloatAsState(
         targetValue = if (expanded) {
             180f
@@ -161,9 +156,9 @@ fun TextFieldDropdown(
                 containerColor = HelloTheme.colorScheme.textField.background,
                 shadowElevation = 0.dp,
             ) {
-                HorizontalDivider()
+                HorizontalDividerUI()
 
-                options.forEach { option ->
+                items.forEach { option ->
                     DropdownMenuItem(
                         text = {
                             Text(
@@ -192,10 +187,15 @@ fun TextFieldDropdown(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @PreviewLightDark
 @Composable
 fun TextFieldDropdownPreview() {
+    val item: List<String> = listOf(
+        "Mensal",
+        "Semestral",
+        "Anual"
+    )
+
     HelloTheme {
         Column(
             modifier = Modifier
@@ -207,6 +207,7 @@ fun TextFieldDropdownPreview() {
             TextFieldDropdown(
                 modifier = Modifier
                     .padding(24.dp),
+                items = item,
                 label = "teste",
                 illustrationType = IllustrationType.IC_RIGHT,
                 onOptionSelected = {}

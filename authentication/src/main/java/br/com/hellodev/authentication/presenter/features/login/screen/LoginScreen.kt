@@ -163,6 +163,7 @@ private fun LoginContent(
                 TextFieldUI(
                     modifier = Modifier,
                     value = state.email,
+                    label = stringResource(id = R.string.label_input_email_login_screen),
                     placeholder = stringResource(id = R.string.label_input_email_login_screen),
                     leadingIcon = {
                         DefaultIcon(type = IllustrationType.IC_EMAIL_FILL)
@@ -186,6 +187,7 @@ private fun LoginContent(
                 TextFieldPasswordUI(
                     modifier = Modifier,
                     value = state.password,
+                    label = stringResource(id = R.string.label_input_password_login_screen),
                     placeholder = stringResource(id = R.string.label_input_password_login_screen),
                     onValueChange = {
                         action(

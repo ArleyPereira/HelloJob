@@ -3,6 +3,7 @@ package br.com.hellodev.design.presenter.components.textfield.default
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -67,11 +68,44 @@ fun TextFieldUI(
         handleColor = HelloTheme.colorScheme.defaultColor,
         backgroundColor = HelloTheme.colorScheme.alphaDefaultColor
     )
+    val borderColor = if (isFocused && isError) {
+        HelloTheme.colorScheme.alertColor
+    } else if (isFocused) {
+        HelloTheme.colorScheme.defaultColor
+    } else if (isError) {
+        HelloTheme.colorScheme.alertColor
+    } else {
+        Color.Transparent
+    }
+
+    val backgroundColor = if (isFocused && isError) {
+        HelloTheme.colorScheme.alertAlphaColor
+    } else if (isFocused) {
+        HelloTheme.colorScheme.alphaDefaultColor
+    } else if (isError) {
+        HelloTheme.colorScheme.alertAlphaColor
+    } else {
+        HelloTheme.colorScheme.textField.background
+    }
 
     Column(
         modifier = modifier
             .fillMaxWidth()
     ) {
+        Text(
+            text = label,
+            style = TextStyle(
+                fontSize = 16.sp,
+                lineHeight = 22.4.sp,
+                fontFamily = UrbanistFamily,
+                fontWeight = FontWeight(500),
+                color = HelloTheme.colorScheme.text.color,
+                letterSpacing = 0.2.sp
+            )
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
         CompositionLocalProvider(LocalTextSelectionColors provides customTextSelectionColors) {
             TextField(
                 value = value,
@@ -91,12 +125,8 @@ fun TextFieldUI(
                     .height(height)
                     .border(
                         width = 1.dp,
-                        color = if (isError) {
-                            HelloTheme.colorScheme.alertColor
-                        } else {
-                            Color.Transparent
-                        },
-                        shape = RoundedCornerShape(16.dp)
+                        color = borderColor,
+                        shape = RoundedCornerShape(12.dp)
                     )
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
@@ -104,38 +134,38 @@ fun TextFieldUI(
                     .focusRequester(focusRequester),
                 enabled = enabled,
                 readOnly = readOnly,
-                label = {
-                    Text(
-                        fontFamily = UrbanistFamily,
-                        text = label,
-                        style = if (isFocused) {
-                            TextStyle(
-                                fontSize = 12.sp,
-                                lineHeight = 11.sp,
-                                fontFamily = UrbanistFamily,
-                                fontWeight = FontWeight(700),
-                                color = HelloTheme.colorScheme.defaultColor
-                            )
-                        } else {
-                            TextStyle(
-                                lineHeight = 15.4.sp,
-                                fontFamily = UrbanistFamily,
-                                color = HelloTheme.colorScheme.textField.placeholder
-                            )
-                        }
-                    )
-                },
-//                placeholder = {
+//                label = {
 //                    Text(
-//                        text = placeholder,
-//                        style = TextStyle(
-//                            lineHeight = 19.6.sp,
-//                            fontFamily = UrbanistFamily,
-//                            color = HelloTheme.colorScheme.textField.placeholder,
-//                            letterSpacing = 0.2.sp
-//                        )
+//                        fontFamily = UrbanistFamily,
+//                        text = label,
+//                        style = if (isFocused) {
+//                            TextStyle(
+//                                fontSize = 12.sp,
+//                                lineHeight = 11.sp,
+//                                fontFamily = UrbanistFamily,
+//                                fontWeight = FontWeight(700),
+//                                color = HelloTheme.colorScheme.defaultColor
+//                            )
+//                        } else {
+//                            TextStyle(
+//                                lineHeight = 15.4.sp,
+//                                fontFamily = UrbanistFamily,
+//                                color = HelloTheme.colorScheme.textField.placeholder
+//                            )
+//                        }
 //                    )
 //                },
+                placeholder = {
+                    Text(
+                        text = placeholder,
+                        style = TextStyle(
+                            lineHeight = 19.6.sp,
+                            fontFamily = UrbanistFamily,
+                            color = HelloTheme.colorScheme.textField.placeholder,
+                            letterSpacing = 0.2.sp
+                        )
+                    )
+                },
                 leadingIcon = leadingIcon,
                 trailingIcon = trailingIcon,
                 isError = isError,
@@ -144,13 +174,13 @@ fun TextFieldUI(
                 singleLine = singleLine,
                 shape = RoundedCornerShape(16.dp),
                 colors = TextFieldDefaults.colors(
-                    unfocusedContainerColor = HelloTheme.colorScheme.textField.background,
-                    focusedContainerColor = HelloTheme.colorScheme.textField.background,
-                    disabledContainerColor = HelloTheme.colorScheme.textField.background,
+                    unfocusedContainerColor = backgroundColor,
+                    focusedContainerColor = backgroundColor,
+                    disabledContainerColor = backgroundColor,
+                    errorContainerColor = backgroundColor,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
-                    errorContainerColor = HelloTheme.colorScheme.alertAlphaColor,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedTextColor = HelloTheme.colorScheme.textField.text,
                     focusedTextColor = HelloTheme.colorScheme.textField.text,
@@ -204,7 +234,8 @@ private fun TextFieldUIPreview() {
                 value = textValue,
                 isError = true,
                 error = "Nome inválido",
-                placeholder = "Ex: Arley Santana",
+                label = "label",
+                placeholder = "placeholder",
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_lock_password),
@@ -233,7 +264,8 @@ private fun TextFieldUIPreview() {
                 modifier = Modifier
                     .padding(32.dp),
                 value = textValue,
-                placeholder = "Ex: Arley Santana",
+                label = "label",
+                placeholder = "placeholder",
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_lock_password),

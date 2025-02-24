@@ -4,12 +4,11 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
@@ -18,18 +17,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.core.enums.dialog.applying.ApplyingDialogType.APPLYING_ERROR
 import br.com.hellodev.core.enums.dialog.applying.ApplyingDialogType.APPLYING_SUCCESS
@@ -46,7 +41,6 @@ import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.components.upload.UploadUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
-import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.job_details.R
 import br.com.hellodev.job_details.presenter.features.applying.action.ApplyingAction
 import br.com.hellodev.job_details.presenter.features.applying.state.ApplyingState
@@ -123,27 +117,16 @@ fun ApplyingContent(
                     .background(HelloTheme.colorScheme.screen.backgroundPrimary)
                     .padding(24.dp)
                     .padding(paddingValues)
-                    .imePadding()
+                    .imePadding(),
+                verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
-                Text(
-                    text = stringResource(R.string.label_full_name_applying_screen),
-                    style = TextStyle(
-                        lineHeight = 22.4.sp,
-                        fontFamily = UrbanistFamily,
-                        fontWeight = FontWeight(500),
-                        color = HelloTheme.colorScheme.text.color,
-                        letterSpacing = 0.2.sp
-                    )
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
                 TextFieldUI(
                     modifier = Modifier,
                     value = state.fullName,
                     isError = state.inputError == FULL_NAME,
                     error = stringResource(inputErrorMessage(FULL_NAME)),
-                    placeholder = "Nome completo",
+                    label = stringResource(R.string.label_full_name_applying_screen),
+                    placeholder = stringResource(R.string.label_full_name_applying_screen),
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Next
                     ),
@@ -152,27 +135,13 @@ fun ApplyingContent(
                     }
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Text(
-                    text = stringResource(R.string.label_email_applying_screen),
-                    style = TextStyle(
-                        lineHeight = 22.4.sp,
-                        fontFamily = UrbanistFamily,
-                        fontWeight = FontWeight(500),
-                        color = HelloTheme.colorScheme.text.color,
-                        letterSpacing = 0.2.sp
-                    )
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
                 TextFieldUI(
                     modifier = Modifier,
                     value = state.email,
                     isError = state.inputError == EMAIL,
                     error = stringResource(inputErrorMessage(EMAIL)),
-                    placeholder = "Email",
+                    label = stringResource(R.string.label_email_applying_screen),
+                    placeholder = stringResource(R.string.label_email_applying_screen),
                     trailingIcon = {
                         DefaultIcon(type = IllustrationType.IC_EMAIL_FILL)
                     },
@@ -184,22 +153,8 @@ fun ApplyingContent(
                     }
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Text(
-                    text = stringResource(R.string.label_upload_curriculum_applying_screen),
-                    style = TextStyle(
-                        lineHeight = 22.4.sp,
-                        fontFamily = UrbanistFamily,
-                        fontWeight = FontWeight(500),
-                        color = HelloTheme.colorScheme.text.color,
-                        letterSpacing = 0.2.sp
-                    )
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
                 UploadUI(
+                    label = stringResource(R.string.label_upload_curriculum_applying_screen),
                     isLoading = state.isUploading,
                     uri = state.uriPdf,
                     isError = state.inputError == UPLOAD,
@@ -210,24 +165,10 @@ fun ApplyingContent(
                     }
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Text(
-                    text = stringResource(R.string.label_cover_letter_applying_screen),
-                    style = TextStyle(
-                        lineHeight = 22.4.sp,
-                        fontFamily = UrbanistFamily,
-                        fontWeight = FontWeight(500),
-                        color = HelloTheme.colorScheme.text.color,
-                        letterSpacing = 0.2.sp
-                    )
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
                 TextFieldUI(
                     modifier = Modifier,
                     value = state.coverLetter,
+                    label = stringResource(R.string.label_cover_letter_applying_screen),
                     placeholder = stringResource(R.string.label_cover_letter_applying_screen),
                     height = 160.dp,
                     singleLine = false,
@@ -241,10 +182,11 @@ fun ApplyingContent(
                 ApplyingDialog(
                     dialog = it,
                     onClick = {
-                        when(state.dialogDS.type){
+                        when (state.dialogDS.type) {
                             APPLYING_ERROR -> {
                                 action(ApplyingAction.Send)
                             }
+
                             APPLYING_SUCCESS -> {
                                 // navegar para a tela de inscrições
                             }

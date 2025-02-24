@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.hellodev.common.domain.model.country.Country
 import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
@@ -30,7 +31,6 @@ import br.com.hellodev.design.presenter.components.radio.RadioButtonUi
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.setup.R
-import br.com.hellodev.setup.domain.model.country.Country
 import br.com.hellodev.setup.presenter.features.country.action.CountryAction
 import br.com.hellodev.setup.presenter.features.country.state.CountryState
 import br.com.hellodev.setup.presenter.features.country.viewmodel.CountryViewModel
@@ -38,7 +38,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CountryScreen(
-    onBackPressed: (Country?) -> Unit
+    onBackPressed: () -> Unit
 ) {
     val viewModel = koinViewModel<CountryViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -54,13 +54,13 @@ fun CountryScreen(
 private fun CountryContent(
     state: CountryState,
     action: (CountryAction) -> Unit,
-    onBackPressed: (Country?) -> Unit
+    onBackPressed: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBarUI(
                 title = stringResource(R.string.text_title_country_screen),
-                onClick = { onBackPressed(null) }
+                onClick = onBackPressed
             )
         },
         bottomBar = {
@@ -81,7 +81,7 @@ private fun CountryContent(
                         ),
                     text = stringResource(R.string.text_button_select_country_screen),
                     enabled = state.selectedCountry != null,
-                    onClick = { onBackPressed(state.selectedCountry) }
+                    onClick = onBackPressed
                 )
             }
         },

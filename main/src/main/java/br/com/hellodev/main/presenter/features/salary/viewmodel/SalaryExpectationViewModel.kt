@@ -3,7 +3,10 @@ package br.com.hellodev.main.presenter.features.salary.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.core.enums.input.InputType
-import br.com.hellodev.core.enums.input.InputType.*
+import br.com.hellodev.core.enums.input.InputType.SALARY_CURRENCY
+import br.com.hellodev.core.enums.input.InputType.SALARY_FREQUENCY
+import br.com.hellodev.core.enums.input.InputType.SALARY_MAXIMUM
+import br.com.hellodev.core.enums.input.InputType.SALARY_MINIMUM
 import br.com.hellodev.main.presenter.features.salary.action.SalaryExpectationAction
 import br.com.hellodev.main.presenter.features.salary.state.SalaryExpectationState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,7 +39,9 @@ class SalaryExpectationViewModel(
 
     private fun getSaveSalaryExpectation() {
         viewModelScope.launch {
-
+            _state.update { currentState ->
+                currentState.copy(frequencies = getFrequencies())
+            }
         }
     }
 
@@ -84,6 +89,14 @@ class SalaryExpectationViewModel(
         val frequency = _state.value.frequency.isNotEmpty()
 
         return minimumSalary && currency && frequency
+    }
+
+    private fun getFrequencies(): List<String> {
+        return listOf(
+            "Mensal",
+            "Semestral",
+            "Anual"
+        )
     }
 
     private fun clearError() {

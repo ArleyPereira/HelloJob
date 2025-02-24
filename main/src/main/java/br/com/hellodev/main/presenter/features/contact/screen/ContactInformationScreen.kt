@@ -23,7 +23,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.input.InputType.ADDRESS
 import br.com.hellodev.core.enums.input.InputType.EMAIL
 import br.com.hellodev.core.enums.input.InputType.PHONE
@@ -31,10 +30,8 @@ import br.com.hellodev.core.functions.inputErrorMessage
 import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
-import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
-import br.com.hellodev.design.presenter.theme.iconTintColor
 import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation
 import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation.Companion.PHONE_MASK
 import br.com.hellodev.main.presenter.features.contact.action.ContactInformationAction
@@ -111,15 +108,6 @@ fun ContactInformationContent(
                     keyboardOptions = KeyboardOptions(
                         imeAction = ImeAction.Next
                     ),
-                    leadingIcon = {
-                        DefaultIcon(
-                            type = IllustrationType.IC_LOCATION_FILL,
-                            tint = iconTintColor(
-                                filled = state.address.isNotEmpty(),
-                                isError = state.inputError == ADDRESS
-                            )
-                        )
-                    },
                     onValueChange = {
                         action(ContactInformationAction.OnTextFieldChanged(it, ADDRESS))
                     }
@@ -136,15 +124,6 @@ fun ContactInformationContent(
                     ),
                     maxLength = MaskVisualTransformation.PHONE_MASK_SIZE,
                     visualTransformation = MaskVisualTransformation(PHONE_MASK),
-                    leadingIcon = {
-                        DefaultIcon(
-                            type = IllustrationType.IC_PHONE_FILL,
-                            tint = iconTintColor(
-                                filled = state.phone.isNotEmpty(),
-                                isError = state.inputError == PHONE
-                            )
-                        )
-                    },
                     onValueChange = {
                         action(ContactInformationAction.OnTextFieldChanged(it, PHONE))
                     }
@@ -159,15 +138,6 @@ fun ContactInformationContent(
                         keyboardType = KeyboardType.Email,
                         imeAction = ImeAction.Done
                     ),
-                    leadingIcon = {
-                        DefaultIcon(
-                            type = IllustrationType.IC_EMAIL_FILL,
-                            tint = iconTintColor(
-                                filled = state.email.isNotEmpty(),
-                                isError = state.inputError == EMAIL
-                            )
-                        )
-                    },
                     onValueChange = {
                         action(ContactInformationAction.OnTextFieldChanged(it, EMAIL))
                     }

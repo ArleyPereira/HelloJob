@@ -11,15 +11,6 @@ sealed class SetupRoutes {
     data object Country: SetupRoutes()
 
     @Serializable
-    data object Genre: SetupRoutes()
-
-    @Serializable
     data object Expertise: SetupRoutes()
-
-    @Serializable
-    data class Profile(
-        val genre: String? = "",
-        val country: String? = ""
-    ): SetupRoutes()
 
 }

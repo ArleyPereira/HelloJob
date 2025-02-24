@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.core.enums.input.InputType.ADDRESS
-import br.com.hellodev.core.enums.input.InputType.SALARY_CURRENCY
 import br.com.hellodev.core.enums.input.InputType.SALARY_FREQUENCY
 import br.com.hellodev.core.enums.input.InputType.SALARY_MAXIMUM
 import br.com.hellodev.core.enums.input.InputType.SALARY_MINIMUM
@@ -34,7 +33,6 @@ import br.com.hellodev.design.presenter.components.bar.top.TopAppBarUI
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.components.textfield.decimal.DecimalTextFieldUI
-import br.com.hellodev.design.presenter.components.textfield.default.TextFieldUI
 import br.com.hellodev.design.presenter.components.textfield.dropdown.TextFieldDropdown
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.main.R
@@ -134,38 +132,8 @@ fun SalaryExpectationContent(
                     }
                 )
 
-                TextFieldUI(
-                    value = state.currency,
-                    label = stringResource(R.string.label_currency_salary_expectation_screen),
-                    placeholder = "R$",
-                    isError = state.inputError == SALARY_CURRENCY,
-                    error = stringResource(inputErrorMessage(ADDRESS)),
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
-                        imeAction = ImeAction.Next
-                    ),
-                    onValueChange = {
-                        action(SalaryExpectationAction.OnTextFieldChanged(it, SALARY_CURRENCY))
-                    }
-                )
-
-//                TextFieldUI(
-//                    value = state.frequency,
-//                    label = stringResource(R.string.label_frequency_salary_expectation_screen),
-//                    placeholder = "Mensal",
-//                    isError = state.inputError == SALARY_FREQUENCY,
-//                    error = stringResource(inputErrorMessage(ADDRESS)),
-//                    keyboardOptions = KeyboardOptions(
-//                        keyboardType = KeyboardType.Number,
-//                        imeAction = ImeAction.Done
-//                    ),
-//                    onValueChange = {
-//                        action(SalaryExpectationAction.OnTextFieldChanged(it, SALARY_FREQUENCY))
-//                    }
-//                )
-
                 TextFieldDropdown(
-                    modifier = Modifier,
+                    items = state.frequencies,
                     label = stringResource(R.string.label_frequency_salary_expectation_screen),
                     illustrationType = IllustrationType.IC_RIGHT,
                     onOptionSelected = {

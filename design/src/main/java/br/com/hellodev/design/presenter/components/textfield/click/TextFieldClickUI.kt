@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,7 +34,7 @@ import br.com.hellodev.design.presenter.theme.UrbanistFamily
 fun TextFieldClickUI(
     modifier: Modifier = Modifier,
     value: String = "",
-    placeholder: String,
+    label: String,
     illustrationType: IllustrationType,
     isError: Boolean = false,
     enabled: Boolean = true,
@@ -50,6 +51,20 @@ fun TextFieldClickUI(
                 onClick = onClick
             )
     ) {
+        Text(
+            text = label,
+            style = TextStyle(
+                fontSize = 16.sp,
+                lineHeight = 22.4.sp,
+                fontFamily = UrbanistFamily,
+                fontWeight = FontWeight(500),
+                color = HelloTheme.colorScheme.text.color,
+                letterSpacing = 0.2.sp
+            )
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -75,7 +90,7 @@ fun TextFieldClickUI(
         ) {
             if (value.isEmpty()) {
                 Text(
-                    text = placeholder,
+                    text = label,
                     style = TextStyle(
                         lineHeight = 19.6.sp,
                         fontFamily = UrbanistFamily,
@@ -135,7 +150,7 @@ private fun TextFieldClickUIPreview() {
                 modifier = Modifier
                     .padding(32.dp),
                 value = "Masculino",
-                placeholder = "Gênero",
+                label = "Gênero",
                 illustrationType = IC_RIGHT,
                 error = "Gênero inválido",
                 isError = true,

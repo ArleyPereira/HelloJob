@@ -8,5 +8,6 @@ data class SalaryExpectationState(
     val maximumSalary: String = "",
     val currency: String = "",
     val frequency: String = "",
-    val inputError: InputType? = null
+    val inputError: InputType? = null,
+    val frequencies: List<String> = emptyList()
 )
