@@ -1,7 +1,7 @@
-package br.com.hellodev.main.presenter.features.account.state
+package br.com.hellodev.main.presenter.features.main.account.state
 
 import android.net.Uri
-import br.com.hellodev.common.domain.model.user.UserDomain
+import br.com.hellodev.domain.model.user.UserDomain
 
 data class AccountState(
     val isLoading: Boolean = true,

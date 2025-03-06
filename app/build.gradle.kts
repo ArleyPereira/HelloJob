@@ -23,14 +23,14 @@ android {
     }
 
     namespace = "br.com.hellodev.hellojob"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "br.com.hellodev.hellojob"
-        minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         signingConfig = signingConfigs.getByName("release")
@@ -58,7 +58,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
+    // Domain
+    implementation(project(":domain"))
+
     implementation(project(":design"))
     implementation(project(":di"))
     implementation(project(":onboarding"))

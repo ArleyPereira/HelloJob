@@ -31,7 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.core.enums.illustration.IllustrationType
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI

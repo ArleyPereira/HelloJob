@@ -2,7 +2,7 @@ package br.com.hellodev.main.presenter.features.applications.list.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.main.presenter.features.applications.list.action.ApplicationListAction
 import br.com.hellodev.main.presenter.features.applications.list.state.ApplicationListState
 import kotlinx.coroutines.delay

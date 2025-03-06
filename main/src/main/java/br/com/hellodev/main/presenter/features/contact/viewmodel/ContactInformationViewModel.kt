@@ -2,7 +2,7 @@ package br.com.hellodev.main.presenter.features.contact.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.common.domain.model.user.UserDomain
+import br.com.hellodev.domain.model.user.UserDomain
 import br.com.hellodev.core.enums.input.InputType
 import br.com.hellodev.core.enums.input.InputType.ADDRESS
 import br.com.hellodev.core.enums.input.InputType.EMAIL

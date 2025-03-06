@@ -3,9 +3,9 @@ package br.com.hellodev.main.presenter.features.account.viewmodel
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.common.domain.model.user.UserDomain
-import br.com.hellodev.main.presenter.features.account.action.AccountAction
-import br.com.hellodev.main.presenter.features.account.state.AccountState
+import br.com.hellodev.domain.model.user.UserDomain
+import br.com.hellodev.main.presenter.features.main.account.action.AccountAction
+import br.com.hellodev.main.presenter.features.main.account.state.AccountState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

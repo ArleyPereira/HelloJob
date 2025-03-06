@@ -58,8 +58,8 @@ import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation
 import br.com.hellodev.design.presenter.util.transformation.MaskVisualTransformation.Companion.PHONE_MASK
-import br.com.hellodev.main.presenter.features.account.action.AccountAction
-import br.com.hellodev.main.presenter.features.account.state.AccountState
+import br.com.hellodev.main.presenter.features.main.account.action.AccountAction
+import br.com.hellodev.main.presenter.features.main.account.state.AccountState
 import br.com.hellodev.main.presenter.features.account.viewmodel.AccountViewModel
 import org.koin.androidx.compose.koinViewModel
 

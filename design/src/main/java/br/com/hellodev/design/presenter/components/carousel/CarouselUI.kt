@@ -21,7 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.hellodev.common.domain.model.banner.BannerDomain
+import br.com.hellodev.domain.model.banner.BannerDomain
 import br.com.hellodev.design.R
 import br.com.hellodev.design.presenter.components.image.ImageUI
 import br.com.hellodev.design.presenter.components.indicator.SlideIndicator

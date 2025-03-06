@@ -1,6 +1,6 @@
 package br.com.hellodev.main.presenter.features.home.action
 
-import br.com.hellodev.common.domain.model.category.CategoryDomain
+import br.com.hellodev.domain.model.category.CategoryDomain
 
 sealed class HomeAction {
     data object OnSearch: HomeAction()

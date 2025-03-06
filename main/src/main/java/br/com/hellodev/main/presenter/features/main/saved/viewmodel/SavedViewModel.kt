@@ -2,7 +2,7 @@ package br.com.hellodev.main.presenter.features.saved.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.main.presenter.features.saved.action.SavedAction
 import br.com.hellodev.main.presenter.features.saved.state.SavedState
 import kotlinx.coroutines.delay

@@ -134,27 +134,27 @@ fun TextFieldUI(
                     .focusRequester(focusRequester),
                 enabled = enabled,
                 readOnly = readOnly,
-//                label = {
-//                    Text(
-//                        fontFamily = UrbanistFamily,
-//                        text = label,
-//                        style = if (isFocused) {
-//                            TextStyle(
-//                                fontSize = 12.sp,
-//                                lineHeight = 11.sp,
-//                                fontFamily = UrbanistFamily,
-//                                fontWeight = FontWeight(700),
-//                                color = HelloTheme.colorScheme.defaultColor
-//                            )
-//                        } else {
-//                            TextStyle(
-//                                lineHeight = 15.4.sp,
-//                                fontFamily = UrbanistFamily,
-//                                color = HelloTheme.colorScheme.textField.placeholder
-//                            )
-//                        }
-//                    )
-//                },
+                label = {
+                    Text(
+                        fontFamily = UrbanistFamily,
+                        text = label,
+                        style = if (isFocused) {
+                            TextStyle(
+                                fontSize = 12.sp,
+                                lineHeight = 11.sp,
+                                fontFamily = UrbanistFamily,
+                                fontWeight = FontWeight(700),
+                                color = HelloTheme.colorScheme.defaultColor
+                            )
+                        } else {
+                            TextStyle(
+                                lineHeight = 15.4.sp,
+                                fontFamily = UrbanistFamily,
+                                color = HelloTheme.colorScheme.textField.placeholder
+                            )
+                        }
+                    )
+                },
                 placeholder = {
                     Text(
                         text = placeholder,

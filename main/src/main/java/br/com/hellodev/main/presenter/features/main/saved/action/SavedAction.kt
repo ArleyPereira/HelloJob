@@ -1,6 +1,6 @@
 package br.com.hellodev.main.presenter.features.saved.action
 
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 
 sealed class SavedAction {
     data object OnSearch : SavedAction()

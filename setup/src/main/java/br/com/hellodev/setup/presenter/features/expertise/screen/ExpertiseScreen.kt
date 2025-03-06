@@ -33,8 +33,8 @@ import br.com.hellodev.design.presenter.components.divider.HorizontalDividerUI
 import br.com.hellodev.design.presenter.theme.HelloTheme
 import br.com.hellodev.design.presenter.theme.UrbanistFamily
 import br.com.hellodev.design.presenter.theme.borderStrokeDefault
+import br.com.hellodev.domain.model.expertise.Expertise
 import br.com.hellodev.setup.R
-import br.com.hellodev.common.domain.model.expertise.Expertise
 import br.com.hellodev.setup.presenter.features.expertise.action.ExpertiseAction
 import br.com.hellodev.setup.presenter.features.expertise.state.ExpertiseState
 import br.com.hellodev.setup.presenter.features.expertise.viewmodel.ExpertiseViewModel
@@ -167,8 +167,8 @@ private fun ExpertisePreview() {
     HelloTheme {
         ExpertiseContent(
             state = ExpertiseState(
-                expertises = br.com.hellodev.common.domain.model.expertise.Expertise.getExpertises(),
-                selectedExpertises = br.com.hellodev.common.domain.model.expertise.Expertise.getExpertises().take(5)
+                expertises = Expertise.items(),
+                selectedExpertises = Expertise.items().take(5)
             ),
             action = {},
             navigateToProfileScreen = {},

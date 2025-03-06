@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.design.presenter.components.bottom.sheet.drag.DragBottomSheet
 import br.com.hellodev.design.presenter.components.button.PrimaryButton
 import br.com.hellodev.design.presenter.components.button.SecondaryButton

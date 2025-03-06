@@ -4,8 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import br.com.hellodev.common.domain.model.category.CategoryDomain
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.category.CategoryDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.job_search.presenter.features.search.action.SearchAction
 import br.com.hellodev.job_search.presenter.features.search.state.SearchState
 import br.com.hellodev.job_search.presenter.navigation.routes.SearchRoutes

@@ -25,7 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CLOSE
 import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FILTER
 import br.com.hellodev.design.presenter.components.bar.search.SearchBarUI

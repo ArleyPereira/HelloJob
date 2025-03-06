@@ -35,9 +35,9 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.common.domain.model.banner.BannerDomain
-import br.com.hellodev.common.domain.model.job.section.JobSectionDomain
-import br.com.hellodev.common.domain.model.user.UserDomain
+import br.com.hellodev.domain.model.banner.BannerDomain
+import br.com.hellodev.domain.model.job.section.JobSectionDomain
+import br.com.hellodev.domain.model.user.UserDomain
 import br.com.hellodev.design.presenter.components.bar.search.SearchBarUI
 import br.com.hellodev.design.presenter.components.carousel.CarouselUI
 import br.com.hellodev.design.presenter.components.icon.notification.NotificationIcon

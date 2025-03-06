@@ -1,4 +1,4 @@
-package br.com.hellodev.main.presenter.features.account.action
+package br.com.hellodev.main.presenter.features.main.account.action
 
 import android.net.Uri
 

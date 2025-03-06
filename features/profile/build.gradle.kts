@@ -7,10 +7,10 @@ plugins {
 
 android {
     namespace = "br.com.hellodev.profile"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,11 +35,13 @@ android {
 }
 
 dependencies {
+    // Domain
+    implementation(project(":domain"))
+
     // Design
     implementation(project(":design"))
 
     // Common
-    implementation(project(":common"))
 
     // Core
     implementation(project(":core"))

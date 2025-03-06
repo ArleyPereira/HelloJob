@@ -2,7 +2,7 @@ package br.com.hellodev.setup.presenter.features.country.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.common.domain.model.country.Country
+import br.com.hellodev.domain.model.country.Country
 import br.com.hellodev.setup.presenter.features.country.action.CountryAction
 import br.com.hellodev.setup.presenter.features.country.state.CountryState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,8 +36,8 @@ class CountryViewModel : ViewModel() {
             _state.update { currentState ->
                 currentState.copy(
                     isLoading = false,
-                    countries = br.com.hellodev.common.domain.model.country.Country.items,
-                    countriesFiltered = br.com.hellodev.common.domain.model.country.Country.items
+                    countries = Country.items,
+                    countriesFiltered = Country.items
                 )
             }
         }
@@ -59,7 +59,7 @@ class CountryViewModel : ViewModel() {
         }
     }
 
-    private fun onSelect(country: br.com.hellodev.common.domain.model.country.Country) {
+    private fun onSelect(country: Country) {
         _state.update { currentState ->
             currentState.copy(
                 selectedCountry = country

@@ -2,10 +2,10 @@ package br.com.hellodev.main.presenter.features.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.common.domain.model.category.CategoryDomain
-import br.com.hellodev.common.domain.model.home.HomeDomain
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
-import br.com.hellodev.common.domain.model.job.section.JobSectionDomain
+import br.com.hellodev.domain.model.category.CategoryDomain
+import br.com.hellodev.domain.model.home.HomeDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.section.JobSectionDomain
 import br.com.hellodev.main.presenter.features.home.action.HomeAction
 import br.com.hellodev.main.presenter.features.home.state.HomeState
 import kotlinx.coroutines.flow.MutableStateFlow

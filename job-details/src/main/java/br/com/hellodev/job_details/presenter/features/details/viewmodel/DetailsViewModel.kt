@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.job_details.presenter.features.details.action.DetailsAction
 import br.com.hellodev.job_details.presenter.features.details.state.DetailsState
 import br.com.hellodev.job_details.presenter.navigation.routes.DetailsRoutes

@@ -1,6 +1,6 @@
 package br.com.hellodev.main.presenter.features.applications.list.state
 
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 
 data class ApplicationListState(
     val isScreenLoading: Boolean = true,

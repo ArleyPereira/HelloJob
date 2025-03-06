@@ -1,6 +1,6 @@
 package br.com.hellodev.main.presenter.features.saved.state
 
-import br.com.hellodev.common.domain.model.job.item.JobItemDomain
+import br.com.hellodev.domain.model.job.item.JobItemDomain
 
 data class SavedState(
     val isScreenLoading: Boolean = true,

@@ -7,10 +7,10 @@ plugins {
 
 android {
     namespace = "br.com.hellodev.job_search"
-    compileSdk = 35
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,9 +35,15 @@ android {
 }
 
 dependencies {
+    // Domain
+    implementation(project(":domain"))
+
+    // Core
     implementation(project(":core"))
+
+    // Design
     implementation(project(":design"))
-    implementation(project(":common"))
+
     implementation(project(":job-details"))
 
     // Compose
