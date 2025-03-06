@@ -1,10 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "br.com.hellodev.di"
+    namespace = "br.com.hellodev.onboarding"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -30,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -39,27 +44,27 @@ dependencies {
     // Core
     implementation(project(":core"))
 
-    // Features - Onboarding
-    implementation(project(":features:onboarding"))
+    // Desing
+    implementation(project(":design"))
 
     // Features - Authentication
     implementation(project(":features:authentication"))
 
-    // Features - Setup
-    implementation(project(":features:setup"))
-
-    // Features - Main
-    implementation(project(":features:main"))
-
-    // Features - Profile
-    implementation(project(":features:profile"))
-
-    // Features - Job Search
-    implementation(project(":features:job-search"))
-
-    // Features - Job Details
-    implementation(project(":features:job-details"))
+    // Compose
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.bundles.compose)
+    implementation(libs.navigation.compose)
 
     // Koin
     implementation(libs.koin.compose)
+
+    // Serialization
+    implementation(libs.serialization.json)
+
+    // Debug
+    debugImplementation(libs.compose.ui.tooling)
+
+    // Lottie
+    implementation(libs.lottie.compose)
 }

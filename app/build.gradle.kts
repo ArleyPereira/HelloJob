@@ -61,11 +61,17 @@ dependencies {
     // Domain
     implementation(project(":domain"))
 
+    // Desing
     implementation(project(":design"))
+
+    // DI
     implementation(project(":di"))
-    implementation(project(":onboarding"))
-    implementation(project(":authentication"))
-    implementation(project(":main"))
+
+    // Features - Onboarding
+    implementation(project(":features:onboarding"))
+
+    // Features - Authentication
+    implementation(project(":features:authentication"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

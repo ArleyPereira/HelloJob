@@ -1,26 +1,26 @@
 package br.com.hellodev.di
 
-import br.com.hellodev.authentication.di.authenticationModules
+import br.com.hellodev.authentication.di.authenticationModule
 import br.com.hellodev.core.di.coreModules
 import br.com.hellodev.domain.di.domainModule
-import br.com.hellodev.job_details.di.jobDetailsModules
-import br.com.hellodev.job_search.di.jobSearchModules
-import br.com.hellodev.main.di.mainModules
-import br.com.hellodev.onboarding.di.onboardingModules
+import br.com.hellodev.job_details.di.jobDetailsModule
+import br.com.hellodev.job_search.di.jobSearchModule
+import br.com.hellodev.main.di.mainModule
+import br.com.hellodev.onboarding.di.onboardingModule
 import br.com.hellodev.profile.di.profileModules
-import br.com.hellodev.setup.di.setupModules
+import br.com.hellodev.setup.di.setupModule
 import org.koin.dsl.module
 
 val appModules = module {
     includes(
         coreModules,
         domainModule,
-        onboardingModules,
-        authenticationModules,
-        setupModules,
-        mainModules,
-        jobSearchModules,
-        jobDetailsModules,
+        onboardingModule,
+        authenticationModule,
+        setupModule,
+        mainModule,
+        jobSearchModule,
+        jobDetailsModule,
         profileModules
     )
 }

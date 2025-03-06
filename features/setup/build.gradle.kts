@@ -1,10 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "br.com.hellodev.di"
+    namespace = "br.com.hellodev.setup"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -39,27 +41,23 @@ dependencies {
     // Core
     implementation(project(":core"))
 
-    // Features - Onboarding
-    implementation(project(":features:onboarding"))
-
-    // Features - Authentication
-    implementation(project(":features:authentication"))
-
-    // Features - Setup
-    implementation(project(":features:setup"))
+    // Design
+    implementation(project(":design"))
 
     // Features - Main
     implementation(project(":features:main"))
 
-    // Features - Profile
-    implementation(project(":features:profile"))
-
-    // Features - Job Search
-    implementation(project(":features:job-search"))
-
-    // Features - Job Details
-    implementation(project(":features:job-details"))
+    // Compose
+    implementation(platform(libs.compose.bom))
+    implementation(libs.bundles.compose)
+    implementation(libs.navigation.compose)
 
     // Koin
     implementation(libs.koin.compose)
+
+    // Serialization
+    implementation(libs.serialization.json)
+
+    // Debug
+    debugImplementation(libs.compose.ui.tooling)
 }
