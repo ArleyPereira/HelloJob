@@ -16,7 +16,7 @@ import br.com.hellodev.main.presenter.features.contact.screen.ContactInformation
 import br.com.hellodev.main.presenter.features.main.account.screen.AccountScreen
 import br.com.hellodev.main.presenter.features.main.home.screen.HomeScreen
 import br.com.hellodev.main.presenter.features.salary.screen.SalaryExpectationScreen
-import br.com.hellodev.main.presenter.features.saved.screen.SavedScreen
+import br.com.hellodev.main.presenter.features.main.saved.screen.SavedScreen
 import br.com.hellodev.main.presenter.features.summary.screen.SummaryScreen
 import br.com.hellodev.main.presenter.navigation.routes.BottomBarRoutes
 import br.com.hellodev.profile.presenter.features.profile.screen.ProfileScreen

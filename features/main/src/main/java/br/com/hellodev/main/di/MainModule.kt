@@ -6,7 +6,7 @@ import br.com.hellodev.main.presenter.features.applications.status.viewmodel.App
 import br.com.hellodev.main.presenter.features.contact.viewmodel.ContactInformationViewModel
 import br.com.hellodev.main.presenter.features.home.viewmodel.HomeViewModel
 import br.com.hellodev.main.presenter.features.salary.viewmodel.SalaryExpectationViewModel
-import br.com.hellodev.main.presenter.features.saved.viewmodel.SavedViewModel
+import br.com.hellodev.main.presenter.features.main.saved.viewmodel.SavedViewModel
 import br.com.hellodev.main.presenter.features.summary.viewmodel.SummaryViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module

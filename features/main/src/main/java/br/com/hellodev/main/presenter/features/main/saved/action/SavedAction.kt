@@ -1,4 +1,4 @@
-package br.com.hellodev.main.presenter.features.saved.action
+package br.com.hellodev.main.presenter.features.main.saved.action
 
 import br.com.hellodev.domain.model.job.item.JobItemDomain
 

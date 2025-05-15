@@ -1,10 +1,10 @@
-package br.com.hellodev.main.presenter.features.saved.viewmodel
+package br.com.hellodev.main.presenter.features.main.saved.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.domain.model.job.item.JobItemDomain
-import br.com.hellodev.main.presenter.features.saved.action.SavedAction
-import br.com.hellodev.main.presenter.features.saved.state.SavedState
+import br.com.hellodev.main.presenter.features.main.saved.action.SavedAction
+import br.com.hellodev.main.presenter.features.main.saved.state.SavedState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

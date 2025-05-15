@@ -1,4 +1,4 @@
-package br.com.hellodev.main.presenter.features.saved.screen
+package br.com.hellodev.main.presenter.features.main.saved.screen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -32,7 +32,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.hellodev.domain.model.job.item.JobItemDomain
 import br.com.hellodev.core.enums.illustration.IllustrationType.IC_CLOSE
 import br.com.hellodev.core.enums.illustration.IllustrationType.IC_FILTER
 import br.com.hellodev.design.presenter.components.bar.search.SearchBarUI
@@ -43,9 +42,10 @@ import br.com.hellodev.design.presenter.components.icon.default.DefaultIcon
 import br.com.hellodev.design.presenter.components.item.job.item.JobItemUI
 import br.com.hellodev.design.presenter.components.loading.CircularLoadingScreen
 import br.com.hellodev.design.presenter.theme.HelloTheme
-import br.com.hellodev.main.presenter.features.saved.action.SavedAction
-import br.com.hellodev.main.presenter.features.saved.state.SavedState
-import br.com.hellodev.main.presenter.features.saved.viewmodel.SavedViewModel
+import br.com.hellodev.domain.model.job.item.JobItemDomain
+import br.com.hellodev.main.presenter.features.main.saved.action.SavedAction
+import br.com.hellodev.main.presenter.features.main.saved.state.SavedState
+import br.com.hellodev.main.presenter.features.main.saved.viewmodel.SavedViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
