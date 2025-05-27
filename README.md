@@ -4,7 +4,7 @@ Bem-vindo ao **Hello Jobs**, o seu aplicativo intuitivo para encontrar, se candi
 
 ## ✨ Sobre o Projeto
 
-O Hello Jobs foi desenvolvido para otimizar a experiência de quem busca emprego, oferecendo funcionalidades essenciais como:
+O Hello Jobs está sendo desenvolvido para otimizar a experiência de quem busca emprego, oferecendo funcionalidades essenciais como:
 
 * **Visualização de vagas:** Explore diversas oportunidades de emprego com detalhes completos.
 * **Candidatura simplificada:** Inscreva-se em vagas de seu interesse de forma rápida e eficiente.
@@ -16,26 +16,26 @@ Nosso objetivo é tornar a jornada de busca por emprego mais agradável e menos 
 
 ## 🚀 Funcionalidades em Destaque
 
+<div style="display: flex; justify-content: space-around; align-items: flex-start;">
+    <img src="https://raw.githubusercontent.com/ArleyPereira/HelloJob/refs/heads/main/design/src/main/java/br/com/hellodev/design/presenter/previews/home_screen.png" width="30%" alt="Tela Inicial do Hello Jobs">
+    <img src="https://raw.githubusercontent.com/ArleyPereira/HelloJob/refs/heads/main/design/src/main/java/br/com/hellodev/design/presenter/previews/job_details_screen.png" width="30%" alt="Tela de Detalhes da Vaga do Hello Jobs">
+    <img src="https://raw.githubusercontent.com/ArleyPereira/HelloJob/refs/heads/main/design/src/main/java/br/com/hellodev/design/presenter/previews/applications_screen.png" width="30%" alt="Tela de Acompanhamento de Candidaturas do Hello Jobs">
+</div>
+
 **Tela Principal (Home)**
 _Uma visão geral das vagas disponíveis._
-
-**[INSERIR PRINT DA TELA HOME AQUI]**
 
 **Detalhes da Vaga**
 _Informações completas sobre cada oportunidade._
 
-**[INSERIR PRINT DA TELA DE DETALHES DA VAGA AQUI]**
-
 **Acompanhamento de Candidaturas**
 _Gerencie suas inscrições e veja o progresso._
-
-**[INSERIR PRINT DA TELA DE ACOMPANHAMENTO AQUI]**
 
 ---
 
 ## 🏗️ Arquitetura do Projeto
 
-O Hello Jobs foi construído com uma arquitetura robusta e escalável, seguindo os princípios de:
+O Hello Jobs está sendo construído com uma arquitetura robusta e escalável, seguindo os princípios de:
 
 * **MVI (Model-View-Intent):** Garante um fluxo de dados unidirecional e estados imutáveis, facilitando a depuração e o gerenciamento do estado da UI.
 * **Clean Architecture:** Separação clara de responsabilidades em camadas (Domain, Data, Presentation), promovendo a independência de frameworks, testabilidade e manutenibilidade.
@@ -72,7 +72,19 @@ Aqui estão algumas das bibliotecas chave que impulsionam o Hello Jobs:
 
 ---
 
-## 🛠️ Como Contribuir (Opcional)
+## 🛠️ Próximas Implementações
+
+Estamos trabalhando ativamente para adicionar ainda mais recursos ao Hello Jobs. Fique de olho nas próximas atualizações que incluirão:
+
+-   [ ] Login com Google ou GitHub
+-   [ ] Notificações push
+-   [ ] Aplicação da vaga com currículo
+-   [ ] Chat
+-   [ ] Adicionar suporte para IOS (Compose Multiplatform)
+
+---
+
+## 🤝 Como Contribuir (Opcional)
 
 Se você tiver interesse em contribuir com o projeto, siga os passos abaixo:
 
@@ -88,6 +100,6 @@ Se você tiver interesse em contribuir com o projeto, siga os passos abaixo:
 
 Para qualquer dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
-* **[Seu Nome/Nome da Equipe]** - [Seu Email]
-
----
+* **Arley Santana**
+    * **LinkedIn:** [Arley Santana](https://www.linkedin.com/in/arley-santana-53546918b/)
+    * **YouTube:** [Seu Canal no YouTube](https://www.youtube.com/@hellodevs)
